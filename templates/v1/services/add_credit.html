@@ -197,9 +197,9 @@
                 Select Payment Method
               </p>
               <div
-                class="alert text-dark alert-light bg-light rounded-3 py-2 d-flex align-items-center gap-3 w-100 my-6 fw-bold"
+                class="alert text-dark alert-light bg-light rounded-3 py-3 d-flex align-items-center gap-3 my-6 fw-bold"
                 role="alert"
-                style="font-size: 14px"
+                style="font-size: 14px; width: max-content"
               >
                 <img
                   src="{% static 'images/icons/info.jpeg' %}"
@@ -396,7 +396,7 @@
             data-kt-stepper="true"
           >
             <form
-              class="mx-auto w-100 mw-700px pt-2 pb-10 fv-plugins-bootstrap5 fv-plugins-framework"
+              class="mx-auto w-100 mw-700px pt-2 pb-6 fv-plugins-bootstrap5 fv-plugins-framework"
               action="."
               method="POST"
               id="continue-form"
@@ -432,7 +432,7 @@
                       type="button"
                       class="btn btn-light d-flex align-items-center p-2 gap-2"
                     >
-                      <img src="./swap.png" alt="" />
+                    <i class="bi bi-arrow-down-up fs-2 p-0"></i>
                     </button>
                   </div>
 
@@ -481,7 +481,18 @@
                     >
                       <!-- Initial content will be replaced dynamically -->
                     </div>
-                  </div>
+                    
+                    <!--begin::Input group-->
+                    <div class="border rounded">
+                        <select id="kt_docs_select2_rich_content" class="form-select form-select-transparent" name="..." data-placeholder="...">
+                            <option></option>
+                            <option value="0" data-kt-rich-content-subcontent="..." data-kt-rich-content-icon="assets/media/avatars/300-6.jpg">Option Label 1</option>
+                            <option value="1" data-kt-rich-content-subcontent="..." data-kt-rich-content-icon="assets/media/avatars/300-6.jpg">Option Label 2</option>
+                            ...
+                        </select>
+                    </div>
+                    <!--end::Input group-->
+                </div>
                   <h6 class="mt-3">1 USD = 1 USDT</h6>
                 </div>
               </div>
@@ -607,8 +618,9 @@
                     </div>
 
                     <div
-                      class="alert alert-secondary alert-dismissible fade show mt-4 gap-3 d-flex align-items-center"
+                      class="alert alert-secondary alert-dismissible fade show mt-8 gap-3 d-flex align-items-center mx-auto"
                       role="alert"
+                      style="width: max-content"
                     >
                       <!-- Icon representing crypto education (example: a book icon from Font Awesome) -->
                       <img
@@ -663,12 +675,12 @@
                 </div>
               </div>
               <!--begin::Actions-->
-              <div class="pt-10 d-grid">
+              <div class="d-grid">
                 <!--begin::Wrapper-->
                 <!-- <div class="d-grid">  -->
                 <button
                   type="button"
-                  class="btn w-full btn-blue text-light"
+                  class="btn w-full btn-blue text-light mt-10"
                   data-kt-stepper-action="next"
                   id="continue-btn"
                 >
@@ -689,241 +701,247 @@
   {% endblock %} {% block javascript %}
 
   <script>
-    $("#continue-btn").on('click', function (e) {
-        debugger
-        var form = $("#continue-form")
-        var button = $(this); // Reference to the button
-        e.preventDefault();
-        button.hide();// Change button text upon click
-        form.validate({
-            rules: {
-                coin: {
-                    required: true
+        $("#continue-btn").on('click', function (e) {
+            debugger
+            var form = $("#continue-form")
+            var button = $(this); // Reference to the button
+            e.preventDefault();
+            button.hide();// Change button text upon click
+            form.validate({
+                rules: {
+                    coin: {
+                        required: true
+                    },
                 },
-            },
-            messages: {
-                coin: {
-                    required: "Choose a cryptocurrency coin for the transaction."
-                }
-            },
-            onfocusout: false,
-            invalidHandler: function (form, validator) {
-                var errors = validator.numberOfInvalids();
-                if (errors) {
-                    var focusElement = validator.errorList[0].element;
+                messages: {
+                    coin: {
+                        required: "Choose a cryptocurrency coin for the transaction."
+                    }
+                },
+                onfocusout: false,
+                invalidHandler: function (form, validator) {
+                    var errors = validator.numberOfInvalids();
+                    if (errors) {
+                        var focusElement = validator.errorList[0].element;
 
-                    // Scroll to and focus on the first invalid element
-                    $('html, body').animate({
-                        scrollTop: $(focusElement).offset().top - 200
-                    }, 500);
+                        // Scroll to and focus on the first invalid element
+                        $('html, body').animate({
+                            scrollTop: $(focusElement).offset().top - 200
+                        }, 500);
 
-                    focusElement.focus();
-                }
-                // Revert button text if form is invalid
-                button.show();
-            }
-        });
-
-        if (!form.valid()) {
-            return;
-        }
-        $("#final_step").removeClass("pending")
-        $("#final_step").addClass("current")
-        $("#first_step").removeClass("current")
-        $("#first_step").addClass("pending")
-        {% comment %} btn_loader("#kt_contact_submit_button", true)
-
-        $.ajax({
-            type: "POST",
-            url: "/add-credit/",
-            data: form.serialize(), // serializes the form's elements.
-            success: function (data) {
-                debugger
-            },
-            error: function (data) {
-                Swal.fire({
-                    icon: "success",
-                    title: "Request Sent!",
-                    text: "Your request has been successfully sent, Please check your mail.",
-                    confirmButtonColor: '#1B84FF'
-                })
-                btn_loader("#kt_contact_submit_button", false)
-            }
-        }); {% endcomment %}
-    });
-
-    $(".network").on("click", function () {
-        $(this).addClass('active');
-        var network = $(this).attr("data-value");
-        $("input[name='network']").val(network);
-    })
-
-    $(".coin").on("click", function () {
-        $(this).addClass('active');
-        var network = $(this).attr("data-value");
-        $("input[name='coin']").val(network);
-    })
-
-    $("#cash").on("click", function () {
-        $("#cash-alert").fadeIn();
-        setTimeout(function () {
-            $("#cash-alert").fadeOut();
-        }, 4000); // 2000 milliseconds = 2 seconds
-    })
-
-    $('#continueModal').on('hide.bs.modal', function (e) {
-        $("#first_step").removeClass("pending")
-        $("#first_step").addClass("current")
-        $("#final_step").removeClass("current")
-        $("#final_step").addClass("pending")
-        $("#continue-btn").show();
-    });
-
-    $(".copy").on("click", function () {
-        $("#copy-alert").fadeIn();
-        setTimeout(function () {
-            $("#copy-alert").fadeOut();
-        }, 2000); // 2000 milliseconds = 2 seconds
-        navigator.clipboard.writeText($(this).attr("data-value"));
-    })
-
-    function updateDropdown(selected, button) {
-        // var buttons = document.querySelectorAll('.btn');
-        var buttons = document.querySelectorAll('.choose-network');
-        // // var buttons = document.getElementById('');
-        // console.log(buttons)
-        // buttons.forEach(btn => {
-        //     // btn.classList.remove('text-primary');
-        //     btn.classList.remove('btn-blue-5');
-        //     btn.classList.remove('blue-text');
-        // });
-
-        // // Add active class and background color to the clicked button
-        // // button.classList.add('text-primary');
-        // button.classList.add('btn-blue-5');
-        // button.classList.add('blue-text');
-
-        buttons.forEach(btn => {
-            btn.classList.remove('btn-blue-5', 'blue-text');
-            btn.blur(); // Remove focus from the button
-        });
-
-        // Add active class and background color to the clicked button
-        button.classList.add('btn-blue-5', 'blue-text');
-        // // Remove active class and background color from all buttons
-        // buttons.forEach((btn, index) => {
-        //     // btn.classList.remove('text-primary');
-        //     // btn.classList.remove('bg-primary');
-        //     if (selected === "ERC20") {
-        //         console.log('selected 1', index)
-        //         btn.classList.remove('blue-text');
-        //         btn.classList.remove('btn-blue-5');
-        //         buttons[index + 1]?.classList.add('blue-text');
-        //         buttons[index + 1]?.classList.add('btn-blue-5');
-        //     }else{
-        //         console.log('selected 2', index)
-        //         btn.classList.add('blue-text');
-        //         btn.classList.add('btn-blue-5');
-        //         buttons[index - 1]?.classList.remove('blue-text');
-        //         buttons[index - 1]?.classList.remove('btn-blue-5');
-        //     }
-        // });
-
-
-        // buttons.forEach((btn, index) => {
-        //     // Remove classes from both buttons
-        //     btn.classList.remove('blue-text', 'btn-blue-5');
-
-        //     if (selected === "ERC20") {
-        //         if (index === 0) {
-        //             // Add classes to the next button
-        //             buttons[index + 1]?.classList.add('blue-text', 'btn-blue-5');
-        //         }
-        //     } else {
-        //         if (index === 1) {
-        //             // Add classes to the previous button
-        //             buttons[index - 1]?.classList.add('blue-text', 'btn-blue-5');
-        //         }
-        //     }
-        // });
-
-        // Add active class and background color to the clicked button
-
-        // button.classList.add('text-primary');
-        // btn.classList.add('bg-primary');
-        // button.classList.add('blue-text');
-        // button.classList.add('btn-blue-5');
-
-        var dropdownContent = document.getElementById("dropdownContent");
-        // Clear existing content
-        while (dropdownContent.firstChild) {
-            dropdownContent.removeChild(dropdownContent.firstChild);
-        }
-
-        if (selected === "ERC20") {
-            // Add ERC20 related options
-            addDropdownItem(dropdownContent, "eth", "{% static 'images/icons/etherium.png' %}", "ETH");
-            addDropdownItem(dropdownContent, "usdt", "{% static 'images/icons/usdt_1.png' %}", "USDT");
-            addDropdownItem(dropdownContent, "usdc", "{% static 'images/icons/usdc_1.png' %}", "USDC");
-        } else if (selected === "Polygon") {
-            // Add Polygon related options
-            addDropdownItem(dropdownContent, "weth", "{% static 'images/icons/weth.png' %}", "WETH");
-            addDropdownItem(dropdownContent, "usdt", "{% static 'images/icons/usdt_1.png' %}", "USDT");
-            addDropdownItem(dropdownContent, "usdc", "{% static 'images/icons/usdc_1.png' %}", "USDC");
-        }
-    }
-
-    // Function to add a dropdown item
-    function addDropdownItem(container, value, imageUrl, text) {
-        var item = document.createElement("a");
-        item.classList.add("dropdown-item");
-        // item.href = "#";
-        item.setAttribute("data-value", value);
-
-        var img = document.createElement("img");
-        img.src = imageUrl;
-        img.alt = text;
-
-        img.className = "flag-icon pe-2";
-        img.style.height = "20px";
-
-        var textNode = document.createTextNode(text);
-
-        item.appendChild(img);
-        item.appendChild(textNode);
-
-        container.appendChild(item);
-    }
-
-    // cards colors
-    document.addEventListener("DOMContentLoaded", function () {
-        // Select all radio buttons
-        var checkboxes = document.querySelectorAll('.form-check-input');
-        var seelctFirstCard = document.getElementById('cash');
-        var seelctSecondCard = document.getElementById('no-cash');
-
-
-        // console.log(checkboxes)
-
-        // seelctFirstCard.addEventListener()
-        checkboxes.forEach(function (checkbox) {
-            console.log("checkboxes")
-
-            checkbox.addEventListener('change', function () {
-                console.log("🚀 ~ checkbox:", checkbox)
-                // Remove classes from all form-check elements
-                document.querySelectorAll('.form-check').forEach(function (formCheck) {
-                    formCheck.classList.remove('border-primary', 'active');
-                });
-
-                // If the current checkbox is checked, add the classes to its closest form-check element
-                if (checkbox.checked) {
-                    var formCheck = checkbox.closest('.form-check');
-                    formCheck.classList.add('border-primary', 'active');
+                        focusElement.focus();
+                    }
+                    // Revert button text if form is invalid
+                    button.show();
                 }
             });
+
+            if (!form.valid()) {
+                return;
+            }
+            $("#final_step").removeClass("pending")
+            $("#final_step").addClass("current")
+            $("#first_step").removeClass("current")
+            $("#first_step").addClass("pending")
+            {% comment %} btn_loader("#kt_contact_submit_button", true)
+
+            $.ajax({
+                type: "POST",
+                url: "/add-credit/",
+                data: form.serialize(), // serializes the form's elements.
+                success: function (data) {
+                    debugger
+                },
+                error: function (data) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Request Sent!",
+                        text: "Your request has been successfully sent, Please check your mail.",
+                        confirmButtonColor: '#1B84FF'
+                    })
+                    btn_loader("#kt_contact_submit_button", false)
+                }
+            }); {% endcomment %}
         });
-    });
+
+        $(".network").on("click", function () {
+            $(this).addClass('active');
+            var network = $(this).attr("data-value");
+            $("input[name='network']").val(network);
+        })
+
+        $(".coin").on("click", function () {
+            $(this).addClass('active');
+            var network = $(this).attr("data-value");
+            $("input[name='coin']").val(network);
+        })
+
+        $("#cash").on("click", function () {
+            $("#cash-alert").fadeIn();
+            setTimeout(function () {
+                $("#cash-alert").fadeOut();
+            }, 4000); // 2000 milliseconds = 2 seconds
+        })
+
+        $('#continueModal').on('hide.bs.modal', function (e) {
+            $("#first_step").removeClass("pending")
+            $("#first_step").addClass("current")
+            $("#final_step").removeClass("current")
+            $("#final_step").addClass("pending")
+            $("#continue-btn").show();
+        });
+
+        $(".copy").on("click", function () {
+            $("#copy-alert").fadeIn();
+            setTimeout(function () {
+                $("#copy-alert").fadeOut();
+            }, 2000); // 2000 milliseconds = 2 seconds
+            navigator.clipboard.writeText($(this).attr("data-value"));
+        })
+
+        function updateDropdown(selected, button) {
+            // var buttons = document.querySelectorAll('.btn');
+            var buttons = document.querySelectorAll('.choose-network');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('btn-blue-5', 'blue-text');
+                btn.blur(); // Remove focus from the button
+            });
+
+            // Add active class and background color to the clicked button
+            button.classList.add('btn-blue-5', 'blue-text');
+
+            var dropdownContent = document.getElementById("dropdownContent");
+            // Clear existing content
+            while (dropdownContent.firstChild) {
+                dropdownContent.removeChild(dropdownContent.firstChild);
+            }
+
+
+            if (selected === "ERC20") {
+                // Add ERC20 related options
+                addDropdownItem(dropdownContent, "eth", "{% static 'images/icons/etherium.png' %}", "ETH");
+                addDropdownItem(dropdownContent, "usdt", "{% static 'images/icons/usdt_1.png' %}", "USDT");
+                addDropdownItem(dropdownContent, "usdc", "{% static 'images/icons/usdc_1.png' %}", "USDC");
+            } else if (selected === "Polygon") {
+                // Add Polygon related options
+                addDropdownItem(dropdownContent, "weth", "{% static 'images/icons/weth.png' %}", "WETH");
+                addDropdownItem(dropdownContent, "usdt", "{% static 'images/icons/usdt_1.png' %}", "USDT");
+                addDropdownItem(dropdownContent, "usdc", "{% static 'images/icons/usdc_1.png' %}", "USDC");
+            }
+        }
+
+        // Function to add a dropdown item
+        function addDropdownItem(container, value, imageUrl, text) {
+            var item = document.createElement("a");
+            item.classList.add("dropdown-item");
+            // item.href = "#";
+            item.setAttribute("data-value", value);
+
+            var img = document.createElement("img");
+            img.src = imageUrl;
+            img.alt = text;
+
+            img.className = "flag-icon pe-2";
+            img.style.height = "20px";
+
+            var textNode = document.createTextNode(text);
+
+            item.appendChild(img);
+            item.appendChild(textNode);
+
+            container.appendChild(item);
+        }
+
+        // cards colors
+        document.addEventListener("DOMContentLoaded", function () {
+            // Select all radio buttons
+            var checkboxes = document.querySelectorAll('.form-check-input');
+            var seelctFirstCard = document.getElementById('cash');
+            var seelctSecondCard = document.getElementById('no-cash');
+
+
+            // console.log(checkboxes)
+
+            // seelctFirstCard.addEventListener()
+            checkboxes.forEach(function (checkbox) {
+                console.log("checkboxes")
+
+                checkbox.addEventListener('change', function () {
+                    console.log("🚀 ~ checkbox:", checkbox)
+                    // Remove classes from all form-check elements
+                    document.querySelectorAll('.form-check').forEach(function (formCheck) {
+                        formCheck.classList.remove('border-primary', 'active');
+                    });
+
+                    // If the current checkbox is checked, add the classes to its closest form-check element
+                    if (checkbox.checked) {
+                        var formCheck = checkbox.closest('.form-check');
+                        formCheck.classList.add('border-primary', 'active');
+                    }
+                });
+            });
+        });
+
+
+        // select network
+
+    //     let optionFormat = function(item) {
+    //     if ( !item.id ) {
+    //         return item.text;
+    //     }
+
+    //     let span = document.createElement('span');
+    //     let template = 'dfsfsfsasfdfa';
+
+    //     template += '<img src="' + item.element.getAttribute('data-kt-select2-image') + '" class="rounded-circle h-20px me-2" alt="image"/>';
+    //     template += item.text;
+
+    //     span.innerHTML = template;
+
+    //     return $(span);
+    // }
+
+    // // Init Select2 --- more info: https://select2.org/
+    // $('#kt_docs_select2_floating_labels_1').select2({
+    //     placeholder: "Select coin",
+    //     minimumResultsForSearch: Infinity,
+    //     templateSelection: optionFormat,
+    //     templateResult: optionFormat
+    // });
+
+    // Format options
+const optionFormat = (item) => {
+    if (!item.id) {
+        return item.text;
+    }
+
+    var span = document.createElement('span');
+    var template = '';
+
+    template += '<div class="d-flex align-items-center">';
+    template += '<img src="https://img.freepik.com/free-photo/raw-eggplants-ready-be-cooked_23-2150410411.jpg?w=1380&t=st=1707328486~exp=1707329086~hmac=569cc99d7e97e342380f81da0da539967c188139cbeceab5c385fea003283b3a" class="rounded-circle h-40px me-3" alt="' + item.text + '"/>';
+    // template += '<img src="' + item.element.getAttribute('data-kt-rich-content-icon') + '" class="rounded-circle h-40px me-3" alt="' + item.text + '"/>';
+    template += '<div class="d-flex flex-column">'
+    template += '<span class="fs-4 lh-1">' + item.text + '</span>';
+    // template += '<span class="text-muted fs-5">' + item.element.getAttribute('data-kt-rich-content-subcontent') + '</span>';
+    template += '</div>';
+    template += '</div>';
+
+    span.innerHTML = template;
+
+    return $(span);
+}
+
+// Init Select2 --- more info: https://select2.org/
+$('#kt_docs_select2_rich_content').select2({
+    placeholder: "Select",
+    minimumResultsForSearch: Infinity,
+    templateSelection: optionFormat,
+    templateResult: optionFormat
+});
+
+
   </script>
 
   {% endblock %}
