@@ -59,6 +59,16 @@
     height: 100%;
   }
 
+  .form-check.border-primary {
+        background-color: white; /* Initial background color */
+        border-color: #007bff; /* Initial border color */
+    }
+
+    /* Add this style for the active state */
+    .form-check.border-primary.active {
+        background-color: #F2F7FF !important; /* Dark background color for active state */
+        border-color: #0062cc !important; /* Primary border color for active state */
+    }
 
 </style>
 
@@ -118,7 +128,7 @@
                     <div class=" mt-4 gap-3 d-flex gap-5 flex-column flex-md-row ">
                         <div class="form-check w-100 w-md-50 rounded-3 p-3 border position-relative"  id="cash" for="cash">
                             <input class="form-check-input position-absolute" style="right: 5px; top: 5px; background-color: lightgray" type="radio"
-                                name="exampleRadios" id="exampleRadios1" value="option1">
+                            name="payment_option" id="exampleRadios1" value="option1">
                             <div class="d-flex align-items-center mb-2">
                                 <img src="{% static 'images/icons/mastercard.png' %}" alt="" style="height: 20px;">
                                 <img src="{% static 'images/icons/visa.png' %}" alt="" style="height: 20px;">
@@ -141,7 +151,7 @@
                         </div>
                         <div class="form-check  w-100 w-md-50 rounded-3 p-3 border position-relative">
                             <input class="form-check-input position-absolute" style="right: 5px; top: 5px; background-color: lightgray" type="radio"
-                                name="exampleRadios" id="exampleRadios2" value="option1">
+                            name="payment_option" id="exampleRadios2" value="option1">
                             <div class="d-flex align-items-center mb-2 relative">
                                 <img src="{% static 'images/icons/etherium.png' %}" alt="" style="height: 20px; z-index: 0; " >
                                 <img src="{% static 'images/icons/usdt_1.png' %}" alt="" style="height: 20px; z-index: 1; margin-left: -4px;"  >
@@ -576,6 +586,27 @@
 
         container.appendChild(item);
     }
+
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var checkboxes = document.querySelectorAll('.form-check-input');
+
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                checkboxes.forEach(function (otherCheckbox) {
+                    var formCheck = otherCheckbox.closest('.form-check');
+                    formCheck.classList.remove('border-primary', 'active');
+                });
+
+                if (checkbox.checked) {
+                    var formCheck = checkbox.closest('.form-check');
+                    formCheck.classList.add('border-primary', 'active');
+                }
+            });
+        });
+    });
 </script>
 
 {% endblock %}
