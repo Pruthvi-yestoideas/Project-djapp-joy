@@ -1,16 +1,17 @@
-{% extends 'v1/base.html' %} {% block content%}
-{% load static %}
+{% extends 'v1/base.html' %} {% block content%} {% load static %}
 <style>
   .swal2-modal {
     width: 850px !important;
   }
+
   .card {
     transition: all 0.3s ease;
     position: relative;
     cursor: pointer;
     transition: all 0.3s ease;
-    border:1px grey dashed;
+    border: 1px grey dashed;
   }
+
   .card .text {
     margin: 0 auto;
     font-size: 11px;
@@ -19,14 +20,14 @@
     opacity: 0;
     max-height: 0;
     transition: all 0.3s ease;
-  } 
-
+  }
 
   .card:hover .info {
     height: 90%;
   }
-  .card:hover{
-    background: #1890ff29!important;
+
+  .card:hover {
+    background: #1890ff29 !important;
   }
 
   .card:hover .text {
@@ -52,322 +53,582 @@
     opacity: 1;
     transition: all 0.3s ease;
   }
-  .card.active{
-    border:1px #008eff solid;
+
+  .card.active {
+    border: 1px #008eff solid;
     border: 1px #008eff dashed;
-    background: #1890ff29!important;
+    background: #1890ff29 !important;
     height: 100%;
   }
 
+  .form-check.border-primary {
+    background-color: white;
+    /* Initial background color */
+    border-color: #007bff;
+    /* Initial border color */
+  }
 
+  /* Add this style for the active state */
+  .form-check.border-primary.active {
+    background-color: #f2f7ff !important;
+    /* Dark background color for active state */
+    border-color: #0062cc !important;
+    /* Primary border color for active state */
+  }
+
+  .blue-text {
+    color: #0061ff !important;
+  }
+
+  .btn-blue {
+    background-color: #0061ff !important;
+  }
+
+  .btn-blue-5 {
+    background-color: #0061ff33 !important;
+  }
+
+  .pointer {
+    cursor: pointer !important;
+  }
+
+  /*     
+    .card-form:hover {
+        background-color: #F2F7FF !important; 
+        border-color: #0062cc !important; 
+    } */
+
+  /* Apply border when the associated radio button is checked */
+  .form-check-input:checked + .form-check-label .card-form {
+    border: 2px solid #007bff;
+    /* Change the color to your desired border color */
+  }
+
+  .card-form .form-check-input:checked[type="radio"] {
+    background-color: #0061ff !important;
+    --bs-form-check-bg-image: none !important;
+  }
 </style>
 
-<div class="content" >
-
-  <div class="d-flex row justify-content-center align-items-center" style="min-height:75vh">
+<div class="content">
+  <div
+    class="d-flex row justify-content-center align-items-center"
+    style="min-height: 75vh"
+  >
     <div class="col-lg-8 col-md-12 col-sm-12 col-12" style="width: 95%">
-        <div class="row justify-content-center">
-          <div class="border border-1 rounded-3 p-8 mt-4 row">
-            <div class="row align-items-center">
-                <div class="col-md-5">
+      <div class="row justify-content-center">
+        <div class="border border-1 rounded-3 p-6 mt-0 row">
+          <div class="row align-items-center">
+            <div class="col-md-5">
+              <div class="">
+                <h6 class="fw-bold">Current Balance</h6>
+                <h5 class="mt-3 fw-bold">
+                  <b> {{ request.session.balance }} </b>
+                </h5>
+              </div>
+              <div class="d-flex flex-row align-items-center gap-3 mt-4">
+                <button
+                  class="btn btn-blue-5 blue-text fw-bold px-1 rounded py-2 px-2"
+                >
+                  +24%
+                </button>
+                <p class="m-0">
+                  in the last <span class="blue-text">30 days</span>
+                </p>
+              </div>
+            </div>
+            <div
+              class="col-md-7 rounded-3 p-4 position-relative"
+              style="background-color: #0061ff"
+            >
+              <img
+                src="{% static 'images/ellipse_2.png' %}"
+                class="position-absolute"
+                alt=""
+                style="left: 0; top: 0"
+              />
+              <img
+                src="{% static 'images/ellipse.png' %}"
+                class="position-absolute"
+                alt=""
+                style="right: 0; bottom: 0"
+              />
+              <img
+                src="{% static 'images/crypto_coin_2.png' %}"
+                class="position-absolute"
+                alt=""
+                style="right: 0; top: 0"
+              />
+              <img
+                src="{% static 'images/crypto_coin.png' %}"
+                class="position-absolute"
+                alt=""
+                style="right: 14%; bottom: 0; height: 80px"
+              />
+
+              <div class="w-75 w-md-50">
+                <h6 class="text-light">
+                  Add Funds to <br />
+                  your Balance with our <br />
+                  different payment options
+                </h6>
+                <p
+                  class="m-0 mt-3 text-light"
+                  style="font-size: 10px; line-height: 1.2"
+                >
+                  You can use a card payment or <br />
+                  a crypto payment method
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="position-relative mt-8">
+            <div class="ps-8 border-start">
+              <p
+                class="m-0 text-dark fw-bold"
+                style="font-size: 14px; line-height: 1.1"
+              >
+                <span
+                  class="position-absolute bg-white p-2 rounded-circle"
+                  style="left: 0px; top: -7px"
+                  >1</span
+                >
+                Select Payment Method
+              </p>
+              <div
+                class="alert text-dark alert-light bg-light rounded-3 py-2 d-flex align-items-center gap-3 w-100 my-6 fw-bold"
+                role="alert"
+                style="font-size: 14px"
+              >
+                <img
+                  src="{% static 'images/icons/info.jpeg' %}"
+                  alt=""
+                  style="height: 20px; margin-bottom: 2px"
+                />
+
+                New to Crypto? Get started now with
+                <span class="blue-text">Coinbase Guide</span>
+              </div>
+
+              <div class="mt-4 gap-3 d-flex gap-5 flex-column flex-md-row">
+                <div
+                  class="form-check card-form w-100 w-md-50 rounded-3 p-3 border position-relative"
+                  id="cash"
+                  for="cash"
+                >
+                  <input
+                    class="form-check-input position-absolute h-15px w-15px"
+                    style="right: 10px; top: 10px; background-color: lightgray"
+                    type="radio"
+                    name="payment_option"
+                    id="exampleRadios1"
+                    value="option1"
+                  />
+                  <label
+                    class="form-check-label pointer p-2"
+                    for="exampleRadios1"
+                  >
+                    <div class="d-flex align-items-center mb-2">
+                      <img
+                        src="{% static 'images/icons/mastercard.png' %}"
+                        alt=""
+                        style="height: 20px"
+                      />
+                      <img
+                        src="{% static 'images/icons/visa.png' %}"
+                        alt=""
+                        style="height: 20px"
+                      />
+                      <img
+                        src="{% static 'images/icons/american_express_1.png' %}"
+                        alt=""
+                        style="height: 20px"
+                      />
+                    </div>
                     <div class="">
-                        <h6 class="fw-bold">Current Balance</h6>
-                        <h5 class="mt-3 fw-bold"><b> {{ request.session.balance }} </b></h5>
-                    </div>
-                    <div class="d-flex flex-row align-items-center gap-3">
-                        <button class="btn btn-light text-primary fw-bold px-1 rounded-3">
-                            +24%
-                        </button>
-                        <p class="m-0">
-                            in the last <span class="text-primary">30 days</span>
+                      <div class="w-75 w-md-50">
+                        <h6 class="text-dark">Card Payment</h6>
+                        <p
+                          class="m-0 text-dark py-2"
+                          style="font-size: 14px; line-height: 1.1"
+                        >
+                          Top up your account using card payments, including
+                          Visa, Mastercard and American Express
                         </p>
+                      </div>
                     </div>
+                    <!--  -->
+                  </label>
                 </div>
-                <div class="col-md-7 rounded-3 p-4 position-relative" style="background-color: #0061FF;">
-
-                  <img src="{% static 'images/ellipse_2.png' %}" class="position-absolute " alt="" style="left: 0; top: 0;">
-                  <img src="{% static 'images/ellipse.png' %}" class="position-absolute " alt="" style="right: 0; bottom: 0; ">
-                  <img src="{% static 'images/crypto_coin_2.png' %}" class="position-absolute " alt="" style="right: 0; top: 0; ">
-                  <img src="{% static 'images/crypto_coin.png' %}" class="position-absolute " alt="" style="right: 14%; bottom: 0; height: 80px; ">
-  
-                    <div class="w-75 w-md-50">
-                        <h6 class="text-light">Add Funds to <br>
-                            your Balance with our <br>
-                            different payment options
-                        </h6>
-                        <p class="m-0 text-light" style="font-size: 14px; line-height: 1.1;">
-                            You can use a card payment or <br>
-                            a crypto payment method
+                <div
+                  class="form-check w-100 w-md-50 rounded-3 p-3 border position-relative card-form"
+                  id="no-cash"
+                >
+                  <input
+                    class="form-check-input position-absolute h-15px w-15px"
+                    style="right: 10px; top: 10px; background-color: lightgray"
+                    type="radio"
+                    name="payment_option"
+                    id="exampleRadios2"
+                    value="option1"
+                  />
+                  <label
+                    class="form-check-label pointer p-2"
+                    for="exampleRadios2"
+                  >
+                    <div class="d-flex align-items-center mb-2 relative">
+                      <img
+                        src="{% static 'images/icons/etherium.png' %}"
+                        alt=""
+                        style="height: 20px; z-index: 0"
+                      />
+                      <img
+                        src="{% static 'images/icons/usdt_1.png' %}"
+                        alt=""
+                        style="height: 20px; z-index: 1; margin-left: -4px"
+                      />
+                      <img
+                        src="{% static 'images/icons/usdc_1.png' %}"
+                        alt=""
+                        style="height: 20px; z-index: 1; margin-left: -4px"
+                      />
+                    </div>
+                    <div class="">
+                      <div class="w-75 w-md-50">
+                        <h6 class="text-dark">Crypto Payment</h6>
+                        <p
+                          class="m-0 text-dark py-2"
+                          style="font-size: 14px; line-height: 1.1"
+                        >
+                          Pay using cryptocurrencies. Ideal for digital currency
+                          enthusiasts
                         </p>
+                      </div>
                     </div>
+                  </label>
                 </div>
+              </div>
             </div>
-    
-            <div class="position-relative mt-5">
-                <div class="ps-4 border-start border-dark">
-                    <p class="m-0 text-dark fw-bold" style="font-size: 14px; line-height: 1.1;">
-                        <span class="position-absolute bg-white p-2 rounded-circle" style="left: 0px; top: -8px;">1</span>
-                        Select Payment Method
-                    </p>
-                    <div class="alert text-dark alert-light bg-light rounded-3 py-2 d-flex align-items-center gap-2 w-100 mt-3 mb-0 fw-bold"
-                        role="alert" style="font-size: 14px;">
-                        <img src="./info.png" alt="" style="height: 20px" />
-                        New to Crypto? Get started now with <span class="text-primary">Coinbase Guide</span>
-                    </div>
-    
-                    <div class=" mt-4 gap-3 d-flex gap-5 flex-column flex-md-row ">
-                        <div class="form-check w-100 w-md-50 rounded-3 p-3 border position-relative"  id="cash" for="cash">
-                            <input class="form-check-input position-absolute" style="right: 5px; top: 5px; background-color: lightgray" type="radio"
-                                name="exampleRadios" id="exampleRadios1" value="option1">
-                            <div class="d-flex align-items-center mb-2">
-                                <img src="{% static 'images/icons/mastercard.png' %}" alt="" style="height: 20px;">
-                                <img src="{% static 'images/icons/visa.png' %}" alt="" style="height: 20px;">
-                                <img src="{% static 'images/icons/american_express_1.png' %}" alt="" style="height: 20px;">
-                            </div>
-                            <label class="form-check-label" for="exampleRadios1">
-                                <div class="">
-                                    <div class="w-75 w-md-50">
-                                        <h6 class="text-dark">Card Payment
-                                        </h6>
-                                        <p class="m-0 text-dark py-2" style="font-size: 14px; line-height: 1.1;">
-                                            Top up your account using card payments,
-                                            including Visa, Mastercard and American
-                                            Express
-                                        </p>
-                                    </div>
-                                </div>
-                                <!--  -->
-                            </label>
-                        </div>
-                        <div class="form-check  w-100 w-md-50 rounded-3 p-3 border position-relative">
-                            <input class="form-check-input position-absolute" style="right: 5px; top: 5px; background-color: lightgray" type="radio"
-                                name="exampleRadios" id="exampleRadios2" value="option1">
-                            <div class="d-flex align-items-center mb-2 relative">
-                                <img src="{% static 'images/icons/etherium.png' %}" alt="" style="height: 20px; z-index: 0; " >
-                                <img src="{% static 'images/icons/usdt_1.png' %}" alt="" style="height: 20px; z-index: 1; margin-left: -4px;"  >
-                                <img src="{% static 'images/icons/usdc_1.png' %}" alt="" style="height: 20px; z-index: 1; margin-left: -4px;">
-                            </div>
-                            <label class="form-check-label" for="exampleRadios2">
-                                <div class="">
-                                    <div class="w-75 w-md-50">
-                                        <h6 class="text-dark">Crypto Payment
-                                        </h6>
-                                        <p class="m-0 text-dark py-2" style="font-size: 14px; line-height: 1.1;">
-                                          Pay using cryptocurrencies. Ideal for digital
-                                          currency enthusiasts
-                                        </p>
-                                    </div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="ps-4 border-start border-dark mt-4">
-                    <p class="m-0 text-dark fw-bold" style="font-size: 14px; line-height: 1.1;">
-                        <span class="position-absolute bg-white p-2 rounded-circle" style="left: 0px; bottom: 47px;">2</span>
-                        Enter Amount to Fund
-                    </p>
-                    <div class="mt-3">
-                        <input type="number" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-                    </div>
-                    <div class="mt-3">
-                        <button class="btn bg-primary w-100 text-light" data-bs-toggle="modal" data-bs-target="#continueModal">
-                            Proceed to Payment
-                        </button>
-                    </div>
-                </div>
+            <div class="ps-8 mt-6">
+              <p
+                class="m-0 text-dark fw-bold"
+                style="font-size: 14px; line-height: 1.1"
+              >
+                <span
+                  class="position-absolute bg-white p-2 rounded-circle"
+                  style="left: 0px; bottom: 25.9%"
+                  >2</span
+                >
+                Enter Amount to Fund
+              </p>
+              <div class="mt-3">
+                <input
+                  type="number"
+                  id="inputPassword5"
+                  style="border: 2px solid rgba(128, 128, 128, 0.37) !important"
+                  class="form-control border border-2 border-secondary"
+                  aria-describedby="passwordHelpBlock"
+                />
+              </div>
+              <div class="mt-3">
+                <button
+                  class="btn btn-blue w-100 text-light"
+                  data-bs-toggle="modal"
+                  data-bs-target="#continueModal"
+                >
+                  Proceed to Payment
+                  <i class="ki-duotone ki-black-right fs-3 text-light"></i>
+                </button>
+              </div>
             </div>
+          </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </div>
       <br />
-      <div class="alert alert-danger text-center" id="cash-alert" role="alert" style="display:none">
-        <strong>Not available at the moment. Please use other available payment options.</strong>
-      </div>
-
+      <div
+        class="alert alert-danger text-center"
+        id="cash-alert"
+        role="alert"
+        style="display: none"
+      >
+        <strong
+          >Not available at the moment. Please use other available payment
+          options.</strong
+        >
       </div>
     </div>
+  </div>
 
+  <div
+    class="modal fade"
+    id="continueModal"
+    tabindex="-1"
+    aria-modal="true"
+    role="dialog"
+  >
+    <!--begin::Modal dialog-->
+    <div class="modal-dialog modal-dialog-centered modal-lg p-4 p-md-9">
+      <!--begin::Modal content-->
+      <div class="modal-content modal-rounded">
+        <!--begin::Modal header-->
+        <div class="modal-header border-0 d-flex justify-content-between">
+          <!--begin::Modal title-->
+          <h2>Crypto Payment</h2>
+          <!--end::Modal title-->
 
-    
-    <div class="modal fade" id="continueModal" tabindex="-1" aria-modal="true" role="dialog">
-        <!--begin::Modal dialog-->
-        <div class="modal-dialog modal-dialog-centered modal-lg p-4 p-md-9">
-            <!--begin::Modal content-->
-            <div class="modal-content   modal-rounded">
-                <!--begin::Modal header-->
-                <div class="modal-header border-0 d-flex justify-content-between">
-                    <!--begin::Modal title-->
-                    <h2>Crypto Payment</h2>
-                    <!--end::Modal title-->
+          <!--begin::Close-->
+          <div
+            class="btn btn-sm btn-icon btn-active-color-primary"
+            data-bs-dismiss="modal"
+          >
+            <i class="ki-outline ki-cross fs-1"></i>
+          </div>
+          <!--end::Close-->
+        </div>
+        <!--begin::Modal header-->
 
-
-    
-                    <!--begin::Close-->
-                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-                        <i class="ki-outline ki-cross fs-1"></i>
+        <!--begin::Modal body-->
+        <div class="modal-body scroll-y mx-5 p-0 px-5">
+          <div
+            class="stepper stepper-links d-flex flex-column gap-5 between"
+            id="kt_modal_top_up_wallet_stepper"
+            data-kt-stepper="true"
+          >
+            <form
+              class="mx-auto w-100 mw-700px pt-2 pb-10 fv-plugins-bootstrap5 fv-plugins-framework"
+              action="."
+              method="POST"
+              id="continue-form"
+            >
+              {% csrf_token %}
+              <!--begin::Step 1-->
+              <div
+                data-kt-stepper-element="content"
+                id="first_step"
+                class="current"
+              >
+                <div class="w-100">
+                  <div
+                    class="border border-1 rounded-3 p-4 d-flex flex-row align-items-center justify-content-between"
+                  >
+                    <div class="">
+                      <h6>Pay</h6>
+                      <h5 class="mt-3">3452.00</h5>
                     </div>
-                    <!--end::Close-->
+                    <button
+                      type="button"
+                      class="btn btn-light d-flex align-items-center px-4 py-3 gap-2"
+                    >
+                      <img
+                        src="{% static 'images/icons/usa_flag.png' %}"
+                        alt=""
+                      />
+                      <h5 class="m-0">USD</h5>
+                    </button>
+                  </div>
+                  <div class="d-flex justify-content-center my-4">
+                    <button
+                      type="button"
+                      class="btn btn-light d-flex align-items-center p-2 gap-2"
+                    >
+                      <img src="./swap.png" alt="" />
+                    </button>
+                  </div>
+
+                  <h2 class="opacity-">Choose Network Below</h2>
+                  <div
+                    class="d-flex align-items-center gap-3 my-4"
+                    id="chooseNetworkButtons"
+                  >
+                    <button
+                      type="button"
+                      class="choose-network btn d-flex align-items-center px-4 fw-bold py-3 gap-2 rounded-pill blue-text btn-blue-5"
+                      onclick="updateDropdown('ERC20', this)"
+                    >
+                      ERC 20
+                    </button>
+                    <button
+                      type="button"
+                      class="choose-network btn btn-light fw-bold d-flex align-items-center px-4 py-3 gap-2 rounded-pill"
+                      onclick="updateDropdown('Polygon', this)"
+                    >
+                      Polygon
+                    </button>
+                  </div>
+                  <div
+                    class="border border-1 rounded-3 p-4 d-flex flex-row align-items-center justify-content-between"
+                  >
+                    <div class="">
+                      <h6>Pay</h6>
+                      <h5 class="mt-3">3452.00</h5>
+                    </div>
+
+                    <button
+                      class="btn btn-secondary dropdown-toggle"
+                      type="button"
+                      id="countryDropdown"
+                      data-bs-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      Select
+                    </button>
+                    <div
+                      class="dropdown-menu"
+                      aria-labelledby="countryDropdown"
+                      id="dropdownContent"
+                    >
+                      <!-- Initial content will be replaced dynamically -->
+                    </div>
+                  </div>
+                  <h6 class="mt-3">1 USD = 1 USDT</h6>
                 </div>
-                <!--begin::Modal header-->
-    
-                <!--begin::Modal body-->
-                <div class="modal-body  scroll-y mx-5 p-0 px-5">
-                 
+              </div>
 
-                     
+              <!--end::Step 2-->
+              <div
+                data-kt-stepper-element="content"
+                id="final_step"
+                class="pending"
+              >
+                <div class="w-100">
+                  <!--begin::Heading-->
 
-                    <div class="stepper stepper-links d-flex flex-column gap-5 between" id="kt_modal_top_up_wallet_stepper" data-kt-stepper="true">
-                        <form class="mx-auto w-100 mw-700px pt-2 pb-10 fv-plugins-bootstrap5 fv-plugins-framework" action="." method="POST" id="continue-form">
-                            {% csrf_token %}
-                            <!--begin::Step 1-->
-                            <div data-kt-stepper-element="content" id="first_step" class="current" >
-                                <div class="w-100">
-                                <div
-                                  class="border border-1 rounded-3 p-4 d-flex flex-row align-items-center justify-content-between"
-                                >
-                                  <div class="">
-                                    <h6>Pay</h6>
-                                    <h5 class="mt-3">3452.00</h5>
-                                  </div>
-                                  <button
-                                    type="button"
-                                    class="btn btn-light d-flex align-items-center px-4 py-3 gap-2"
-                                  >
-                                    <img src="{% static 'images/icons/usa_flag.png' %}" alt="" />
-                                    <h5 class="m-0">USD</h5>
-                                  </button>
-                                </div>
-                                <div class="d-flex justify-content-center my-4">
-                                  <button
-                                    type="button"
-                                    class="btn btn-light d-flex align-items-center p-2 gap-2"
-                                  >
-                                    <img src="./swap.png" alt="" />
-                                  </button>
-                                </div>
-                          
-                                <h2 class="opacity-">Choose Network Below</h2>
-                                <div class="d-flex align-items-center gap-3 my-4" id="chooseNetworkButtons">
-                                    <button type="button" 
-                                            class="btn d-flex align-items-center px-4  fw-bold py-3 gap-2 rounded-pill text-primary bg-light-primary" 
-                                            onclick="updateDropdown('ERC20', this)">
-                                        ERC 20
-                                    </button>
-                                    <button type="button" class="btn btn-light  fw-bold d-flex align-items-center px-4 py-3 gap-2 rounded-pill" onclick="updateDropdown('Polygon', this)">
-                                        Polygon
-                                    </button>
-                                </div>
-                                <div
-                                  class="border border-1 rounded-3 p-4 d-flex flex-row align-items-center justify-content-between"
-                                >
-                                  <div class="">
-                                    <h6>Pay</h6>
-                                    <h5 class="mt-3">3452.00</h5>
-                                  </div>                           
+                  <!--end::Heading-->
+                  <div>
+                    <div class="rounded-3 p-3 bg-light">
+                      <div class="">
+                        <img
+                          src="{% static 'images/icons/USDT_Icon.jpeg' %}"
+                          alt=""
+                          style="height: 20px"
+                        />
+                        <h5
+                          class="mt-3 fw-bold d-flex align-items-center gap-2"
+                        >
+                          10 USDT
+                          <img
+                            src="{% static 'images/icons/copy.jpeg' %}"
+                            alt=""
+                            class=""
+                            style="height: 20px"
+                          />
+                        </h5>
+                        <p class="m-0">Network: ERC20</p>
+                        <div
+                          class="alert text-dark alert-light rounded-pill border py-2 d-flex align-items-center gap-2 w-100 mt-3 mb-0"
+                          role="alert"
+                        >
+                          <img
+                            src="{% static 'images/icons/Info.jpeg' %}"
+                            alt=""
+                            style="height: 20px"
+                          />
+                          We will send you a confirmation email upon receiving
+                          your payment
+                        </div>
+                      </div>
+                    </div>
 
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="countryDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Select
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="countryDropdown" id="dropdownContent">
-                                        <!-- Initial content will be replaced dynamically -->
-                                    </div>
+                    <div class="border border-1 rounded-3 p-3 mt-4 row">
+                      <div class="col-md-4 text-center text-md-left">
+                        <img
+                          src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{walletadd}}&choe=UTF-8"
+                          alt="QR Code for USDT Deposit"
+                          class="img-fluid"
+                        />
+                      </div>
 
-                                </div>
-                                <h6 class="mt-3">1 USD = 1 USDT</h6>
-                              </div>
-                            </div>
-    
-                        
-                            <!--end::Step 2-->
-                            <div data-kt-stepper-element="content" id="final_step" class="pending">
-                                <div class="w-100">
-                                    <!--begin::Heading-->
+                      <div
+                        class="d-flex flex-column justify-content-between col-md-8"
+                      >
+                        <div>
+                          <p class="m-0">Recipient's Wallet Address</p>
+                          <h6
+                            class="mt-2 fw-bold d-flex align-items-center gap-2"
+                          >
+                            <!-- {{walletadd}} -->
+                            <strong
+                              class="mb-2 mb-sm-0 flex-wrap"
+                              style="word-wrap: break-word; max-width: 100%"
+                              >{{walletadd}}</strong
+                            >
+                            <button
+                              type="button"
+                              class="btn btn-icon text-dark copy"
+                              data-value="{{ walletadd }}"
+                            >
+                              <img
+                                src="{% static 'images/icons/copy.jpeg' %}"
+                                alt=""
+                                class=""
+                                style="height: 20px"
+                              />
+                            </button>
+                          </h6>
+                        </div>
+                        <p class="m-0">
+                          Start your transaction by scanning the QR code or
+                          copying the wallet address above.
+                        </p>
+                      </div>
+                    </div>
 
-                                    <!--end::Heading-->
-                                    <div>
-                                      <div class="rounded-3 p-3 bg-light">
-                                          <div class="">
-                                              <img src="{% static 'images/icons/USDT_Icon.jpeg' %}" alt="" style="height: 20px" />
-                                              <h5 class="mt-3 fw-bold d-flex align-items-center gap-2">
-                                                  10 USDT
-                                                  <img src="{% static 'images/icons/copy.jpeg' %}" alt="" class="" style="height: 20px" />
-                                              </h5>
-                                              <p class="m-0">Network: ERC20</p>
-                                              <div class="alert text-dark alert-light rounded-pill border py-2 d-flex align-items-center gap-2 w-100 mt-3 mb-0"
-                                                  role="alert">
-                                                  <img src="{% static 'images/icons/Info.jpeg' %}" alt="" style="height: 20px" />
-                                                  We will send you a confirmation email upon receiving your payment
-                                              </div>
-                                          </div>
-                                      </div>
-                              
-                                      <div class="border border-1 rounded-3 p-3 mt-4 row">
-                                          <div class="col-md-4 text-center text-md-left">
-                                              <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{walletadd}}&choe=UTF-8"
-                                                  alt="QR Code for USDT Deposit" class="img-fluid" />
-                                          </div>
-                              
-                                          <div class="d-flex flex-column justify-content-between col-md-8">
-                                              <div>
-                                                  <p class="m-0">Recipient's Wallet Address</p>
-                                                  <h6 class="mt-2 fw-bold d-flex align-items-center gap-2">
-                                                    <!-- {{walletadd}} -->
-                                                    <strong class="mb-2 mb-sm-0 flex-wrap" style="word-wrap: break-word; max-width: 100%;">{{walletadd}}</strong>
-                                                      <button type="button" class="btn btn-icon text-dark copy" data-value="{{ walletadd }}">
-                                                        <img src="{% static 'images/icons/copy.jpeg' %}" alt="" class="" style="height: 20px" />
-                                                    </button>
-                                                    
-                                                  </h6>
-                                              </div>
-                                              <p class="m-0 ">
-                                                  Start your transaction by scanning the QR code or copying the wallet
-                                                  address above.
-                                              </p>
-                                          </div>
-                                      </div>
-                              
-                                      <div class="d-flex justify-content-center my-4">
-                                          <button class="btn btn-text fw-bold">OR</button>
-                                      </div>
+                    <div class="d-flex justify-content-center my-4">
+                      <button class="btn btn-text fw-bold">OR</button>
+                    </div>
 
-                                      <div class="row mt-4 flex flex-column gap-3">
-                                        <button type="button" class="btn d-flex align-items-center justify-content-center gap-2 w-full btn-primary"  >
-                                          <img src="{% static 'images/icons/metamask_logo.png' %}" alt="Logo" class="img-fluid h-16px w-16px"  style="height: 16px; " />
-                                          Pay With Metamask
-                                         
-                                       </button>
-                                        <button type="button" class="btn  d-flex align-items-center justify-content-center gap-2 w-full btn-primary" >
-                                          <img src="{% static 'images/icons/wallet_logo.png' %}" alt="Logo" class="img-fluid  h-16px w-16px" style="height: 16px;"  />
-                                          Wallet Connect
-                                          
-                                      </button>
-                                      </div>
+                    <div class="row mt-4 flex flex-column gap-3">
+                      <button
+                        type="button"
+                        class="btn d-flex align-items-center justify-content-center gap-2 w-full btn-primary"
+                      >
+                        <img
+                          src="{% static 'images/icons/metamask_logo.png' %}"
+                          alt="Logo"
+                          class="img-fluid h-16px w-16px"
+                          style="height: 16px"
+                        />
+                        Pay With Metamask
+                      </button>
+                      <button
+                        type="button"
+                        class="btn d-flex align-items-center justify-content-center gap-2 w-full btn-primary"
+                      >
+                        <img
+                          src="{% static 'images/icons/wallet_logo.png' %}"
+                          alt="Logo"
+                          class="img-fluid h-16px w-16px"
+                          style="height: 16px"
+                        />
+                        Wallet Connect
+                      </button>
+                    </div>
 
-                                      <div class="alert alert-secondary alert-dismissible fade show mt-4" role="alert">
-                                        <!-- Icon representing crypto education (example: a book icon from Font Awesome) -->
-                                        <img src="{% static 'images/icons/Info.jpeg' %}" alt="" style="height: 16px" />
-                                        <strong style="color: black;">New to Crypto? Get started now with <a href="https://www.coinbase.com/how-to-buy/tether" style="text-decoration: underline;" target="_blank">Coinbase Guide</a></strong>
-                                        
-                                    </div>
-                              
-                                  </div>
+                    <div
+                      class="alert alert-secondary alert-dismissible fade show mt-4 gap-3 d-flex align-items-center"
+                      role="alert"
+                    >
+                      <!-- Icon representing crypto education (example: a book icon from Font Awesome) -->
+                      <img
+                        src="{% static 'images/icons/Info.jpeg' %}"
+                        alt=""
+                        style="height: 20px; margin-bottom: 2px"
+                      />
+                      <strong style="color: black"
+                        >New to Crypto? Get started now with
+                        <a
+                          href="https://www.coinbase.com/how-to-buy/tether"
+                          style="text-decoration: underline"
+                          target="_blank"
+                          >Coinbase Guide</a
+                        ></strong
+                      >
+                    </div>
+                  </div>
 
-
-<!-- 
+                  <!-- 
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-md-7">
@@ -397,36 +658,37 @@
 
 
                                     </div> -->
-                                    
-                                    
-                                    <!--end::Crypto options-->
-                                </div>
-                            </div>
-                            <!--begin::Actions-->
-                            <div class="pt-10  d-grid">
 
-                                <!--begin::Wrapper-->
-                                <!-- <div class="d-grid">  -->
-                                    <button type="button" class="btn w-full btn-primary" data-kt-stepper-action="next" id="continue-btn">
-                                        Continue Payment
-                                        <!-- <i class="ki-outline ki-arrow-right fs-3 ms-1 me-0"></i>  -->
-                                    </button>
-                                <!-- </div> -->
-                                <!--end::Wrapper-->
-                            </div>
-                            <!--end::Actions-->
-                        </form>
-                    </div>
+                  <!--end::Crypto options-->
                 </div>
-                <!--begin::Modal body-->
-            </div>
+              </div>
+              <!--begin::Actions-->
+              <div class="pt-10 d-grid">
+                <!--begin::Wrapper-->
+                <!-- <div class="d-grid">  -->
+                <button
+                  type="button"
+                  class="btn w-full btn-blue text-light"
+                  data-kt-stepper-action="next"
+                  id="continue-btn"
+                >
+                  Continue Payment
+                  <!-- <i class="ki-outline ki-arrow-right fs-3 ms-1 me-0"></i>  -->
+                </button>
+                <!-- </div> -->
+                <!--end::Wrapper-->
+              </div>
+              <!--end::Actions-->
+            </form>
+          </div>
         </div>
+        <!--begin::Modal body-->
+      </div>
     </div>
-{% endblock %}
+  </div>
+  {% endblock %} {% block javascript %}
 
-{% block javascript %}
-
-<script>
+  <script>
     $("#continue-btn").on('click', function (e) {
         debugger
         var form = $("#continue-form")
@@ -434,32 +696,32 @@
         e.preventDefault();
         button.hide();// Change button text upon click
         form.validate({
-        rules: {
-            coin: {
-            required: true
+            rules: {
+                coin: {
+                    required: true
+                },
             },
-        },
-        messages: {
-            coin: {
-                required: "Choose a cryptocurrency coin for the transaction."
+            messages: {
+                coin: {
+                    required: "Choose a cryptocurrency coin for the transaction."
+                }
+            },
+            onfocusout: false,
+            invalidHandler: function (form, validator) {
+                var errors = validator.numberOfInvalids();
+                if (errors) {
+                    var focusElement = validator.errorList[0].element;
+
+                    // Scroll to and focus on the first invalid element
+                    $('html, body').animate({
+                        scrollTop: $(focusElement).offset().top - 200
+                    }, 500);
+
+                    focusElement.focus();
+                }
+                // Revert button text if form is invalid
+                button.show();
             }
-        },
-        onfocusout: false,
-        invalidHandler: function(form, validator) {
-            var errors = validator.numberOfInvalids();
-            if (errors) {
-                var focusElement = validator.errorList[0].element;
-        
-                // Scroll to and focus on the first invalid element
-                $('html, body').animate({
-                scrollTop: $(focusElement).offset().top - 200
-                }, 500);
-        
-                focusElement.focus();
-            }
-            // Revert button text if form is invalid
-            button.show();
-        }
         });
 
         if (!form.valid()) {
@@ -487,7 +749,7 @@
                 })
                 btn_loader("#kt_contact_submit_button", false)
             }
-        });  {% endcomment %}
+        }); {% endcomment %}
     });
 
     $(".network").on("click", function () {
@@ -500,11 +762,11 @@
         $(this).addClass('active');
         var network = $(this).attr("data-value");
         $("input[name='coin']").val(network);
-})
+    })
 
     $("#cash").on("click", function () {
         $("#cash-alert").fadeIn();
-        setTimeout(function() {
+        setTimeout(function () {
             $("#cash-alert").fadeOut();
         }, 4000); // 2000 milliseconds = 2 seconds
     })
@@ -519,24 +781,78 @@
 
     $(".copy").on("click", function () {
         $("#copy-alert").fadeIn();
-        setTimeout(function() {
+        setTimeout(function () {
             $("#copy-alert").fadeOut();
         }, 2000); // 2000 milliseconds = 2 seconds
         navigator.clipboard.writeText($(this).attr("data-value"));
     })
 
     function updateDropdown(selected, button) {
-        var buttons = document.querySelectorAll('.btn');
-    
-        // Remove active class and background color from all buttons
+        // var buttons = document.querySelectorAll('.btn');
+        var buttons = document.querySelectorAll('.choose-network');
+        // // var buttons = document.getElementById('');
+        // console.log(buttons)
+        // buttons.forEach(btn => {
+        //     // btn.classList.remove('text-primary');
+        //     btn.classList.remove('btn-blue-5');
+        //     btn.classList.remove('blue-text');
+        // });
+
+        // // Add active class and background color to the clicked button
+        // // button.classList.add('text-primary');
+        // button.classList.add('btn-blue-5');
+        // button.classList.add('blue-text');
+
         buttons.forEach(btn => {
-            btn.classList.remove('text-primary');
-            btn.classList.('bg-primary');
+            btn.classList.remove('btn-blue-5', 'blue-text');
+            btn.blur(); // Remove focus from the button
         });
-        
+
         // Add active class and background color to the clicked button
-        button.classList.add('text-primary');
-        btn.classList.add('bg-primary');
+        button.classList.add('btn-blue-5', 'blue-text');
+        // // Remove active class and background color from all buttons
+        // buttons.forEach((btn, index) => {
+        //     // btn.classList.remove('text-primary');
+        //     // btn.classList.remove('bg-primary');
+        //     if (selected === "ERC20") {
+        //         console.log('selected 1', index)
+        //         btn.classList.remove('blue-text');
+        //         btn.classList.remove('btn-blue-5');
+        //         buttons[index + 1]?.classList.add('blue-text');
+        //         buttons[index + 1]?.classList.add('btn-blue-5');
+        //     }else{
+        //         console.log('selected 2', index)
+        //         btn.classList.add('blue-text');
+        //         btn.classList.add('btn-blue-5');
+        //         buttons[index - 1]?.classList.remove('blue-text');
+        //         buttons[index - 1]?.classList.remove('btn-blue-5');
+        //     }
+        // });
+
+
+        // buttons.forEach((btn, index) => {
+        //     // Remove classes from both buttons
+        //     btn.classList.remove('blue-text', 'btn-blue-5');
+
+        //     if (selected === "ERC20") {
+        //         if (index === 0) {
+        //             // Add classes to the next button
+        //             buttons[index + 1]?.classList.add('blue-text', 'btn-blue-5');
+        //         }
+        //     } else {
+        //         if (index === 1) {
+        //             // Add classes to the previous button
+        //             buttons[index - 1]?.classList.add('blue-text', 'btn-blue-5');
+        //         }
+        //     }
+        // });
+
+        // Add active class and background color to the clicked button
+
+        // button.classList.add('text-primary');
+        // btn.classList.add('bg-primary');
+        // button.classList.add('blue-text');
+        // button.classList.add('btn-blue-5');
 
         var dropdownContent = document.getElementById("dropdownContent");
         // Clear existing content
@@ -570,7 +886,7 @@
 
         img.className = "flag-icon pe-2";
         img.style.height = "20px";
-        
+
         var textNode = document.createTextNode(text);
 
         item.appendChild(img);
@@ -578,6 +894,37 @@
 
         container.appendChild(item);
     }
-</script>
 
-{% endblock %}
+    // cards colors
+    document.addEventListener("DOMContentLoaded", function () {
+        // Select all radio buttons
+        var checkboxes = document.querySelectorAll('.form-check-input');
+        var seelctFirstCard = document.getElementById('cash');
+        var seelctSecondCard = document.getElementById('no-cash');
+
+
+        // console.log(checkboxes)
+
+        // seelctFirstCard.addEventListener()
+        checkboxes.forEach(function (checkbox) {
+            console.log("checkboxes")
+
+            checkbox.addEventListener('change', function () {
+                console.log("🚀 ~ checkbox:", checkbox)
+                // Remove classes from all form-check elements
+                document.querySelectorAll('.form-check').forEach(function (formCheck) {
+                    formCheck.classList.remove('border-primary', 'active');
+                });
+
+                // If the current checkbox is checked, add the classes to its closest form-check element
+                if (checkbox.checked) {
+                    var formCheck = checkbox.closest('.form-check');
+                    formCheck.classList.add('border-primary', 'active');
+                }
+            });
+        });
+    });
+  </script>
+
+  {% endblock %}
+</div>

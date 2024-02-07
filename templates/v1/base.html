@@ -95,8 +95,23 @@
 			color: #ced4da;
 			top: 50%;
 			transform: translateY(-50%);
-
 		}
+
+        .menu-item.here .menu-link {
+    background-color: #007bff !important;
+    color: #fff !important;
+  }
+
+  /* Active state color for nested menu items */
+  .menu-item.here .menu-sub .menu-item .menu-link {
+    background-color: #007bff !important;
+    color: #fff !important;
+  }
+
+  /* Icon color in active state */
+  .menu-item.here .menu-link .menu-icon i {
+    color: #fff !important;
+  }
 	</style>
 </head>
 <!--end::Head-->
@@ -118,7 +133,7 @@
 				data-kt-sticky-activate="{default: true, lg: true}" data-kt-sticky-name="app-header-minimize"
 				data-kt-sticky-animation="false" data-kt-sticky-offset="{default: '0px', lg: '0px'}">
 				<!--begin::Header container-->
-				<div class="app-container container-fluid d-flex align-items-stretch flex-stack mt-lg-8"
+				<div class="app-container container-fluid d-flex align-items-stretch flex-stack mt-lg-3"
 					id="kt_app_header_container">
 					<!--begin::Sidebar toggle-->
 					<div class="d-flex align-items-center d-block d-lg-none ms-n3" title="Show sidebar menu">
