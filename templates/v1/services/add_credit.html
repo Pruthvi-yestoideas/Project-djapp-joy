@@ -263,11 +263,11 @@
                                 <h2 class="opacity-">Choose Network Below</h2>
                                 <div class="d-flex align-items-center gap-3 my-4" id="chooseNetworkButtons">
                                     <button type="button" 
-                                            class="btn btn-light d-flex align-items-center px-4 py-3 gap-2 rounded-pill text-primary" 
+                                            class="btn d-flex align-items-center px-4  fw-bold py-3 gap-2 rounded-pill text-primary bg-light-primary" 
                                             onclick="updateDropdown('ERC20', this)">
                                         ERC 20
                                     </button>
-                                    <button type="button" class="btn btn-light d-flex align-items-center px-4 py-3 gap-2 rounded-pill" onclick="updateDropdown('Polygon', this)">
+                                    <button type="button" class="btn btn-light  fw-bold d-flex align-items-center px-4 py-3 gap-2 rounded-pill" onclick="updateDropdown('Polygon', this)">
                                         Polygon
                                     </button>
                                 </div>
@@ -531,10 +531,12 @@
         // Remove active class and background color from all buttons
         buttons.forEach(btn => {
             btn.classList.remove('text-primary');
+            btn.classList.('bg-primary');
         });
         
         // Add active class and background color to the clicked button
         button.classList.add('text-primary');
+        btn.classList.add('bg-primary');
 
         var dropdownContent = document.getElementById("dropdownContent");
         // Clear existing content
