@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{favicon_img_link}}"/>
+    <title>A Step-by-Step Guide for using our platform</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .instruction-paragraph {
+        font-family: Arial, sans-serif; /* You can change the font family */
+        font-size: 16px; /* You can change the font size */
+        color: rgb(13, 14, 17); /* Sets the text color to black */
+        }
+        .container {
+            margin-top: 50px;
+            max-width: 800px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #5C7D9A;
+        }
+
+        .card-header {
+            cursor: pointer;
+            background-color: #E8E9EB;
+            border: none;
+            color: #5C7D9A;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-body {
+            background-color: #F8F9FA;
+            border-radius: 0 0 8px 8px;
+            padding: 20px;
+        }
+
+        a {
+            color: #4472C4;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .fa-chevron-right, .fa-chevron-down {
+            font-size: 16px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 40px;
+        }
+
+        ul > li {
+            margin-bottom: 15px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h2 class="header-title">A Step-by-Step Guide for using our platform</h2>
+
+    <div id="accordion">
+        <!-- Section 1 -->
+        <div class="card">
+            <div class="card-header" data-toggle="collapse" data-target="#section1">
+                <strong>Prepare your File</strong>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </div>
+            <div id="section1" class="collapse">
+                <div class="card-body">
+                    <div class="card-body" style="line-height: 1.6;">
+                        <h4 style="font-size: 22;font-weight: bold;color: #007bff;margin-top: 30px;">Download the Template:</h4>
+                        
+                        <section class="wallet-requirements" style="color: rgb(13, 14, 17);">
+                            <ul>
+                                <li><p><a style="color:blue;" href="https://firebasestorage.googleapis.com/v0/b/maindatabase-9182d.appspot.com/o/Template.xlsx?alt=media&amp;token=6f19e952-4f78-491b-84e9-3d92399489dc" target="_blank">EXCEL template</a> (Open it using Excel)</p></li>
+                                <li><p><a style="color:blue;" href="https://firebasestorage.googleapis.com/v0/b/orderdatabase-a5a46.appspot.com/o/system%20files%2FTemplate.csv?alt=media&amp;token=40c50d16-90ad-4ddf-9b5d-da632b50b5b4template.csv" target="_blank">CSV template</a> (We recommend using <a href="https://www.libreoffice.org/download/download-libreoffice" target="_blank">libreoffice</a> for CSV file)</p></li>
+                            </ul>
+                        </section>
+
+                        <h4 style="font-size: 22;font-weight: bold;color: #007bff;margin-top: 30px;">Data Entry:</h4>
+                        
+                        <section class="wallet-requirements" style="color: rgb(13, 14, 17);">
+                            <ul>
+                                <li><p>Populate the downloaded sheet with your data.</p></li>
+                                <li><p>Ensure correct data placement in its designated column.</p></li>
+                                <li><p>For optimal results, limit your entries to 100 labels per sheet.</p></li>
+                            </ul>
+                        </section>
+
+                        <h4 style="font-size: 22;font-weight: bold;color: #007bff;margin-top: 30px;">File Formatting:</h4>
+                        
+                        <section class="wallet-requirements" style="color: rgb(13, 14, 17);">
+                            <ul>
+                                <li><p>Ensure that the EXCEL/CSV format is UTF-8.</p></li>
+                                <li><p>Ensure correct data placement in its designated column.</p></li>
+                                <li><p>For optimal results, limit your entries to 100 labels per sheet.</p></li>
+                            </ul>
+                        </section>
+
+                        <h4 style="font-size: 22;font-weight: bold;color: #007bff;margin-top: 30px;">Weight Column Consideration:</h4>
+                        
+                        <section class="wallet-requirements" style="color: rgb(13, 14, 17);">
+                            <ul>
+                                <li><p>Values in the weight column will be rounded up, resulting in integer numbers.</p></li>
+                            </ul>
+                        </section>
+                        
+                        <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px;margin-top: 30px;">Sheet Sample 1:</h4>
+    
+                        <section class="go to add balance" style="color: rgb(13, 14, 17);">
+                             <img src="https://firebasestorage.googleapis.com/v0/b/maindatabase-6782e.appspot.com/o/Template_Sample.png?alt=media&token=c0e7f3e7-7790-4009-9d85-586fdaead087" alt="Template Sample" style="max-width:100%; max-height:100%;" />
+                        </section>
+
+                        <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px;margin-top: 30px;">Sheet Sample 1:</h4>
+    
+                        <section class="go to add balance" style="color: rgb(13, 14, 17);">
+                             <img src="https://firebasestorage.googleapis.com/v0/b/maindatabase-6782e.appspot.com/o/Template_Sample.png?alt=media&token=c0e7f3e7-7790-4009-9d85-586fdaead087" alt="Template Sample" style="max-width:100%; max-height:100%;" />
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section 2 -->
+        <div class="card">
+            <div class="card-header" data-toggle="collapse" data-target="#section2">
+                <strong>Uploading and Processing</strong>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </div>
+            <div id="section2" class="collapse">
+                <div class="card-body">
+                    <ul>
+                        <li>
+                            <strong>Upload to Our Platform:</strong>
+                            Navigate to our website's homepage and proceed to upload your populated CSV file. Kindly note that only one file can be uploaded at a time.
+                        </li>
+                        <li>
+                            <strong>File Processing:</strong>
+                            Once uploaded, your file will undergo processing. This can take up to 2 minutes, so we appreciate your patience during this time.
+                        </li>
+                        <li>
+                            <strong>Error Handling:</strong>
+                            If any Errors appear in your file, Kindly fix it and re-upload the file.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="card">
+            <div class="card-header" data-toggle="collapse" data-target="#section3">
+                <strong>Service Selection & Label Size</strong>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </div>
+            <div id="section3" class="collapse">
+                <div class="card-body">
+                    <ul>
+                        <li>
+                            <strong>Service Selection:</strong>
+                            Once your file has been processed, select the desired shipping service - be it Priority Mail or Ground Advantage.
+                        </li>
+                        <li>
+                            <strong>Label Size Configuration:</strong>
+                            Depending on your printer and label sheet, choose the most suitable label size for your shipping requirements.
+                            <ul>
+                                <li>4X6in (For Thermal Printer Option)</li>
+                                <li>A4 Size (For Normal Size Printer)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="card">
+            <div class="card-header" data-toggle="collapse" data-target="#section4">
+                <strong>Completion and Invoice</strong>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </div>
+            <div id="section4" class="collapse">
+                <div class="card-body">
+                    <ul>
+                        <li>
+                            <strong>Finalize & Invoice:</strong>
+                            Click 'Continue' post selection. An invoice will be generated; please review it carefully.
+                        </li>
+                        <li>
+                            <strong>Send Request:</strong>
+                            Post review, click "Send Request" to finalize your order.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5 -->
+        <div class="card">
+            <div class="card-header" data-toggle="collapse" data-target="#section5">
+                <strong>Confirmation & Delivery</strong>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </div>
+            <div id="section5" class="collapse">
+                <div class="card-body">
+                    <ul>
+                        <li>Your order is now being processed. You will soon receive an email containing your shipping labels. Additionally, you can always view and manage your orders from the "Order History" page on our website.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Microsoft Excel Instructions -->
+        <div class="card">
+            <div class="card-header" data-toggle="collapse" data-target="#section6">
+                <strong>How to Solve the "Tracking NO" Column Issue in Data File</strong>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </div>
+            <div id="section6" class="collapse">
+                <div class="card-body">
+                    <strong>If Using Microsoft Excel:</strong>
+                    <ul>
+                        <li>Launch Excel and open a blank workbook.</li>
+                        <li>Navigate to the 'Data' tab and select 'From Text/CSV'.</li>
+                        <li>Locate and open the CSV file.</li>
+                        <li>In the dialog that appears, find the "Tracking NO" column.</li>
+                        <li>Change its data type from 'General' or 'Number' to 'Text'.</li>
+                        <li>Click 'Load' to finish importing the data.</li>
+                    </ul>
+                    <br>
+                    <strong>If Using LibreOffice Calc:</strong>
+                    <ul>
+                        <li>Open LibreOffice Calc.</li>
+                        <li>Navigate to 'File' > 'Open' and select the CSV file.</li>
+                        <li>The Text Import dialog will appear.</li>
+                        <li>For the "Tracking NO" column, change its format to 'Text'.</li>
+                        <li>Click 'OK' to import the data.</li>
+                    </ul>
+    
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- How to Load your Balance with Crypto -->
+        <div class="card">
+            <div class="card-header" data-toggle="collapse" data-target="#section7">
+                <strong>How to Load your Balance with Crypto</strong>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </div>
+            <div id="section7" class="collapse">
+
+                <div class="card-body" style="line-height: 1.6;">
+                    <p class="instruction-paragraph">
+                        Sending Tether (USDT) is a straightforward process, but it's crucial to be careful at every step to ensure the transaction goes smoothly. Below are the steps to send USDT from a typical cryptocurrency wallet. Please note that the steps may vary slightly depending on the wallet you are using.
+                    </p>
+                    <h4 style="font-size: 22;font-weight: bold;color: #007bff;margin-top: 30px;">Pre-requisites</h4>
+                    
+                    <section class="wallet-requirements" style="color: rgb(13, 14, 17);">
+                        <ul>
+                          <li>
+                            <p style="margin-bottom: 3px;">Cryptocurrency Wallet: Ensure you have a cryptocurrency wallet that supports USDT. Examples include Trust Wallet, MetaMask, and MyEtherWallet.</p>
+                          </li>
+                          <li>
+                            <p style="margin-bottom: 3px; color:blue;"><a href="https://www.coinbase.com/how-to-buy/tether">For wallet setup and USDT acquisition, please check Coinbase guide.</a></p>
+                          </li>
+                          <li>
+                            <p style="margin-bottom: 3px;">USDT Balance: Make sure you have enough USDT in your wallet to send. Also, account for any transaction fees.</p>
+                          </li>
+                          <li>
+                            <p style="margin-bottom: 3px;">Receiver's Address: Have the recipient's USDT address handy. It's essential to get the address correct to avoid losing funds.</p>
+                          </li>
+                        </ul>
+                      </section>
+                    
+                    <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px;margin-top: 30px;">Steps to Send USDT featuring CoinBase</h4>
+
+                    <section class="go to add balance" style="color: rgb(13, 14, 17);">
+                        <h4 style="font-size: 17px; font-weight: bold; margin-left: 10px; margin-top: 10px;color: #007bff;">Step 1: Get the Receiver Address</h4>
+                        <ul>
+                          <li style="font-size: 14px; margin-bottom: 5px;">Navigate to "Add Balance" to get our Wallet Address</li>
+                          <img src="/static/images/Add_Balance_Button.png" alt="crypto-Guide" style="display: block; margin-left: 20px;width: 80%; max-width: 400px;">                        </ul>
+                      </section>
+
+                    <section class="initiating-transaction" style="color: rgb(13, 14, 17);">
+                        <h5 style="font-size: 17px; font-weight: bold; margin-left: 10px; margin-top: 10px;color: #007bff;">Step 2: Initiating the Transaction</h5>
+                        <ul>
+                          <li style="font-size: 14px; margin-bottom: 5px;">Open your wallet app on your computer or mobile device.</li>
+                          <li style="font-size: 14px; margin-bottom: 5px;">Navigate to your USDT balance. This is usually listed under the 'Assets' or 'Wallet' section.</li>
+                          <li style="font-size: 14px; margin-bottom: 5px;">Click "Send"</li>
+                          <li style="font-size: 14px; margin-bottom: 5px;">Click on the "Send" button. This button is often represented with an upward-pointing arrow or the word "Send."</li>
+                          <img src="/static/images/Send.png" alt="crypto-Guide" style="display: block; margin-left: 20px;width: 80%; max-width: 400px;">                        </ul>
+                      </section>
+                      
+                      <section class="currency-selection" style="color: rgb(13, 14, 17);">
+                        <h5 style="font-size: 17px; font-weight: bold; margin-left: 10px; margin-top: 10px;color: #007bff;">Step 3: Select "USDT (Tether)"</h5>
+                        <ul>
+                          <li style="font-size: 14px; margin-bottom: 5px;">Choose the currency type you wish to send. If a list of cryptocurrencies appears, scroll until you find "USDT" or "Tether."</li>
+                          <li style="font-size: 14px; margin-bottom: 5px;">Click on "USDT" to select it as the currency you wish to send.</li>
+                          <img src="/static/images/TetherSelect.png" alt="crypto-Guide" style="display: block; margin-left: 20px;width: 80%; max-width: 400px;">                        </ul>
+                      </section>
+                      
+                      <section class="entering-receivers-info" style="color: rgb(13, 14, 17);">
+                        <h5 style="font-size: 17px; font-weight: bold; margin-left: 10px; margin-top: 10px;color: #007bff;">Step 4: Enter Receiver's Address or Scan QR Code</h5>
+                        <ul>
+                          <li style="font-size: 14px; margin-bottom: 5px;">Enter the recipient's address manually in the designated field. Make sure to double-check for any errors. Sending funds to the wrong address usually means they are lost forever.
+                            OR
+                            Scan the recipient's QR code. If the receiver has provided a QR code, you can scan it using your device's camera to populate the address automatically. This method is less prone to human error.
+                            </li>
+                        </ul>
+                      </section>
+
+
+                      <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px; margin-top: 30px;">Confirming the Transaction</h4>
+                      <p class="instruction-paragraph" style="margin-left:10px;">
+                        After sending, it usually takes up to 30 minutes for the transaction to be confirmed on the blockchain. You can check the status within your wallet or by searching for the transaction ID on a blockchain explorer that supports USDT.
+                      </p>
+
+                      <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px; margin-top: 30px;">Important Tips</h4>
+
+                      <section class="Notes" style="color: rgb(13, 14, 17);">
+                        <ul>
+                          <li>
+                            <p style="margin-bottom: 3px;">Double-Check Addresses: Always double-check the recipient's address. Sending USDT to a wrong address usually results in a loss of funds.</p>
+                          </li>
+                          <li>
+                            <p style="margin-bottom: 3px;">Test with Small Amounts: If you are sending a large sum, consider doing a test transaction with a small amount first.</p>
+                          </li>
+                          <li>
+                            <p style="margin-bottom: 3px;">Secure Connection: Make sure you are using a secure and reliable internet connection.</p>
+                          </li>
+                        </ul>
+                        <br>
+                        <p>By following these steps carefully, you should be able to send USDT without any issues. Always remember to double-check every detail to avoid any mistakes.</p> 
+                     </section>
+
+
+
+
+                
+                </div>
+            
+            </div>
+        </div>
+
+
+        <div style="text-align: center; font-size: 1.2em; color: #5C7D9A; padding: 20px; background-color: #F8F9FA; border: 1px solid #E8E9EB; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); border-radius: 8px; margin-top: 20px;">
+            Thank you for choosing our platform for your shipping needs. If you encounter any issues or have queries, don't hesitate to reach out.
+        </div>
+        
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // Toggle the arrow icon when a section is expanded or collapsed
+    $('#accordion').on('show.bs.collapse', function (e) {
+        $(e.target).prev('.card-header').find('.fas').removeClass('fa-chevron-right').addClass('fa-chevron-down');
+    });
+
+    $('#accordion').on('hide.bs.collapse', function (e) {
+        $(e.target).prev('.card-header').find('.fas').removeClass('fa-chevron-down').addClass('fa-chevron-right');
+    });
+</script>
+
+<footer class="sticky-footer">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; {{ domain_name }} Inc. All Rights Reserved</span>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

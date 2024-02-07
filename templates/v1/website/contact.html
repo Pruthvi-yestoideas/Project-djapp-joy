@@ -1,0 +1,132 @@
+{% extends "v1/base.html" %} {% load static %} {% block content %}
+<!--begin::Content-->
+<div id="kt_app_content" class="app-content flex-column-fluid">
+  <!--begin::Content container-->
+  <div id="kt_app_content_container" class="app-container container-fluid">
+    <div class="card">
+        <!--begin::Body-->
+        <div class="card-body p-lg-17">
+            <!--begin::Row-->
+            <div class="row mb-3">
+                <!--begin::Col-->
+                <div class="col-md-12 pe-lg-10">
+                    <!--begin::Form-->
+                    <form action="/contact-us/" class="form mb-15 fv-plugins-bootstrap5 fv-plugins-framework" method="post" id="contactForm">
+                        {% csrf_token %}
+                        <h1 class="fw-bold text-gray-900 mb-9" style="text-align: center;">How May We Assist You?</h1>
+                        <br>
+                        <p class="fw-semibold fs-6 text-gray-600 mb-2" style="text-align: center;"> please reach out to us at support@{{ domain_name }}.com complete the form below. Our team is committed to responding to your inquiries within 24 hours.</p>
+                      <!--begin::Input group-->
+                      <br>
+                        <div class="d-flex flex-column mb-5 fv-row">
+                            <!--begin::Label-->
+                            <label class="fs-5 fw-semibold mb-2">Subject</label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <input class="form-control form-control-solid" placeholder="Subject" name="subject" maxlength="80">
+                            <!--end::Input-->
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Input group-->
+                        <div class="d-flex flex-column mb-10 fv-row fv-plugins-icon-container">
+                            <label class="fs-6 fw-semibold mb-2">Message</label>
+                            <textarea class="form-control form-control-solid" rows="6" name="desc" placeholder="Message"></textarea>
+                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                        <p class="fw-semibold fs-4 text-gray-600 mb-2"> Please include all information that can help us answer your
+                            question.</p>  
+                    </div>
+                        <!--end::Input group-->
+                        <!--begin::Submit-->
+                        <button type="submit" class="btn btn-primary" id="kt_contact_submit_button">
+                            <!--begin::Indicator label-->
+                            <span class="indicator-label">Send Feedback</span>
+                            <!--end::Indicator label-->
+                            <!--begin::Indicator progress-->
+                            <span class="indicator-progress">Please wait... 
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                            <!--end::Indicator progress-->
+                        </button>
+                        <!--end::Submit-->
+                    </form>
+                    <!--end::Form-->
+                </div>
+                <!--end::Col-->
+            </div>
+            <!--end::Row-->
+        </div>
+        <!--end::Body-->
+    </div>
+  </div>
+  <!--end::Content container-->
+</div>
+<!--end::Content-->
+{% endblock %}
+{% block javascript %}
+
+<script>
+    $(document).ready(function() {
+        $("#contactForm").on('submit', function (e) {
+            $('.alert').remove()
+            e.preventDefault();
+            var form = $(this)
+            form.validate({
+            rules: {
+                subject: {
+                required: true,
+                maxlength: 80,
+                },
+                desc: {
+                required: true
+                },
+            },
+            onfocusout: false,
+            invalidHandler: function(form, validator) {
+                var errors = validator.numberOfInvalids();
+                if (errors) {
+                    var focusElement = validator.errorList[0].element;
+            
+                    // Scroll to and focus on the first invalid element
+                    $('html, body').animate({
+                    scrollTop: $(focusElement).offset().top - 200
+                    }, 500);
+            
+                    focusElement.focus();
+                }
+            }
+            });
+    
+            if (!form.valid()) {
+                return;
+            }
+            btn_loader("#kt_contact_submit_button", true)
+
+            $.ajax({
+                type: "POST",
+                url: "/contact-us/",
+                data: form.serialize(), // serializes the form's elements.
+                success: function (data) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Request Sent!",
+                        text: "Your request has been successfully sent, Please check your mail.",
+                        confirmButtonColor: '#1B84FF'
+                    })
+                    btn_loader("#kt_contact_submit_button", false)
+                    $("#contactForm")[0].reset();
+                },
+                error: function (data) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Opps!",
+                        text: "Something we wrong, Please Try again later.",
+                        confirmButtonColor: '#1B84FF'
+                    })
+                    btn_loader("#kt_contact_submit_button", false)
+                }
+            });
+        });
+    });
+
+</script>
+
+{% endblock %}

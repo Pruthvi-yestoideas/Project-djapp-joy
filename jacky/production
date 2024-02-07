@@ -1,0 +1,12 @@
+from .settings import *
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'label2ship_db',
+        'USER': 'jacky',
+        'PASSWORD': 'label_jacky',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}

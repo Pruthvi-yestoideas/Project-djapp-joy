@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/static/assets/img/apple-icon.png"
+    />
+    <link
+      rel="icon"
+      type="/static/image/png"
+      href="{{ favicon_img_link }}"
+    />
+    <title>{{ domain_name }} - Login</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800"
+      rel="stylesheet"
+    />
+    <link
+      href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
+      rel="stylesheet"
+    />
+    <!-- Nucleo Icons -->
+    <link href="/static/assets/css/nucleo-icons.css" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link
+      href="/static/assets/css/black-dashboard.css?v=1.0.0"
+      rel="stylesheet"
+    />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="/static/assets/demo/demo.css" rel="stylesheet" />
+    <link href="/static/assets/css/custom.css" rel="stylesheet" />
+    <style>
+      body {
+        font-family:Roboto,pragmatica-web,Helvetica Neue,Helvetica,Arial,sans-serif;
+        background-color: rgb(233, 241, 245);
+      }
+      .card {
+        background: rgb(255, 255, 255);
+        box-sizing: border-box;
+        border: 1px solid rgb(184, 206, 217);
+        border-radius: 10px;
+        padding: 2.5rem;
+        width: 24rem;
+      }
+      .form_center {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+      }
+      .css-1eg7abf {
+        color: black;
+        text-align: center;
+        line-height: 1.75rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        padding: 0px 0px 1rem;
+      }
+      .css-1owa99d {
+        color: rgb(76, 103, 116);
+        height: 1.5rem;
+        line-height: 1.5rem;
+        font-size: 0.875rem !important;
+        font-weight: 400;
+        color: black !important;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="wrapper wrapper-full-page" style="background-color: rgb(255 255 255);">
+      <noscript>
+        <div class="alert"style="font-weight: bold; color: black; background-color: #f8d7da; padding: 10px; border-radius: 5px; text-align: center;">
+            This site works best with JavaScript enabled.
+        </div>
+      </noscript>
+      <div class="full-page ">
+              <form class="form_center form login100-form validate-form d-flex" method="post" action="." onsubmit="return validateAndDisable();">
+                {% csrf_token %}
+                  <div class="logo" style="margin-top:11px;">
+                    <a class="navbar-brand text-primary-color" href="javascript:void(0)" style="margin-left:20px;"><img src="{{ logo_img_link }}" width="220px"> <b style="font-size:22px; font-wieght:800; margin-left:3px"></b></a>
+                  </div>
+                  <br>
+                  <div class="card card-login card-white mb-2" style="box-shadow:0 1px 20px 1px rgba(0, 0, 0, .1); border: 2px solid rgb(160, 177, 255, 0.24); border-radius: 39px;">
+                    <div class="card-body p-0">
+                      <div class="css-1eg7abf">Login to {{ domain_name }}</div>
+
+                      <label class="css-1owa99d">Email</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="tim-icons icon-email-85"></i>
+                          </div>
+                        </div>
+                        <input
+                          type="email"
+                          class="form-control"
+                          placeholder="Email"
+                          name="email"
+                          required
+                        />
+                      </div>
+                      <label class="css-1owa99d">Password</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="tim-icons icon-lock-circle"></i>
+                          </div>
+                        </div>
+                        <input
+                          type="password" name="pass"
+                          placeholder="Password"
+                          class="form-control"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="card-footer p-0">
+                      <button type="submit" id="login_btn1" class="btn btn-primary-blue btn-lg btn-block text-white">
+                        <span class="indicator-label">Log in</span>
+                        <span class="indicator-progress" style="display:none">Please wait... <span class="loader"></span> </span>
+                      </button>
+                      {% if message %}<small>{{ message }}</small>{% endif %}
+                      <div class="text-center pt-2 px-2">
+                        <div class="css-xd8qhw">Don't have an account?</div>
+                        <a href="/signup" class="css-18izpes" style="font-weight: 400;">Sign up</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center pt-2 px-2">
+                    <div class="css-xd8qhw">Forgot your password?</div>
+                    <a href="/forgotpassword" class="css-18izpes" style="font-weight: 400;">Reset password</a>
+                  </div>
+                  <!-- Hidden field for the time zone -->
+                  <input type="hidden" name="user_utc_offset" id="user_utc_offset" value="">
+              </form>
+      </div>
+    </div>
+
+  </body>
+
+  <script src="/static/assets/js/core/jquery.min.js"></script>
+  <script src="/static/assets/js/core/popper.min.js"></script>
+  <script src="/static/assets/js/core/bootstrap.min.js"></script>
+  <script src="/static/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/static/assets/js/black-dashboard.js"></script>
+  <script src="/static/assets/js/bootstrap-selectpicker.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+  <script src="/static/assets/js/custom_validater.js"></script>
+
+  <script src="/static/accounts/js/main.js"></script>
+	<script>
+		function validateAndDisable() {
+			var passInput = document.querySelector('input[name="pass"]');
+			var emailInput = document.querySelector('input[name="email"]');
+			var isValid = true;
+	
+			if (passInput.value.trim() === "") {
+				isValid = false;
+				// Handle invalid name input (e.g., display an error message)
+			}
+	
+			var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email validation pattern
+			if (!emailPattern.test(emailInput.value)) {
+				isValid = false;
+				// Handle invalid email input (e.g., display an error message)
+			}
+	
+			if (isValid) {
+				btn_loader("#login_btn1", true);
+			}
+
+      localStorage.setItem("address_sheet", null);
+      localStorage.setItem("var1_error", null);
+      localStorage.setItem("details_err", null);
+	
+			return isValid;
+		}
+	
+		function disableButton() {
+			var btn = document.getElementById('login_btn1');
+			btn.disabled = true;
+			btn.style.backgroundColor  = '#333333';
+		}
+	</script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the user's UTC offset in minutes
+        const utcOffset = new Date().getTimezoneOffset();
+        document.getElementById("user_utc_offset").value = utcOffset;
+    });
+  </script>
+</html>

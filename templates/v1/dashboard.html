@@ -1,0 +1,300 @@
+{% extends "v1/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+.bulk_label .text{
+	display: none;
+}
+.bulk_label:hover .text{
+	display: block;
+}
+
+.botton-cards {
+    /* min-height: 100vh; */
+  }
+
+@media (min-width: 1091px) {
+  .botton-cards {
+    /* min-height: 100%; */
+  }
+}
+
+</style>
+<!--begin::Content-->
+<div id="kt_app_content" class="app-content flex-column-fluid">
+	<!--begin::Content container-->
+	<div id="kt_app_content_container" class="app-container container-fluid">
+		<div class="row justify-content-center">
+			<div class="row justify-content-center">
+				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6  mt-5">
+					<!-- card -->
+					<div class="card card-flush h-100" style="background: linear-gradient(90deg, rgb(0 114 195 / 89%) 0%, rgb(46 55 118) 100%);">   
+						<!--begin::Heading-->
+						<div class="card-header rounded bgi-no-repeat bgi-size-cover bgi-position-y-top bgi-position-x-center align-items-start" data-bs-theme="light">
+							
+							<a href="/single-label/" class="card-title align-items-start flex-column text-white pt-8 mb-8">
+								<div class="symbol symbol-50px me-2">
+									<span class="symbol-label bg-light-primary">
+										<i class="bi bi-file-earmark-plus fs-2x text-primary"></i>
+									</span>
+								</div>
+								<span class="fw-bold fs-1 mb-3 mt-3">Create a Label</span>
+								
+								<div class="fs-4 text-white">
+									<span class="opacity-75">Quickly generate a single label for your shipment.</span>
+								</div>    
+							</a>
+							<!--end::Title-->
+						</div>
+						
+						<!--end::Heading-->          
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6  mt-5">
+					<!-- card -->
+					<a href="/bulk/" class="card bulk_label border-hover-primary h-100">
+						<!--begin::Card header-->
+						<div class="card-header rounded bgi-no-repeat bgi-size-cover bgi-position-y-top bgi-position-x-center align-items-start" style="border: none;"  data-bs-theme="light">
+					
+							<div class="card-title align-items-start flex-column text-dark pt-8 mb-8 b-0">
+								<div class="symbol symbol-50px me-2">
+									<span class="symbol-label bg-light-primary">
+										<i class="ki-outline ki-abstract-26 fs-2 text-primary"></i>
+									</span>
+								</div>
+								<span class="fw-bold fs-1 mb-3 mt-3">Upload a Spreadsheet</span>
+								
+								<div class="fs-4 text-dark">
+									<span class="opacity-75">Upload all your orders easily by importing a spreadsheet.</span>
+								</div>    
+							</div>
+							<!--end::Title-->
+						</div>
+						<!--end::Heading-->
+					</a>
+				</div>
+				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6  mt-5">
+					<div href="#" class="card border-hover-primary h-100">
+						<!--begin::Card header-->
+						<div class="card-header border-0 pt-9">
+							<!--begin::Card Title-->
+							<div class="card-title m-0">
+								<h4 class="card-title d-flex align-items-start flex-column">            
+									<span class="card-label fw-bold text-gray-800 fs-2 mb-3 mt-3">How To Get Started - Tutorial</span>
+								</h4>
+							</div>
+							<!--end::Car Title-->
+						</div>
+						<!--end:: Card header-->
+						<br>
+						<!--begin:: Card body-->
+						<div class="card-body p-9 pt-1">
+							<!--begin::Name-->
+							<!--<div class="fs-4 fw-bold text-gray-900">
+								How To Get Started Tutorial
+							</div>-->
+							<!--end::Name-->
+					
+							<!--begin::Description-->
+							<p class="text-gray-500 fw-semibold fs-7 mb-3 text">
+								A step-by-step guide designed to seamlessly introduce you to our platform.
+							</p>
+							
+							<!--end::Description-->
+							<!--begin::Action-->
+							<div class="m-0" style="text-align: right;">
+								<a href="/get-started/" class="btn btn-sm btn-light me-2 ">Learn More</a>
+							</div>
+							<!--end::Action-->  
+						</div>
+						<!--end:: Card body-->
+					</div>
+				</div>
+				<div class="col-xl-4 col-md-4 col-sm-6 mt-5">
+					<div class="card botton-cards h-100">
+						<div class="card-body pt-6">
+							<h3 class="card-title align-items-start flex-column pt-5 pb-5">
+								<span class="fw-bold fs-2x mb-3 mt-3">Quick Access</span>  
+							</h3>
+							<!--begin::Item-->
+							<div class="d-flex flex-stack">  
+								<!--begin::Symbol-->
+								<div class="symbol symbol-50px me-2">
+									<span class="symbol-label bg-light-primary">
+										<i class="ki-outline ki-geolocation fs-2x text-primary"></i>
+									</span>
+								</div>
+								<!--end::Symbol-->
+						
+								<!--begin::Section-->
+								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
+									<!--begin:Author-->                    
+									<div class="flex-grow-1 me-2">
+										<a href="/settings/ship-from-addresses/" class="text-gray-800 text-hover-primary fs-6 fw-bold">Ship From Addresses</a>
+										
+										<span class="text-muted fw-semibold d-block fs-7">Add, Edit Your Addresses.</span>
+									</div>
+									<!--end:Author-->                      
+									
+									<!--begin::Actions-->
+									<a href="/settings/ship-from-addresses/" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
+										<i class="ki-outline ki-arrow-right fs-2"></i>
+									</a>
+									<!--begin::Actions-->    
+								</div>
+								<!--end::Section-->
+							</div>
+							<!--end::Item-->
+						
+							<!--begin::Separator-->
+							<div class="separator separator-dashed my-4"></div>
+							<!--end::Separator-->
+							
+									
+							<!--begin::Item-->
+							<div class="d-flex flex-stack">  
+								<!--begin::Symbol-->
+								<div class="symbol symbol-50px me-2">
+									<span class="symbol-label bg-light-success">
+										<i class="ki-outline ki-package fs-2x text-success"></i>
+									</span>
+								</div>
+								<!--end::Symbol-->
+						
+								<!--begin::Section-->
+								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
+									<!--begin:Author-->                    
+									<div class="flex-grow-1 me-2">
+										<a href="/settings/packages/" class="text-gray-800 text-hover-primary fs-6 fw-bold">Your Saved Packages</a>
+										
+										<span class="text-muted fw-semibold d-block fs-7">Add, Edit Your Packages.</span>
+									</div>
+									<!--end:Author-->                      
+									
+									<!--begin::Actions-->
+									<a href="/settings/packages/" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
+										<i class="ki-outline ki-arrow-right fs-2"></i>
+									</a>
+									<!--begin::Actions-->    
+								</div>
+								<!--end::Section-->
+							</div>
+							<!--end::Item-->
+						
+											<!--begin::Separator-->
+								<div class="separator separator-dashed my-4"></div>
+								<!--end::Separator-->
+							
+									
+							<!--begin::Item-->
+							<div class="d-flex flex-stack">  
+								<!--begin::Symbol-->
+								<div class="symbol symbol-50px me-2">
+									<span class="symbol-label bg-light-warning">
+										<i class="ki-outline ki-wallet fs-2x text-warning"></i>
+									</span>
+								</div>
+								<!--end::Symbol-->
+						
+								<!--begin::Section-->
+								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
+									<!--begin:Author-->                    
+									<div class="flex-grow-1 me-2">
+										<a href="/add-credit/" class="text-gray-800 text-hover-primary fs-6 fw-bold">Add Balance</a>
+										
+										<span class="text-muted fw-semibold d-block fs-7">Top-Up Your Balance</span>
+									</div>
+									<!--end:Author-->                      
+									
+									<!--begin::Actions-->
+									<a href="/add-credit/" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
+										<i class="ki-outline ki-arrow-right fs-2"></i>                    </a>
+									<!--begin::Actions-->    
+								</div>
+								<!--end::Section-->
+							</div>
+							<!--end::Item-->
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-8 col-md-8 botton-cards mt-5">
+					<div id="kt_sliders_widget_1_slider" class="card card-flush carousel carousel-custom carousel-stretch slide h-100" data-bs-ride="carousel" data-bs-interval="5000">
+						<!--begin::Header-->
+						<div class="row h-100">
+							<div class="col-lg-10 col-9">
+								<div class="card-body h-100">
+									<!--begin::Carousel-->
+									<div class="carousel-inner mt-1 h-100">
+			
+										{% for blog in blogs %}
+										
+										<!--begin::Item-->
+										<div class="carousel-item {% if forloop.counter0 == 0 %}show{% endif %} {% if forloop.last %}active{% endif %}">     
+											<!--begin::Title-->
+											<h2 class="card-title d-flex align-items-start flex-column">            
+												<span class="card-label fw-bold fs-4 text-gray-900">{{ blog.title }}</span>
+											</h4>
+											<!--end::Title-->
+											<!--begin::Wrapper-->
+											<div class="d-flex align-items-center mb-5 p-6 ps-0"> 
+												<!--begin::Info-->
+												<div class="m-0">
+													<!--begin::Subtitle-->
+													<span class="text-gray-700 mb-3 fs-5">{{ blog.description }}
+														<a href="{{ blog.link }}" target="_blank">Read More</a>
+													</span>
+													
+													<!--end::Subtitle-->
+													
+												</div>
+												<!--end::Info-->                                  
+											</div>
+											<!--end::Wrapper-->  
+											
+											<!--begin::Action-->
+											<div class="m-0 h-100">
+												<h4 class="card-title d-flex align-items-start flex-column h-100">            
+													<span class="card-label fw-bold text-gray-600 fs-7"  style="bottom: 30px; position: absolute;">Written by</span>
+													<span class="text-gray-500 mt-1 fw-bold fs-8"  style="bottom: 10px; position: absolute;"><b>{{ blog.author }}</b> on {{ blog.date }}</span>
+												</h4>
+											</div>
+											<!--end::Action-->  
+										</div>
+										<!--end::Item-->
+										{% endfor %}
+			
+									</div>
+									<!--end::Carousel-->
+								</div>
+							</div>
+							<div class="col-lg-2 col-3">
+								<div class="card-header p-0" style="border: none;">
+									<!--begin::Toolbar-->
+									<div class="card-toolbar">            
+										<!--begin::Carousel Indicators-->
+										<ol class="p-0 m-0 carousel-indicators carousel-indicators-bullet carousel-indicators-active-primary">
+											{% for blog in blogs %}
+											<li data-bs-target="#kt_sliders_widget_1_slider" data-bs-slide-to="{{ forloop.counter0 }}" class="ms-1 {% if forloop.last %}active{% endif %}"></li>
+											{% endfor %}
+										</ol>
+										<!--end::Carousel Indicators-->
+										<div style="bottom: 40px; position: absolute;">
+											<span class="badge badge-light-primary fs-7">blog</span>
+										</div>
+									</div>
+									<!--end::Toolbar-->
+								</div>
+							</div>
+						</div>   
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--end::Content container-->
+</div>
+<!--end::Content-->
+<!--end::Content wrapper-->
+{% endblock %}
+

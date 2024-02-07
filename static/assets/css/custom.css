@@ -1,0 +1,184 @@
+a {
+  color: #096dd9;
+}
+
+p {
+  color: black;
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+.document {
+  height: 88vh;
+  border: none;
+  width: 100%;
+}
+.nav > li a {
+  margin-top: 0px !important;
+}
+
+.btn-primary-color {
+  background: #1d75b8;
+  margin: 1px;
+}
+
+.text-primary-color {
+  color: #1d75b8 !important;
+}
+
+.border-gradient-purple {
+  border-color: #1d75b8;
+}
+
+.btn:hover {
+  background: #3380eb !important;
+  color: white !important;
+}
+
+.btn:hover i {
+  color: white !important;
+}
+
+.btn:focus {
+  background: #3380eb !important;
+}
+
+.btn-primary-color:hover {
+  background: #3380eb !important;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-check input[type=checkbox]:checked+.form-check-sign:before {
+  border: none;
+  background-color: #096dd9 !important;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.775rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--bs-gray-700);
+  background-color: var(--bs-body-bg);
+  background-clip: padding-box;
+  border: 1px solid #E1E3EA;
+  appearance: none;
+  border-radius: 0.475rem;
+  box-shadow: false;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  min-height: 45px;
+}
+.form-control.form-control-solid {
+  background-color: #F9F9F9;
+  border-color: #F9F9F9;
+  color: var(--bs-gray-700);
+  transition: color 0.2s ease;
+}
+.nav-pills .active {
+border: 5px #1d75b8 solid !important;
+background: none !important;
+}
+
+.form-control.error{
+  border-color: red;
+}
+
+label.error{
+  color: red;
+}
+
+.photo {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.bg-light-blue {
+  background-color: #3a95ff38;
+}
+
+.dropdown-menu .text{
+  color: black !important;
+}
+
+.dropdown-item.active{
+  background-color: transparent;
+}
+
+.form-check-radio input[type=radio]:checked+.form-check-sign:before {
+  border-color: #1d75b8;
+}
+
+.form-check-radio input[type=radio]:checked+.form-check-sign:after {
+  width: 6px;
+  height: 6px;
+  background-color: #1d75b8;
+  border-color: #1d75b8;
+  top: 9px;
+  left: 6px;
+}
+
+.scoll-div::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hiding scrollbar for IE, Edge and Firefox */
+.scoll-div {
+scrollbar-width: none;  /* Firefox */
+-ms-overflow-style: none;  /* IE and Edge */
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-background-clip: text;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px rgba(255, 255, 255, 0);
+}
+
+.login100-form small{
+  color: red;
+}
+
+@media (max-width: 375px){
+.card {
+    padding: 2.5rem 1.5rem !important;
+    max-width: 24rem;
+    width: calc(100% - 2rem) !important;;
+}
+}
+
+.loader {
+  margin-left: 5px;
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  border-color: #fff transparent #fff transparent;
+}
+.loader:after {
+  animation: ring 1.5s linear infinite;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+-moz-appearance: textfield;
+}

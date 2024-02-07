@@ -1,0 +1,85 @@
+{% extends "v1/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+</style>
+<!--begin::Content-->
+<div id="kt_app_content" class="app-content flex-column-fluid">
+    <!--begin::Content container-->
+    <div id="kt_app_content_container" class="app-container container-fluid">
+        <!--begin::Products-->
+        <div class="card card-flush">
+            <!--begin::Card header-->
+            <div class="card-header align-items-center py-5 gap-2 gap-md-5">
+                <!--begin::Card title-->
+                <div class="card-title">
+                    <!--begin::Search-->
+                    <div class="d-flex align-items-center position-relative my-1">
+                        <i class="ki-outline ki-magnifier fs-3 position-absolute ms-4"></i>
+                        <input type="text" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search Orders" />
+                    </div>
+                    <!--end::Search-->
+                </div>
+                <!--end::Card title-->
+            </div>
+            <!--end::Card header-->
+            <!--begin::Card body-->
+            <div class="card-body pt-0">
+                <!--begin::Table-->
+                <table class="table border align-middle table-hover table-striped fs-6 gy-5" id="kt_ecommerce_products_table">
+                    <thead>
+                        <tr class="text-primary-700 fw-bold fs-7 text-uppercase gs-0">
+                            <th class="min-w-100px text-primary text-center">Order Number</th>
+                            <th class="min-w-100px text-primary text-center">Order Date</th>
+                            <th class="min-w-100px text-primary text-center">Total</th>
+                            <th class="min-w-100px text-primary text-center">Shipping Labels</th>
+                            <th class="min-w-100px text-primary text-center">Data File</th>
+                            <th class="min-w-100px text-primary text-center">Invoice</th>
+                        </tr>
+                    </thead>
+                    {% if data %}
+                    <tbody class="fw-semibold text-gray-800">
+                        {% for item in history %}
+                        <tr>
+                            <td class="pe-0 text-center">
+                                <span class="fw-bold">{{ item.0 }}</span>
+                            </td>
+                            <td class="pe-0 text-center" data-order="{{ item.1 }}">
+                                <span class="fw-bold ms-3">{{ item.1 }}</span>
+                            </td>
+                            <td class="pe-0 text-center">${{ item.2 }}</td>
+                            <td class="pe-0 text-center">
+                                <a href="//{{ item.3 }}" class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary" target=”_blank”>View 
+                                </a>
+                            </td>
+                            <td class="pe-0 text-center" data-order="Published">
+                                <a href="//{{ item.4 }}" class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary" target=”_blank”>View </a>
+                            </td>
+                            <td class="text-center">
+                                <a href="//{{ item.5 }}" class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary" target=”_blank”>View 
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    {% endif %}
+                </table>
+                <!--end::Table-->
+            </div>
+            <!--end::Card body-->
+        </div>
+        <!--end::Products-->
+    </div>
+    <!--end::Content container-->
+</div>
+<!--end::Content-->
+{% endblock %}
+
+{% block javascript %}
+<!--begin::Vendors Javascript(used for this page only)-->
+<script src="/static/assets1/plugins/custom/datatables/datatables.bundle.js"></script>
+<!--end::Vendors Javascript-->
+<!--begin::Custom Javascript(used for this page only)-->
+<script src="/static/assets1/js/custom/apps/ecommerce/catalog/order_history.js"></script>
+{% endblock %}

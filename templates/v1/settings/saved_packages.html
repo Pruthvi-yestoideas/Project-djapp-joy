@@ -1,0 +1,362 @@
+{% extends 'v1/base.html' %} {% block content%}
+<style>
+  .swal2-modal {
+    width: 830px !important;
+  }
+</style>
+
+<div class="content">
+  <div class="row justify-content-center" style="min-height:78vh">
+    <div class="col-lg-11 col-md-12 col-sm-12 col-12">
+        <div class="card  mb-5 mb-xl-10" >
+          <!--begin::Card header-->
+          <div class="card-header">
+              <!--begin::Title-->
+              <div class="card-title">
+                  <h3>
+                    Packages
+                    <span class="ms-1" data-bs-toggle="tooltip" aria-label="Your frequently used Packages" data-bs-original-title="Your frequently used Packages">
+                      <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i>
+                    </span>
+                </h3>
+              </div>
+              <!--end::Title-->
+              <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" data-bs-original-title="Click to add address" data-kt-initialized="1">
+                  <a id="create_address" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#add-address-modal" class="btn btn-sm btn-light btn-active-light-primary">
+                      <i class="ki-outline ki-plus fs-2"></i> Add Package
+                  </a>
+              </div>
+          </div>
+          <!--end::Card header-->
+      
+          <!--begin::Card body-->
+          <div class="card-body">
+              <!--begin::Addresses-->
+              <div class="row gx-9 gy-6">
+                  {% for key, value in packages.items %}
+                  <div class="col-xl-6" data-kt-billing-element="address">
+                      <!--begin::Address-->
+                      <div class="card card-dashed h-xl-100 flex-row flex-stack flex-wrap p-6">
+                          <!--begin::Details-->
+                          <div class="d-flex flex-column py-2">
+                              <div class="d-flex align-items-center fs-5  mb-5">
+                                <b>{{ value.0 }}</b> 
+                              </div>
+                              <div class="d-flex align-items-center fs-5  mb-5">
+                                {{ value.6 }}
+                              </div>
+                              <div class="fs-6 fw-semibold text-gray-600">
+                                {{ value.1 }}x{{ value.2 }}x{{ value.3 }}'' - {{ value.4 }} lbs {{ value.5 }} oz
+                              </div>
+                          </div>
+                          <!--end::Details-->
+      
+                          <!--begin::Actions-->
+                          <div class="d-flex align-items-center py-2">
+                              <button class="btn btn-sm btn-light btn-active-light-primary me-3 delete-record"  data-record-id="{{ key }}" data-original-title="Delete" data-kt-billing-action="address-delete">
+                                
+                                  <!--begin::Indicator label-->
+                                  <span class="indicator-label">
+                                      Delete</span>
+                                  <!--end::Indicator label-->
+            
+                                  <!--begin::Indicator progress-->
+                                  <span class="indicator-progress">
+                                      Please wait...    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                  </span>
+                                  <!--end::Indicator progress-->         
+                              </button>
+                              <button class="btn btn-sm btn-light btn-active-light-primary edit_package" data-package-id="{{key}}" data-original-title="Edit" data-bs-toggle="modal" data-bs-target="#kt_modal_new_address">Edit</button>
+                          </div>
+                          <!--end::Actions-->
+                      </div>
+                      <!--end::Address-->
+                  </div>
+                  <!--end::Col-->
+                  {% endfor %}
+              </div>
+              <!--end::Addresses-->
+          </div>
+          <!--end::Card body-->
+        </div>
+    </div>
+</div>
+<!--begin::Modal - New Target-->
+<div class="modal fade" id="add-address-modal" tabindex="-1" aria-hidden="true">
+    <!--begin::Modal dialog-->
+    <div class="modal-dialog modal-dialog-centered mw-850px">
+        <!--begin::Modal content-->
+        <div class="modal-content rounded">
+            <!--begin::Modal header-->
+            <div class="modal-header pb-0 border-0 justify-content-end">
+                <!--begin::Close-->
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <i class="ki-outline ki-cross fs-1"></i>
+                </div>
+                <!--end::Close-->
+            </div>
+            <!--begin::Modal header-->
+            <!--begin::Modal body-->
+            <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
+                <!--begin:Form-->
+                <form action="/settings/packages/" method="post" id="address_form">
+                    {% csrf_token %}
+                  <div class="card-header">
+                      <h5 class="title">Package Details</h5>
+                      <div class="text-muted fw-semibold fs-5">Store your frequently used package details for easy access during label creation.</div>
+
+                  </div>
+                  <br>
+                  <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 pr-md-1">
+                          <label>Item Name*</label>
+                          <div class="form-group">
+                              <input
+                              type="text"
+                              name="name"
+                              class="form-control form-control-solid mb-3 mb-lg-0"
+                              placeholder="Name"
+                              required
+                              />
+                          </div>
+                        </div>
+                        <div class="col-md-6 pr-md-1">
+                          <label>Item ID (SKU)</label>
+                          <span class="ms-1" data-bs-toggle="tooltip" aria-label="The SKU will be printed on the shipping label." data-bs-original-title="The SKU will be printed on the shipping label.">
+                            <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i>
+                          </span>
+                          <div class="form-group">
+                              <input type="text" name="item_id" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="SKU">
+                          </div>
+                        </div>                    
+                    </div>
+                      <div class="row mt-5">
+                        <div class="col-md-8 pr-md-1">
+                            <label>Box Dimentions (Inches)*</label>
+                            <div class="row">
+                                <div class="col-md-3 pr-md-1">
+                                    <div class="form-group">
+                                        <input type="number" name="length" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Length" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 pr-md-1 mt-5">
+                                    X
+                                </div>
+                                <div class="col-md-3 pr-md-1">
+                                    <div class="form-group">
+                                        <input type="number" name="width" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Width" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 pr-md-1 mt-5">
+                                    X
+                                </div>
+                                <div class="col-md-3 pr-md-1">
+                                    <div class="form-group">
+                                        <input type="number" name="height" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Height" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 pr-md-1">
+                            <label>Weight (lbs)</label>
+                            <div class="form-group">
+                                <input type="number" name="pounds" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Pounds">
+                            </div>
+                        </div>
+                        <div class="col-md-2 pr-md-1">
+                            <label>Weight (oz)</label>
+                            <div class="form-group">
+                                <input type="number" name="ounces" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Ounces">
+                            </div>
+                        </div>
+                      </div>
+                   </div>
+                    <!--begin::Actions-->
+                    <div class="text-center">
+                        <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" id="submit_btn1" class="btn btn-primary">
+                            <span class="indicator-label">Save</span>
+                            <span class="indicator-progress">Please wait... 
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                        </button>
+                    </div>
+                    <!--end::Actions-->
+                </form>
+                <!--end:Form-->
+            </div>
+            <!--end::Modal body-->
+        </div>
+        <!--end::Modal content-->
+    </div>
+    <!--end::Modal dialog-->
+</div>
+<!--end::Modal - New Target-->
+{% endblock %}
+
+{% block javascript %}
+<script>
+
+    $("#submit_btn1").on("click", function(e) {
+        var form = $("#address_form");
+
+        let weight = $('input[name="pounds"]').val();
+        let ounces = $('input[name="ounces"]').val();
+        let weight_validation = false
+        if (weight.trim() == "" && ounces.trim() == "") {
+            weight_validation = true;
+        } else {
+            if (ounces.trim() == "") {
+                $('input[name="ounces"]').val("0");
+            }
+            if (weight.trim() == "") {
+                $('input[name="pounds"]').val("0");
+            }
+        }
+
+        form.validate({
+          rules: {
+            item_id: {
+              maxlength: 22,
+            },
+            pounds: {
+              number:true,
+              max: 70,
+              min:0,
+            },
+            ounces: {
+              number:true,
+              max: 16,
+              min:0,
+            },
+            length: {
+              required: true,
+              number:true,
+              min:0
+            },
+            width: {
+              required: true,
+              number:true,
+              min:0
+            },
+            height: {
+              required: true,
+              number:true,
+              min:0
+            },
+
+          },
+          onfocusout: false,
+          invalidHandler: function(form, validator) {
+              var errors = validator.numberOfInvalids();
+              if (errors) {
+                  focusElement = validator.errorList[0].element;
+              }
+          }
+      });
+
+      
+
+      if (!form.valid()) {
+        if (weight_validation) {
+          $('input[name="pounds"]').addClass('error');
+          $('input[name="pounds"]').after('<label class="error">lbs or Ounces needs to be filled.</label>');
+          e.preventDefault();
+        }
+        e.preventDefault();
+          return;
+      }
+
+      if (weight_validation) {
+        $('input[name="pounds"]').addClass('error');
+        $('input[name="pounds"]').after('<label class="error">lbs or Ounces needs to be filled.</label>');
+        e.preventDefault();
+        return;
+      }
+
+      btn_loader("#submit_btn1", true);
+      form.submit();
+    })
+
+    $('#create_address').on('click', function () {
+      $('#address_form').attr('action', '/settings/packages/');
+      $('#address_form')[0].reset();
+      $('input.error').removeClass("error");
+      $('label.error').remove();
+    })
+
+    $('.edit_package').on('click', function () {
+      $('input.error').removeClass("error");
+      $('label.error').remove();
+      let package_id = $(this).attr('data-package-id');
+      $('#address_form').attr('action', `/settings/edit-package/${package_id}/`);
+
+      $.ajax({
+        type: "GET",
+        url: `/settings/edit-package/${package_id}/`,
+        success: function (data) {
+          $('input[name="item_id"]').val(data.package[6]);
+          $('input[name="name"]').val(data.package[0]);
+          $('input[name="length"]').val(data.package[1]);
+          $('input[name="width"]').val(data.package[2]);
+          $('input[name="height"]').val(data.package[3]);
+          $('input[name="pounds"]').val(data.package[4]);
+          $('input[name="ounces"]').val(data.package[5]);
+          $('#add-address-modal').modal('show');
+        }
+    })
+    })
+  
+    $('.delete-record').on('click', function () {
+      let record_id = $(this).attr('data-record-id');
+      swalWithBootstrapButtons.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+        showLoaderOnConfirm: true,
+        reverseButtons: true,
+        preConfirm: (login) => {
+          return fetch('/settings/delete-package/' + record_id, {
+            method: 'DELETE',
+            headers: {
+              "X-CSRFToken": '{{ csrf_token }}',
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+          }).then(response => {
+            if (!response.ok) {
+              throw new Error(response.statusText)
+            }
+            
+            return response.json()
+          }).catch(error => {
+            Swal.showValidationMessage(
+              `Request failed: ${error}`
+            )
+          })
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Deleted!',
+            'record has been deleted.',
+            'success'
+          ).then((result) => {
+            window.location.href = "{% url 'settings:saved_packages' %}"
+          })
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          
+        }
+      })
+    })
+    
+  </script>
+
+{% endblock %}

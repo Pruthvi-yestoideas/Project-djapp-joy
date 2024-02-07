@@ -1,0 +1,148 @@
+{% extends 'v1/base.html' %} {% block content%}
+<style>
+  .swal2-modal {
+    width: 850px !important;
+  }
+  .card {
+    width: 100%;
+    max-width: 400px;
+    min-width: 200px;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .card .text {
+    margin: 0 auto;
+    font-size: 13px;
+    margin-top: 20px;
+    color: white;
+    font-weight: 200;
+    letter-spacing: 2px;
+    opacity: 0;
+    max-height: 0;
+    transition: all 0.3s ease;
+  } 
+
+
+  .card:hover .info {
+    height: 90%;
+  }
+
+  .card:hover .text {
+    transition: all 0.3s ease;
+    opacity: 1;
+    max-height: 100%;
+  }
+
+  .card:hover .icon {
+    background-position: -120px;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover .icon i {
+    background: linear-gradient(
+      90deg,
+      #40a9ff 0%,
+      #0949d9 40%,
+      rgba(0, 0, 0, 0.28) 60%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+</style>
+
+<!--begin::Content-->
+<div id="kt_app_content" class="app-content flex-column-fluid">
+	<!--begin::Content container-->
+	<div id="kt_app_content_container" class="app-container container-fluid h-100">
+    <div class="row justify-content-center h-100" style="align-items: center; display: flex;">
+        <div class="col-lg-8 col-md-12 col-sm-12 col-12" style="width: 100%; height:400px">
+          <br />
+            <div class="row justify-content-center">
+                <div class="col-lg-4">
+
+                    <!-- card -->
+                    <a href="/settings/ship-from-addresses/" class="card border-hover-primary ">
+                      <!--begin::Card header-->
+                      <div class="card-header border-0 pt-9">
+                          <!--begin::Card Title-->
+                          <div class="card-title m-0">
+                              <!--begin::Avatar-->
+                              <div class="symbol symbol-50px me-2">
+                                <span class="symbol-label bg-light-primary">
+                                    <i class="ki-outline ki-geolocation fs-2x text-primary"></i>
+                                </span>
+                              </div>
+                              <!--end::Avatar-->
+                          </div>
+                          <!--end::Car Title-->
+                      </div>
+                      <!--end:: Card header-->
+                  
+                      <!--begin:: Card body-->
+                      <div class="card-body p-9">
+                          <!--begin::Name-->
+                          <div class="fs-3 fw-bold text-gray-900">
+                            Ship From Addresses
+                          </div>
+                          <!--end::Name-->
+                  
+                          <!--begin::Description-->
+                          <p class="text-gray-500 fw-semibold fs-5 mt-1 mb-7 text">
+                            Efficiently create, modify, and manage your Return/Shipping-From Addresses to expedite the creation of your shipping labels.
+                          </p>
+                          <!--end::Description-->
+                  
+
+                          <!--end::Info-->
+                          </div>
+                      <!--end:: Card body-->
+                  </a>
+                </div>
+                <div class="col-lg-4">
+
+                  <!-- card -->
+                  <a href="/settings/packages/" class="card border-hover-primary ">
+                    <!--begin::Card header-->
+                    <div class="card-header border-0 pt-9">
+                        <!--begin::Card Title-->
+                        <div class="card-title m-0">
+                            <!--begin::Avatar-->
+                            <div class="symbol symbol-50px me-2">
+                              <span class="symbol-label bg-light-info">
+                                  <i class="ki-outline ki-package fs-2x text-info"></i>
+                              </span>
+                            </div>
+                            <!--end::Avatar-->
+                        </div>
+                        <!--end::Car Title-->
+                    </div>
+                    <!--end:: Card header-->
+                
+                    <!--begin:: Card body-->
+                    <div class="card-body p-9">
+                        <!--begin::Name-->
+                        <div class="fs-3 fw-bold text-gray-900">
+                            Saved Packages
+                        </div>
+                        <!--end::Name-->
+                
+                        <!--begin::Description-->
+                        <p class="text-gray-500 fw-semibold fs-5 mt-1 mb-7 text">
+                          Efficiently create, modify, and manage your frequently shipped packages to expedite the creation of your shipping labels.
+                         </p>
+                        <!--end::Description-->
+                
+                        </div>
+                    <!--end:: Card body-->
+                  </a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

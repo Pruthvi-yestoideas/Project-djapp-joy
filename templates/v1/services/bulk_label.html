@@ -1,0 +1,2138 @@
+{% extends "v1/base.html" %}
+{% load static %}
+{% block navbar_left %}
+{% endblock %}
+{% block navbar_right %}
+<div class="app-navbar-item ms-1 ms-md-3">
+        <h2 class="pe-5" id="total_sum" style="display: none"></h2>
+        <button type="submit" id="back" data-step="1" class="btn btn-secondary me-5" style="display: none">
+            <span class="indicator-label"><i class="ki-duotone ki-left"></i> Back</span>
+            <span class="indicator-progress">Please wait...
+            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+        </button>
+        <button type="submit" id="submit_btn2" data-step="2" class="btn btn-primary" style="display: none">
+            <span class="indicator-label">Continue<i class="ki-duotone ki-right"></i></span>
+            <span class="indicator-progress">Please wait...
+            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+        </button>
+        <button type="submit" id="submit_btn3" data-step="2" class="btn btn-primary" style="display: none">
+            <span class="indicator-label">Continue</span>
+            <span class="indicator-progress">Please wait...
+            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+        </button>
+
+</div>
+{% endblock %}
+{% block content %}
+<style>
+    #kt_security_recent_alerts strong{
+        font-size: 14px;
+    }
+    .btn-active-light-primary:hover{
+        color: rgb(67, 153, 252);
+    }
+    @media (max-width: 615px) {
+				.page-heading {
+					display:none!important;
+				}
+                #back {
+                    font-size: 10px;
+                    padding: 7px;
+                }
+                #submit_btn2 {
+                    font-size: 10px;
+                    padding: 7px;
+                }
+                #submit_btn3 {
+                    font-size: 10px;
+                    padding: 7px;
+                }
+			}
+</style>
+<!--begin::Content-->
+<div id="kt_app_content" class="app-content flex-column-fluid">
+    <!--begin::Content container-->
+    <div id="kt_app_content_container" class="app-container container-fluid">
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong >Please note: International shipping is currently not available.</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <!--begin::Products-->
+        <div class="step_1" style="display:none">
+            <div class="row mt-5">
+                <div class="col-lg-6">
+                    <div class="card card-xxl-stretch-50 mb-5 mb-xl-10 h-100">
+                        <!--begin::Body-->
+                        <div class="card-body pt-5">
+                            <!--begin::Carousel-->
+                            <div id="kt_security_recent_alerts" class="carousel carousel-custom carousel-stretch slide" data-bs-ride="carousel" data-bs-interval="8000">
+                                <!--begin::Description-->
+                                <div class="d-flex flex-column">                       
+                                    <p class="fs-5 fw-bold text-gray-900 text-hover-primary">
+                                        Step 1 - Select your file to upload
+                                        </p>
+    
+        
+                                    <p class="text-gray-600 fs-6 fw-semibold pt-3 mb-0">
+                                        Upload all your orders easily by importing a spreadsheet with all information.                                 
+                                    </p>
+                                    <div id="sheet-error"></div>                    
+                                </div>  
+                                <!--end::Description-->
+
+                                <!--begin::Dropzone-->
+                                <div class="dropzone mt-5" id="kt_dropzonejs_example_1">
+                                    <!--begin::Message-->
+                                    <div class="dz-message needsclick d-block text-center" style="">
+                                        <i class="ki-duotone ki-file-up fs-3x text-primary"><span class="path1"></span><span class="path2"></span></i>
+
+                                        <!--begin::Info-->
+                                        <div class="ms-4">
+                                            <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop your file here or click to upload.</h3>
+                                            <span class="fs-7 fw-semibold text-gray-500">Upload up to 1 file</span>
+                                        </div>
+                                        <!--end::Info-->
+                                    </div>
+                                </div>
+                                <!--end::Dropzone-->
+                            </div>    
+                            <!--end::Carousel-->    
+                        </div>
+                        <!--end::Body-->     
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card card-xxl-stretch-50 mb-5 mb-xl-10">
+                        <!--begin::Body-->
+                        <div class="card-body pt-5">
+                            <!--begin::Carousel-->
+                            <div id="kt_security_recent_alerts" class="carousel carousel-custom carousel-stretch slide" data-bs-ride="carousel" data-bs-interval="8000">
+                    
+                                <!--begin::Description-->
+                                <div class="d-flex flex-column flex-grow-1">                       
+                                    <a class="fs-5 fw-bold text-gray-900 text-hover-primary">
+                                        Need help formatting your file?
+                                    </a>
+        
+                                    <p class="text-gray-600 fs-6 fw-semibold pt-3 mb-0">
+                                        Download our Pre-formatted template 
+                                        <a href="https://firebasestorage.googleapis.com/v0/b/maindatabase-6782e.appspot.com/o/Template.csv?alt=media&token=650d47a9-f388-477b-b217-448c1fe7cc95">CSV</a> 
+                                        or
+                                        <a href="https://firebasestorage.googleapis.com/v0/b/maindatabase-6782e.appspot.com/o/Template.xlsx?alt=media&token=d6cecf9b-817c-40e8-a2a3-113360fce6ba">Excel</a>
+                                        <br>and follow the formatting for the best results.                                 
+                                    </p>                       
+                                </div>  
+                                <!--end::Description-->
+
+                                <!--begin::Description-->
+                                <div class="d-flex flex-column flex-grow-1 mt-5">                       
+                                    <a class="fs-5 fw-bold text-gray-900 text-hover-primary">
+                                        How does this work?
+                                    </a>
+        
+                                    <p class="text-gray-600 fs-6 fw-semibold pt-3 mb-0">
+                                        Uploading a spreadsheet is easy! We have created a step-by-step tutorial in our Help Center.                                 
+                                    </p>                       
+                                </div>  
+                                <!--end::Description-->
+        
+                                <!--begin::Summary-->
+                                <div class="d-flex flex-stack pt-8">      
+        
+                                    <a href="/get-started/" class="btn btn-sm btn-light">Learn More</a>
+                                </div>
+                                <!--end::Summary-->   
+                            </div>    
+                            <!--end::Carousel-->    
+                        </div>
+                        <!--end::Body-->     
+                    </div>
+            </div>
+            </div>
+        </div>
+        <div class="card card-flush step_2" style="display:none">
+            <!--begin::Card header-->
+            <div id="var1-errors" class="card-header" style="min-height: 0;">
+
+            </div>
+            <div class="card-header align-items-center py-5 gap-1 gap-md-1">
+                <!--begin::Card title-->
+                <div class="card-title">
+                    <!--begin::Search-->
+                    <div class="d-flex align-items-center position-relative">
+                        <i class="ki-outline ki-magnifier fs-3 position-absolute ms-4"></i>
+                        <input type="text" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search" />
+                    </div>
+                   
+                </div>
+                 <!--end::Search-->
+                <div class="d-flex justify-content-end align-items-center" data-kt-docs-table-toolbar="selected">
+                    <div class="fw-bold me-5">
+                        <span class="me-2" data-kt-docs-table-select="selected_count">10</span> Selected
+                    </div>
+                    
+                   <!--begin::Filter-->
+                   <div class="setp-2-filters">
+                        <button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                            <i class="ki-duotone ki-geolocation fs-2"><span class="path1"></span><span class="path2"></span></i>  Change Ship From Address for Selected
+                        </button>
+                        <!--begin::Menu 1-->
+                        <div class="menu menu-sub menu-sub-dropdown w-400px w-md-425px" data-kt-menu="true" id="kt-toolbar-filter" style="">
+                            <!--begin::Header-->
+                            <div class="px-7 py-5">
+                                <div class="fs-4 text-gray-900 fw-bold">Your Saved Addresses</div>
+                            </div>
+                            <!--end::Header-->
+                        
+                            <!--begin::Separator-->
+                            <div class="separator border-gray-200"></div>
+                            <!--end::Separator-->
+                        
+                            <!--begin::Content-->
+                            <div class="px-7">
+                                <!--begin::Input group-->
+                                <div class="mb-10 py-5 scroll h-350px px-5">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <!--begin::Input-->
+                                        <input class="form-check-input me-3" name="from_address" type="radio" value="0" checked="checked"
+                                        data-firstname="{{ default_address.0 }}" data-lastname="{{ default_address.1 }}"
+                                        data-address-one="{{ default_address.2 }}" data-address-two="{{ default_address.3 }}"
+                                        data-city="{{ default_address.4 }}" data-state="{{ default_address.5 }}"
+                                        data-zip="{{ default_address.6 }}" data-phone="{{ default_address.7 }}" value="default"
+                                        id="default"
+                                        >
+                                        <!--end::Input-->
+                
+                                        <!--begin::Label-->
+                                        <label class="form-check-label" for="default">
+                                            <div class="fw-bold text-gray-800"><b>{{ default_address.0 }} {{ default_address.1 }} </b><span class='badge badge-exclusive badge-light-success fw-semibold fs-8 px-2 py-1 ms-1'>Default</span> </div>
+                                            <div class="text-gray-600">{{ default_address.2 }} {{ default_address.3 }} {{ default_address.4 }} {{ default_address.5 }} {{ default_address.6 }} <img src='/static/assets1/media/flags/united-states.png' width='18px'> <br> {{ default_address.7 }} </div>
+                                        </label>
+                                        <!--end::Label-->
+                                    </div>
+                                    <div class="separator separator-dashed my-5"></div>
+                                    {% for key, address in saved_addresses.items %}
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <!--begin::Input-->
+                                        <input class="form-check-input me-3" name="from_address" type="radio" value="{{ key }}"
+                                        data-firstname="{{ address.0 }}" data-lastname="{{ address.1 }}"
+                                        data-address-one="{{ address.2 }}" data-address-two="{{ address.3 }}"
+                                        data-city="{{ address.4 }}" data-state="{{ address.5 }}"
+                                        data-zip="{{ address.6 }}" data-phone="{{ address.7 }}" value="{{ key }}"
+                                        id="{{ key }}"
+                                        >
+                                        <!--end::Input-->
+                
+                                        <!--begin::Label-->
+                                        <label class="form-check-label" for="{{key}}">
+                                            <div class="fw-bold text-gray-800"><b>{{ address.0 }} {{ address.1 }} </b></div>
+                                            <div class="text-gray-600">{{ address.2 }} {{ address.3 }} {{ address.4 }} {{ address.5 }} {{ address.6 }} <img src='/static/assets1/media/flags/united-states.png' width='18px'> <br> {{ address.7 }} </div>
+                                        </label>
+                                        <!--end::Label-->
+                                    </div>
+                                    <div class="separator separator-dashed my-5"></div>
+                                    {% endfor %}
+                                </div>
+                                <!--end::Input group-->
+                        
+                                <!--begin::Actions-->
+                                <div class="d-flex justify-content-end pb-5">
+                                    <button type="reset" class="btn btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true" data-kt-docs-table-filter="reset">Cancel</button>
+                        
+                                    <button type="button" id="bulk_from_address" class="btn btn-primary" data-kt-menu-dismiss="true" data-kt-docs-table-filter="filter">Apply</button>
+                                </div>
+                                <!--end::Actions-->
+                            </div>
+                            <!--end::Content-->
+                        </div>
+                   </div>
+                    <!--end::Menu 1-->    
+                    <!--end::Filter-->
+                    <div class="setp-2-filters">
+                        <!--begin::Filter-->
+                        <button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                            <i class="ki-duotone ki-package fs-2"><span class="path1"></span><span class="path2"></span></i>  Change Package Details for Selected
+                        </button>
+                        <!--begin::Menu 1-->
+                        <div class="menu menu-sub menu-sub-dropdown w-400px w-md-425px" data-kt-menu="true" id="kt-toolbar-packages" style="">
+                            <!--begin::Header-->
+                            <div class="px-7 py-5">
+                                <div class="fs-4 text-gray-900 fw-bold">Your Saved Packages</div>
+                            </div>
+                            <!--end::Header-->
+                        
+                            <!--begin::Separator-->
+                            <div class="separator border-gray-200"></div>
+                            <!--end::Separator-->
+                        
+                            <!--begin::Content-->
+                            <div class="px-7">
+                                <!--begin::Input group-->
+                                <div class="mb-10 py-5 scroll {% if saved_packages %}h-350px{% endif %} px-5">
+                                    {% if not saved_packages %}
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <p class="fs-4">You don't have any saved packages, add packages from <span><a href="/settings/packages/" target="_blank">here</a></span>.</p>
+                                    </div>
+                                    {% endif %}
+                                    {% for key, package in saved_packages.items %}
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <!--begin::Input-->
+                                        <input class="form-check-input me-3" name="package_details" type="radio" value="{{ key }}"
+                                        data-item-id="{{ package.6 }}" data-package-name="{{ package.0 }}" data-length="{{ package.1 }}"
+                                        data-width="{{ package.2 }}" data-height="{{ package.3 }}"
+                                        data-pounds="{{ package.4 }}" data-ounces="{{ package.5 }}"
+                                        id="{{ key }}"
+                                        >
+                                        <!--end::Input-->
+                
+                                        <!--begin::Label-->
+                                        <label class="form-check-label" for="{{key}}">
+                                            <div class="fw-bold text-gray-800">
+                                                <b>{{ package.0 }}</b>
+                                            </div>
+                                            <div class="fw-bold text-gray-800">
+                                                {{ package.6 }} 
+                                            </div>
+                                            <div class="text-gray-600">{{ package.1 }}x{{ package.2 }}x{{ package.3 }}in - {{ package.4 }} lbs {{ package.5 }} oz</div>
+                                        </label>
+                                        <!--end::Label-->
+                                    </div>
+                                    <div class="separator separator-dashed my-5"></div>
+                                    {% endfor %}
+                                </div>
+                                <!--end::Input group-->
+                        
+                                <!--begin::Actions-->
+                                <div class="d-flex justify-content-end pb-5">
+                                    <button type="reset" class="btn btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true" data-kt-docs-table-filter="reset">Cancel</button>
+                        
+                                    <button type="button" id="bulk_packages" class="btn btn-primary" data-kt-menu-dismiss="true" data-kt-docs-table-filter="filter">Apply</button>
+                                </div>
+                                <!--end::Actions-->
+                            </div>
+                            <!--end::Content-->
+                        </div>
+                    </div>
+                    <!--end::Menu 1-->
+                    <div class="setp-3-filters d-none">
+                        <button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                            <i class="ki-outline ki-delivery fs-2"><span class="path1"></span><span class="path2"></span></i>  Change Shipping Services for Selected
+                        </button>
+                        <!--begin::Menu 1-->
+                        <div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true" id="kt-toolbar-filter" style="">
+                            <!--begin::Header-->
+                            <div class="px-7 py-5">
+                                <div class="fs-4 text-gray-900 fw-bold">Shipping Service</div>
+                            </div>
+                            <!--end::Header-->
+                        
+                            <!--begin::Separator-->
+                            <div class="separator border-gray-200"></div>
+                            <!--end::Separator-->
+                        
+                            <!--begin::Content-->
+                            <div class="px-7">
+                                <!--begin::Input group-->
+                                <div class="mb-10 py-5 px-5">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <!--begin::Input-->
+                                        <input class="form-check-input me-3" name="service" type="radio" value="0" id="cheapest">
+                                        <!--end::Input-->
+                
+                                        <!--begin::Label-->
+                                        <label class="form-check-label" for="cheapest">
+                                            <div class="fw-bold text-gray-800"><b> Switch to the most affordable rates available. </b></div>
+                                        </label>
+                                        <!--end::Label-->
+                                    </div>
+                                    <div class="separator separator-dashed my-5"></div>
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <!--begin::Input-->
+                                        <input class="form-check-input me-3" name="service" type="radio" value="Priority Mail" id="priority_mail">
+                                        <!--end::Input-->
+                
+                                        <!--begin::Label-->
+                                        <label class="form-check-label" for="priority_mail">
+                                            <div class="fw-bold text-gray-800"><b> Change to Priority Mail. </b></div>
+                                        </label>
+                                        <!--end::Label-->
+                                    </div>
+                                </div>
+                                <!--end::Input group-->
+                        
+                                <!--begin::Actions-->
+                                <div class="d-flex justify-content-end pb-5">
+                                    <button type="reset" class="btn btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true" data-kt-docs-table-filter="reset">Cancel</button>
+                        
+                                    <button type="button" id="bulk_services" class="btn btn-primary" data-kt-menu-dismiss="true" data-kt-docs-table-filter="filter">Apply</button>
+                                </div>
+                                <!--end::Actions-->
+                            </div>
+                            <!--end::Content-->
+                        </div>
+                    </div> 
+                    <!--end::Filter-->
+                    <div class="">
+                        <button type="button" class="btn btn-light-danger me-3 p-3" id="bulk_delete">
+                            <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>  Delete Selected
+                        </button>
+                    </div>
+                </div>
+                <!--end::Card title-->
+
+                <div class="d-flex justify-content-end align-items-center d-none" data-kt-docs-table-toolbar="base">
+                   
+                </div>
+                <!--end::Card title-->
+            </div>
+            <!--end::Card header-->
+            <!--begin::Card body-->
+            <div class="card-body pt-0">
+                <!--begin::Table-->
+                <table class="table border align-middle table-hover fs-6 gy-5" id="kt_ecommerce_products_table">
+                    <thead>
+                        <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+                            <th class="w-10px pe-2 ps-5">
+                                <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                    <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_ecommerce_products_table .form-check-input" value="1" />
+                                </div>
+                            </th>
+                            <th class="min-w-100px text-primary text-center">Ship From Address
+                                <span class="ms-1" data-bs-toggle="tooltip" aria-label="The Return/From Addresses" data-bs-original-title="The Return/From Addresses">
+                                    <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i>
+                                </span>
+                            </th>
+                            <th class="min-w-100px text-primary text-center">Ship To Address
+                                <span class="ms-1" data-bs-toggle="tooltip" aria-label="The Shipping/To Addresses" data-bs-original-title="The Shipping/To Addresses">
+                                    <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i>
+                                </span>
+                            </th>                            <th class="min-w-80px text-primary text-center">Package Details</th>
+                            <th class="min-w-60px text-primary text-center">Order No</th>
+                            <th class="text-center text-primary min-w-50px status_head">Status</th>
+                            <th class="min-w-250px text-primary text-center" id="services" style="display:none; width:260px;">Shipping Services</th>
+                            <th class="text-primary text-center" id="sizes" style="display:none">Label Size</th>
+                            <th class="min-w-10px text-primary text-center">Action</th>                        </tr>
+                    </thead>
+                    <tbody id="bulk_label_table_body" class="fw-semibold text-gray-800" data-paging='false'>
+                        
+                    </tbody>
+                </table>
+                <!--end::Table-->
+            </div>
+            <!--end::Card body-->
+        </div>
+        <!--end::Products-->
+    </div>
+    <!--end::Content container-->
+</div>
+<!--end::Content-->
+
+<!--begin::Modal - New Target-->
+<div class="modal fade" id="add-address-modal" tabindex="-1" aria-hidden="true">
+    <!--begin::Modal dialog-->
+    <div class="modal-dialog modal-dialog-centered mw-650px">
+        <!--begin::Modal content-->
+        <div class="modal-content rounded">
+            <!--begin::Modal header-->
+            <div class="modal-header pb-0 border-0 justify-content-end">
+                <!--begin::Close-->
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <i class="ki-outline ki-cross fs-1"></i>
+                </div>
+                <!--end::Close-->
+            </div>
+            <!--begin::Modal header-->
+            <!--begin::Modal body-->
+            <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
+                <!--begin:Form-->
+                <form id="address_form">
+                    <!--begin::Heading-->
+                    <div class="mb-13 text-center">
+                        <!--begin::Title-->
+                        <h1 class="mb-3">Edit Address</h1>
+                        <!--end::Title-->
+                        <!--begin::Description-->
+                        <div class="text-muted fw-semibold fs-5">Update or alter your address details.</div>                        <!--end::Description-->
+                        <div id="error"></div>
+                    </div>
+                    
+                    
+                        {% csrf_token %}
+                        <div class="modal-body">
+                        <input type="hidden" name="type">
+                        <input type="hidden" name="row_index">
+                        <div class="row">
+                            <div class="col-md-6 pr-md-1">
+                            <label>First Name*</label>
+                            <div class="form-group">
+                                <input
+                                type="text"
+                                name="firstname"
+                                data-cell="0"
+                                data-cell-2="7"
+                                class="form-control form-control-solid mb-3 mb-lg-0"
+                                placeholder="First Name"
+                                required
+                                />
+                            </div>
+                            </div>
+                            <div class="col-md-6 pl-md-1">
+                            <label>Last Name</label>
+                            <div class="form-group">
+                                <input
+                                type="text"
+                                name="lastname"
+                                data-cell="1"
+                                data-cell-2="8"
+                                class="form-control form-control-solid mb-3 mb-lg-0"
+                                placeholder="Last Name"
+                                />
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-md-1 mt-3">
+                                <label>Address Line 1*</label>
+                                <div class="form-group">
+                                    <input
+                                    type="text"
+                                    name="address1"
+                                    data-cell="2"
+                                    data-cell-2="9"
+                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                    placeholder="Address 1"
+                                    required
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-12 pl-md-1 mt-3">
+                                <label>Address Line 2</label>
+                                <div class="form-group">
+                                    <input
+                                    type="text"
+                                    name="address2"
+                                    data-cell="3"
+                                    data-cell-2="9"
+                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                    placeholder="Address 2"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 pr-md-1 mt-3">
+                                <label>City*</label>
+                                <div class="form-group">
+                                    <input type="text" name="city" data-cell="4"
+                                    data-cell-2="10" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="City" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6 pr-md-1 mt-3">
+                                <label>State*</label>
+                                <select class="form-select form-select-solid" data-cell="6" data-cell-two="13" name="state" data-dropdown-parent="#add-address-modal" data-control="select2" data-placeholder="Select an Option">
+                                    <option selected>Select an Option</option>
+                                    <option value="AL">Alabama</option>
+                                    <option value="AK">Alaska</option>
+                                    <option value="AZ">Arizona</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="CA">California</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="GA">Georgia</option>
+                                    <option value="HI">Hawaii</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="IL">Illinois</option>
+                                    <option value="IN">Indiana</option>
+                                    <option value="IA">Iowa</option>
+                                    <option value="KS">Kansas</option>
+                                    <option value="KY">Kentucky</option>
+                                    <option value="LA">Louisiana</option>
+                                    <option value="ME">Maine</option>
+                                    <option value="MD">Maryland</option>
+                                    <option value="MA">Massachusetts</option>
+                                    <option value="MI">Michigan</option>
+                                    <option value="MN">Minnesota</option>
+                                    <option value="MS">Mississippi</option>
+                                    <option value="MO">Missouri</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="NH">New Hampshire</option>
+                                    <option value="NJ">New Jersey</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="NY">New York</option>
+                                    <option value="NC">North Carolina</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="OH">Ohio</option>
+                                    <option value="OK">Oklahoma</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="PA">Pennsylvania</option>
+                                    <option value="RI">Rhode Island</option>
+                                    <option value="SC">South Carolina</option>
+                                    <option value="SD">South Dakota</option>
+                                    <option value="TN">Tennessee</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="VT">Vermont</option>
+                                    <option value="VA">Virginia</option>
+                                    <option value="WA">Washington</option>
+                                    <option value="WV">West Virginia</option>
+                                    <option value="WI">Wisconsin</option>
+                                    <option value="WY">Wyoming</option>
+                                    <option value="DC">District of Columbia</option>
+                                    <option value="MH">Marshall Islands</option>
+                                    <option value="PR">PUERTO RICO</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 pr-md-1 mt-3">
+                                <label>Zip Code*</label>
+                                <div class="form-group">
+                                    <input type="text" name="zip" data-cell="5"
+                                    data-cell-2="12" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Postal Code" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6 pr-md-1 mt-3">
+                                <label>Phone</label>
+                                <div class="form-group">
+                                    <input type="text" name="phone" data-cell="19"
+                                    data-cell-2="20" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Phone Number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Notice-->
+                    <!--end::Notice-->
+                    <!--begin::Actions-->
+                    <div class="text-center">
+                        <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" id="save_address" class="btn btn-primary">
+                            <span class="indicator-label">Save</span>
+                            <span class="indicator-progress">Please wait... 
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                        </button>
+                    </div>
+                    <!--end::Actions-->
+                </form>
+                <!--end:Form-->
+            </div>
+            <!--end::Modal body-->
+        </div>
+        <!--end::Modal content-->
+    </div>
+    <!--end::Modal dialog-->
+</div>
+<!--end::Modal - New Target-->
+<div class="modal fade" id="add-package-modal" tabindex="-1" aria-hidden="true">
+    <!--begin::Modal dialog-->
+    <div class="modal-dialog modal-dialog-centered mw-850px">
+        <!--begin::Modal content-->
+        <div class="modal-content rounded">
+            <!--begin::Modal header-->
+            <div class="modal-header pb-0 border-0 justify-content-end">
+                <!--begin::Close-->
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <i class="ki-outline ki-cross fs-1"></i>
+                </div>
+                <!--end::Close-->
+            </div>
+            <!--begin::Modal header-->
+            <!--begin::Modal body-->
+            <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
+                <!--begin:Form-->
+                <form id="package_form">
+                    {% csrf_token %}
+                  <div class="card-header">
+                      <h5 class="title">Package Details</h5>
+                      <div class="text-muted fw-semibold fs-5">Modify shipping package details.</div>
+                      <div id="package-error"></div>
+                  </div>
+                  <br>
+                  <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 pr-md-1">
+                          <label>Item ID (SKU)</label>
+                          <span class="ms-1" data-bs-toggle="tooltip" aria-label="The SKU will be printed on the shipping label." data-bs-original-title="The SKU will be printed on the shipping label.">
+                            <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i>
+                          </span>
+                          <div class="form-group">
+                              <input type="text" name="item_id" data-cell="22" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="SKU">
+                          </div>
+                        </div>                    
+                    </div>
+                      <div class="row mt-5">
+                        <div class="col-md-8 pr-md-1">
+                            <label>Box Dimentions (Inches)*</label>
+                            <div class="row">
+                                <div class="col-md-3 pr-md-1">
+                                    <div class="form-group">
+                                        <input type="number" name="length" data-cell="16" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Length" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 pr-md-1 mt-5">
+                                    X
+                                </div>
+                                <div class="col-md-3 pr-md-1">
+                                    <div class="form-group">
+                                        <input type="number" name="width" data-cell="17" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Width" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 pr-md-1 mt-5">
+                                    X
+                                </div>
+                                <div class="col-md-3 pr-md-1">
+                                    <div class="form-group">
+                                        <input type="number" name="height" data-cell="18" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Height" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 pr-md-1">
+                            <label>Weight (lbs)</label>
+                            <div class="form-group">
+                                <input type="number" name="pounds" data-cell="14" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Pounds">
+                            </div>
+                        </div>
+                        <div class="col-md-2 pr-md-1">
+                            <label>Weight (oz)</label>
+                            <div class="form-group">
+                                <input type="number" name="ounces" data-cell="15" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Ounces">
+                            </div>
+                        </div>
+                      </div>
+                   </div>
+                    <!--begin::Actions-->
+                    <div class="text-center">
+                        <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" id="save_package" class="btn btn-primary">
+                            <span class="indicator-label">Save</span>
+                            <span class="indicator-progress">Please wait... 
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                        </button>
+                    </div>
+                    <!--end::Actions-->
+                </form>
+                <!--end:Form-->
+            </div>
+            <!--end::Modal body-->
+        </div>
+        <!--end::Modal content-->
+    </div>
+    <!--end::Modal dialog-->
+</div>
+
+<div class="modal fade" id="add-order-modal" tabindex="-1" aria-hidden="true">
+    <!--begin::Modal dialog-->
+    <div class="modal-dialog modal-dialog-centered mw-850px">
+        <!--begin::Modal content-->
+        <div class="modal-content rounded">
+            <!--begin::Modal header-->
+            <div class="modal-header pb-0 border-0 justify-content-end">
+                <!--begin::Close-->
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <i class="ki-outline ki-cross fs-1"></i>
+                </div>
+                <!--end::Close-->
+            </div>
+            <!--begin::Modal header-->
+            <!--begin::Modal body-->
+            <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
+                <!--begin:Form-->
+                <form id="order_form">
+                    {% csrf_token %}
+                  <div class="card-header">
+                      <h5 class="title">Add Order Number</h5>
+                      <div class="text-muted fw-semibold fs-5">Include your order number to have it added to the spreadsheet with tracking numbers.</div>
+                      <div id="order-error"></div>
+                  </div>
+                  <br>
+                  <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 pr-md-1">
+                          <label>Order No</label>
+                          <span class="ms-1" data-bs-toggle="tooltip" aria-label="This will be included in the CSV file you receive, alongside each tracking number" data-bs-original-title="This will be included in the CSV file you receive, alongside each tracking number">                            <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i>
+                          </span>
+                          <div class="form-group">
+                              <input type="text" name="order_no" data-cell="21" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Order No.">
+                          </div>
+                        </div>                    
+                    </div>
+                   </div>
+                    <!--begin::Actions-->
+                    <div class="text-center">
+                        <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" id="save_order" class="btn btn-primary">
+                            <span class="indicator-label">Save</span>
+                            <span class="indicator-progress">Please wait... 
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                        </button>
+                    </div>
+                    <!--end::Actions-->
+                </form>
+                <!--end:Form-->
+            </div>
+            <!--end::Modal body-->
+        </div>
+        <!--end::Modal content-->
+    </div>
+    <!--end::Modal dialog-->
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="continueModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="continue-form">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <p class="fs-5"><b>Select label Size*</b>
+                        <span class="ms-1" data-bs-toggle="tooltip" aria-label="Choose your label printing format" data-bs-original-title="Choose your label printing format">
+                            <i class="ki-outline ki-information-5 text-gray-500 fs-6"></i>
+                        </span>
+                    </p>
+                    <input class="form-check-input" name="size" value="" hidden/>
+                    <ul class="row nav nav-pills nav-pills-info nav-pills-icons justify-content-center sizes">
+                    </ul>
+                    <hr>
+                    <div class="">
+                        <h2 style="float:left">Grand Total: </h2>
+                        <h2 id="total_price" style="float:right">12</h2>
+                    </div>
+                    <br>
+                    <hr>
+                    <div class="form-check form-check-custom form-check-solid mt-5">
+                        <input class="form-check-input" name="terms" type="checkbox" value="0" id="flexCheckDefault" required/>
+                        <label class="form-check-label" for="flexCheckDefault">
+                            I’ve read and accept the <a href="{% url 'djapp:tc' %}">terms & conditions</a>
+                        </label>
+                    </div>
+                    <input type="text" name="save_address" hidden>
+                    <input type="text" name="save_package" hidden>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" id="continue" class="btn btn-primary">
+                        <span class="indicator-label">
+                            Purchase
+                            <i class="las la-wallet text-white fs-3"></i>
+                        </span>
+                        <span class="indicator-progress">Please wait...
+                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </form>
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block javascript %}
+<!--begin::Vendors Javascript(used for this page only)-->
+<script src="/static/assets1/plugins/custom/datatables/datatables.bundle.js"></script>
+<!--end::Vendors Javascript-->
+<!--begin::Custom Javascript(used for this page only)-->
+<script src="/static/assets1/js/custom/apps/ecommerce/catalog/bulk_label.js"></script>
+
+<script>
+    var address_sheet;
+    var services = [];
+    var sizes;
+    var row_index;
+    var data_type
+    var volume_max = 100000
+    var errors = {};
+    var details_err;
+
+    const loadingEl = document.createElement("div");
+    document.body.prepend(loadingEl);
+    loadingEl.classList.add("page-loader");
+    loadingEl.classList.add("flex-column");
+    loadingEl.classList.add("bg-dark");
+    loadingEl.classList.add("bg-opacity-25");
+    loadingEl.style.backdropFilter = "blur(5px)";
+    loadingEl.innerHTML = `
+        <span class="spinner-border text-primary" role="status"></span>
+        <span class="text-gray-800 fs-6 fw-semibold mt-5">Loading...</span>
+    `;
+
+    var showDisappearingErrorMsg = function(form, type, msg, id) {
+      var alert = $(`<div id="alert-${id}" class="alert alert-${type} mt-5" role="alert">
+        <strong>${msg}</strong>
+        <button type="button" class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto" data-bs-dismiss="alert">
+            <i class="ki-duotone ki-cross fs-2x text-${type}"><span class="path1"></span><span class="path2"></span></i>
+        </button>
+        </div>`);
+        form.append(alert);
+
+        setTimeout(function() {
+            $(`#alert-${id}`).remove();
+        }, 6000); // 2000 milliseconds = 2 seconds
+    }
+    
+    const optionFormat = (item) => {
+        if (!item.id) {
+            return item.text;
+        }
+    
+        var span = document.createElement('span');
+        var template = '';
+    
+        template += '<div class="d-flex align-items-center">';
+        template += '<span class="fs-7"><img src="/static/images/USPS-Logo.png" width="38px" style="float: left;"> ' + item.element.getAttribute('data-kt-rich-content-subcontent') + '</span>';
+        template += '</div>';
+    
+        span.innerHTML = template;
+    
+        return $(span);
+    }
+    
+    // Init Select2 --- more info: https://select2.org/
+    $('.services_option').select2({
+        placeholder: "Select an option",
+        minimumResultsForSearch: Infinity,
+        templateSelection: optionFormat,
+        templateResult: optionFormat
+    });
+
+    function isCellEmpty(divId, row_index, edit_class) {
+        // Get the div element
+        var div = document.getElementById(divId);
+        // Remove HTML tags from the content
+        if (div) {
+            var textContent = div.innerHTML.replace(/<[^>]*>/g, '');
+
+            // Check if the remaining text content is empty
+            if (textContent.trim() === '') {
+                $("#" + divId).html(
+                    `___ <span> 
+                            <a href="javascript:void(0)" class="${edit_class}" data-id="${row_index}" data-type="1">
+                                <i class="ki-duotone ki-notepad-edit fs-1 btn-active-light-primary">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
+                            </a>
+                        </span>`
+                );
+            }
+        }
+        
+        return;
+    }
+
+    function truncateString(str, maxLength=10, empty=false) {
+        // Check if the string is longer than the specified maxLength
+        if (str.length > maxLength) {
+            // Truncate the string and append an ellipsis
+            return str.substring(0, maxLength) + '...';
+        } else {
+            // If the string is not longer than maxLength, return the original string
+            return str;
+        }
+    }
+
+    function clear_error(row_index, cells) {
+        var address_errors = errors[row_index];
+
+        if (errors.hasOwnProperty(row_index) && errors[row_index] != 0) {
+            for (var i=0; i<errors[row_index].length; i++) {
+                if (cells.includes(errors[row_index][i][0])) {
+                    errors[row_index].splice(i, 1);
+                    i--;
+                }
+            }
+        }
+
+        if (!errors[row_index] || errors[row_index].length == 0) {
+            delete errors[row_index];
+            $(`tr[data-row-index='${row_index}']`).find(`.status`).html('<span class="badge badge-light-success">success</span>');
+        }
+
+        for (var i=0; i<details_err.length; i++) {
+            if (details_err[i] != 0){
+                let cell = details_err[i][0][1]
+                let row = details_err[i][0][0]
+                
+                if (cells.includes(cell) && row==row_index) {
+                    details_err[i] = 0;
+                }
+            }
+        }
+
+        localStorage.setItem("details_err", JSON.stringify(details_err));
+    }
+
+    function show_step_2(data, file=null) {
+        // Triggered when a file is successfully uploaded
+        $("#sheet-error").html("");
+        if (data.detail=="error1") {
+            for (var e=0; e<data.errors.length; e++){
+                showDisappearingErrorMsg($("#sheet-error"), "danger", data.errors[e], e);
+            }
+            KTApp.hidePageLoading();
+            myDropzone.removeFile(file);
+            return;
+        }
+        for (var e=0; e<data.errors.length; e++){
+            showErrorMsg($("#var1-errors"), "danger", data.errors[e]);
+        }
+        address_sheet = JSON.parse(data.address_sheet);
+        details_err = data.details_err;
+        localStorage.setItem("address_sheet", JSON.stringify(address_sheet));
+        localStorage.setItem("var1_error", JSON.stringify(data.errors));
+        localStorage.setItem("details_err", JSON.stringify(details_err));
+        
+
+        $("#bulk_label_table_body").html('')
+        for (var i=0; i< address_sheet.length; i++) {
+            $("#bulk_label_table_body").append(`
+            <tr data-row-index="${i}" data-kt-ecommerce-product-filter="product_name">
+                <td class="ps-5" >
+                    <div class="form-check form-check-sm form-check-custom form-check-solid">
+                        <input class="form-check-input" name="row_checks" type="checkbox" value="${i}" />
+                    </div>
+                </td>
+                <td class="pe-0 text-center from_address" id="from_address${i}">
+                    <span class="fw-bold">
+                        ${truncateString(address_sheet[i][0])} ${truncateString(address_sheet[i][1])}
+                    <br> 
+                    ${truncateString(address_sheet[i][2])} ${truncateString(address_sheet[i][3])} 
+                    <span style="float:right"> 
+                        <a href="javascript:void(0)" class="edit_address" data-id="${i}" data-type="1">
+                            <i class="ki-duotone ki-notepad-edit fs-1 btn-active-light-primary">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                        </a>
+                    </span>
+                    <br> 
+                    ${truncateString(address_sheet[i][4])} ${truncateString(address_sheet[i][5])} ${truncateString(address_sheet[i][6])} <img src='/static/assets1/media/flags/united-states.png' width='18px'>
+                    <br>
+                    ${truncateString(address_sheet[i][19])}
+                    </span>
+                </td>
+                <td class="pe-0 text-center to_address" id="to_address${i}" data-order="{{ item.1 }}" >
+                    <span class="fw-bold ms-3">
+                        ${truncateString(address_sheet[i][7])} ${truncateString(address_sheet[i][8])}
+                    <br>
+                    ${truncateString(address_sheet[i][9])} ${truncateString(address_sheet[i][10])}
+                    <span style="float:right"> 
+                        <a href="javascript:void(0)" class="edit_address" data-id="${i}" data-type="2">
+                            <i class="ki-duotone ki-notepad-edit fs-1 btn-active-light-primary">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                        </a>
+                    </span>
+                    <br>
+                    ${truncateString(address_sheet[i][11])} ${truncateString(address_sheet[i][12])} ${truncateString(address_sheet[i][13])} <img src='/static/assets1/media/flags/united-states.png' width='18px'>
+                    <br>
+                    ${truncateString(address_sheet[i][20])}
+                    </span>
+                </td>
+                <td class="pe-0 text-center package_details" id="package${i}">
+                    ${truncateString(address_sheet[i][22])}
+                    <br>
+                    ${truncateString(address_sheet[i][16])}x${truncateString(address_sheet[i][17])}x${truncateString(address_sheet[i][18])}'' ${truncateString(address_sheet[i][14])}lb ${truncateString(address_sheet[i][15])}oz
+                    <span style="float:right; margin-top:-8px"> 
+                        <a href="javascript:void(0)" class="edit_package" data-id="${i}">
+                            <i class="ki-duotone ki-notepad-edit fs-1 btn-active-light-primary">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                        </a>
+                    </span>
+                </td>
+                <td class="pe-0 text-center order_no" id="order_no${i}" data-order="">
+                    ${truncateString(address_sheet[i][21])} 
+                    <span style="float:right"> 
+                        <a href="javascript:void(0)" class="edit_order_no" data-id="${i}">
+                            <i class="ki-duotone ki-notepad-edit fs-1 btn-active-light-primary">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                        </a>
+                    </span>
+                </td>
+                <td class="pe-0 text-center status">
+                    <span class="badge badge-light-success">success</span>
+                </td>
+                <td hidden></td>
+                <td hidden></td>
+                <td class="pe-0 text-center">
+                    <a data-row-index="${i}" class="btn btn-sm btn-light-danger btn-flex btn-center btn-active-light-primary p-1" data-kt-ecommerce-product-filter="delete_row"><i class="ki-duotone ki-cross fs-1 p-0"><span class="path1"></span><span class="path2"></span></i> </a>
+                </td>
+            </tr>
+            `)
+
+            isCellEmpty("from_address" + i, i, "edit_address");
+            isCellEmpty("to_address" + i, i, "edit_address");
+            isCellEmpty("package" + i, i, "edit_package");
+            isCellEmpty("order_no" + i, i, "edit_order_no");
+        
+        }
+        
+        for (var i=0; i<data.details_err.length; i++) {
+            let row = data.details_err[i][0][0]
+            let cell = data.details_err[i][0][1]
+            let err_message = data.details_err[i][1]
+
+            if (!errors.hasOwnProperty(row)) {
+                // If not, initialize it with an empty array
+                errors[row] = [];
+            }
+            
+            // Append the error message to the array
+            errors[row].push([cell, err_message]);
+            
+
+            if ([0, 1, 2, 3, 4, 5, 6].includes(cell)) {
+                $(`tr[data-row-index='${row}']`).find('.from_address').addClass("bg-light-danger");
+                $(`tr[data-row-index='${row}']`).find(`.status`).html('<span class="badge badge-light-danger">error</span>');
+
+            } else if ([7, 8, 9, 10, 11, 12, 13].includes(cell)) {
+                $(`tr[data-row-index='${row}']`).find(".to_address").addClass("bg-light-danger");
+                $(`tr[data-row-index='${row}']`).find(`.status`).html('<span class="badge badge-light-danger">error</span>');
+            } else if ([14, 15, 16, 17, 18].includes(cell)) {
+                $(`tr[data-row-index='${row}']`).find(".package_details").addClass("bg-light-danger");
+                $(`tr[data-row-index='${row}']`).find(`.status`).html('<span class="badge badge-light-danger">error</span>');
+            }
+            
+        }
+
+        $(".step_1").hide();
+        $(".step_2").show();
+        $("#submit_btn2").show();
+        $("#back").show();
+        $(".page-heading").html("Review and Edit File (Step 2 of 3)")
+        KTAppEcommerceProducts.init();
+        $("#kt_modal_process").modal("hide")
+        KTApp.hidePageLoading();
+
+        var errorElement = $(".status:contains('error')")[0];
+        errorElement.scrollIntoView({
+            behavior: 'auto', // You can use 'auto' or 'smooth' for smooth scrolling
+            block: 'start'       // You can use 'start', 'center', 'end', or 'nearest'
+        });
+
+        // Perform additional actions based on the server response
+    }
+
+    var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
+        url: "/bulk/file-upload/", // Set the url for your upload script location
+        paramName: "file", // The name that will be used to transfer the file
+        headers: {
+            "X-CSRFToken": "{{ csrf_token }}"
+        },
+        parallelUploads: 2,
+        addRemoveLinks: true,
+        accept: function(file, done) {
+            if (file.fullPath !== undefined && (file.fullPath.includes("/") || file.fullPath.includes("\\") )) {
+                myDropzone.removeFile(file);
+                done();
+                return;
+            }
+            if (file.type === "application/x-moz-folder" || file.type === "inode/directory") {
+                myDropzone.removeFile(file);
+                done();
+                return;
+            }
+            done();
+        },
+        init: function () {
+        },
+        sending: function (file, data) {
+            $("#sheet-error").html("");
+            if (file.name.split(".")[file.name.split(".").length-1].toLowerCase() == "xlsx" || file.name.split(".")[file.name.split(".").length-1].toLowerCase() == 'xls' || file.name.split(".")[file.name.split(".").length-1].toLowerCase() == 'csv') {
+                KTApp.showPageLoading();
+            } else {
+                showDisappearingErrorMsg($("#sheet-error"), "danger", "only csv, xlsx, xls files are accepted!", file.size);
+                //$("#upload-err").css("display", "");
+                this.removeFile(file);
+            }
+        },
+        success: function (file, data) {
+            debugger
+            show_step_2(data, file);
+            this.setupEventListeners();
+        },
+        error: function (file, response) {
+            this.removeAllFiles();
+            this.setupEventListeners();
+        },
+        addedfiles: function (e) {
+            if (this.files.length > 1 || e.length>true) {
+                folder = false;
+                $("#sheet-error").html("");
+                showDisappearingErrorMsg($("#sheet-error"), "danger", "Ensure only one file is uploaded at a time", e.length);
+                myDropzone.removeAllFiles();
+            } else {
+                $("#sheet-error").html("");
+                if (e[0].size > 653495) {
+                    showDisappearingErrorMsg($("#sheet-error"), "danger", "Max file size exceeded for file max file size is 600kb!", this.files[0].size);
+                    myDropzone.removeFile(this.files[0]);
+                }
+                
+                if (e[0].type == "") {
+                    showDisappearingErrorMsg($("#sheet-error"), "danger", "only csv, xlsx, xls files are accepted!", e[0].size);
+                    myDropzone.removeAllFiles();
+                }
+            }
+        },
+    });
+
+
+    $('#bulk_label_table_body').on('click', '.edit_address', function () {
+        $('#error').html("")
+        $('#address_form')[0].reset();
+        $('input.error').removeClass("error");
+        $('label.error').remove();
+        row_index = $(this).attr('data-id');
+        data_type = $(this).attr('data-type');
+        var address_errors = errors[row_index];
+
+        if (address_errors) {
+            for (var i=0; i<address_errors.length; i++) {
+                if (data_type == 1) {
+                    $(`input[data-cell="${address_errors[i][0]}"]`).addClass('error').after(`<label class="ps-2 error">${address_errors[i][1]}</label>`)
+                    $(`select[data-cell="${address_errors[i][0]}"]`).addClass('error').after(`<label class="ps-2 error">${address_errors[i][1]}</label>`)
+                } else {
+                    $(`input[data-cell-2="${address_errors[i][0]}"]`).addClass('error').after(`<label class="ps-2 error">${address_errors[i][1]}</label>`)
+                    $(`select[data-cell-two="${address_errors[i][0]}"]`).addClass('error').after(`<label class="ps-2 error">${address_errors[i][1]}</label>`)
+                }
+            }
+        }
+    
+        $('#add-address-modal').modal('show');
+        if (data_type == 1) {
+            $('input[name="firstname"]').val(address_sheet[row_index][0]);
+            $('input[name="lastname"]').val(address_sheet[row_index][1]);
+            $('input[name="address1"]').val(address_sheet[row_index][2]);
+            $('input[name="address2"]').val(address_sheet[row_index][3]);
+            $('input[name="city"]').val(address_sheet[row_index][4]);
+            $('select[name="state"]').val(address_sheet[row_index][6]).trigger('change');
+            $('select[name="state"]').next().find('.select2-selection__rendered').text(address_sheet[row_index][6]);
+            $('input[name="zip"]').val(address_sheet[row_index][5]);
+            $('input[name="phone"]').val(address_sheet[row_index][19]);
+        } else {
+            $('input[name="firstname"]').val(address_sheet[row_index][7]);
+            $('input[name="lastname"]').val(address_sheet[row_index][8]);
+            $('input[name="address1"]').val(address_sheet[row_index][9]);
+            $('input[name="address2"]').val(address_sheet[row_index][10]);
+            $('input[name="city"]').val(address_sheet[row_index][11]);
+            $('select[name="state"]').val(address_sheet[row_index][13]).trigger('change');
+            $('select[name="state"]').next().find('.select2-selection__rendered').text(address_sheet[row_index][13]);
+            $('input[name="zip"]').val(address_sheet[row_index][12]);
+            $('input[name="phone"]').val(address_sheet[row_index][20]);
+        }
+
+    })
+
+    $('#save_address').on('click', function (e) {
+
+        $('#error').html('');
+        e.preventDefault();
+
+        var form = $("#address_form");
+
+        form.validate({
+            rules: {
+                state: {
+                    validate_state: true
+                },
+                state_2: {
+                    validate_state: true
+                },
+                zip: {
+                    validate_zip: true,
+                    required: true,
+                },
+                zip_code_2: {
+                    validate_zip: true,
+                    required: true,
+                },
+                phone: {
+                    validate_phone_number: true,
+                },
+                phone_2: {
+                    validate_phone_number: true,
+                },
+    
+            },
+            onfocusout: false,
+            invalidHandler: function(form, validator) {
+                var errors = validator.numberOfInvalids();
+                if (errors) {
+                    focusElement = validator.errorList[0].element;
+                }
+            }
+        });
+    
+        if (!form.valid()) {
+            $("select[name='state'].error").next('label.error').hide()
+            $("select[name='state'].error").next().next('.select2').after('<label class="error" >Please enter a valid State Abbrevation</label>')
+            e.preventDefault();
+            return;
+        }
+
+        let btn = $(this)
+        btn_loader(btn, true);
+        $.ajax({
+            type: "POST",
+            headers: {
+                "X-CSRFToken": "{{ csrf_token }}"
+            },
+            url: `/bulk/validate-address/`,
+            data: $('#address_form').serialize(),
+            success: function (data) {
+                btn_loader(btn, false);
+                debugger
+                if (!data.error) {
+                    
+                    if (data_type == 1) {
+                        address_sheet[row_index][0] = $('input[name="firstname"]').val();
+                        address_sheet[row_index][1] = $('input[name="lastname"]').val();
+                        address_sheet[row_index][2] = data.data[0]
+                        address_sheet[row_index][3] = data.data[1]
+                        address_sheet[row_index][4] = data.data[2]
+                        address_sheet[row_index][6] = data.data[3]
+                        address_sheet[row_index][5] = data.data[4]
+                        address_sheet[row_index][19] = $('input[name="phone"]').val();
+                        $(`tr[data-row-index='${row_index}']`).find('.from_address').removeClass('bg-light-danger');
+                        clear_error(row_index, [0, 1, 2, 3, 4, 5, 6, 19]);
+                        change_from_address(row_index);
+                    } else {
+                        address_sheet[row_index][7] = $('input[name="firstname"]').val();
+                        address_sheet[row_index][8] = $('input[name="lastname"]').val();
+                        address_sheet[row_index][9] = data.data[0]
+                        address_sheet[row_index][10] = data.data[1]
+                        address_sheet[row_index][11] = data.data[2]
+                        address_sheet[row_index][13] = data.data[3]
+                        address_sheet[row_index][12] = data.data[4]
+                        address_sheet[row_index][20] = $('input[name="phone"]').val();
+                        $(`tr[data-row-index='${row_index}']`).find('.to_address').removeClass('bg-light-danger');
+                        clear_error(row_index, [7, 8, 9, 10, 11, 12, 13, 20])
+                        change_to_address(row_index)
+                    }
+                    $("#add-address-modal").modal("hide");
+                } else {
+                    showErrorMsg($('#error'), 'danger', "Address isn't Valid");
+                }
+            }
+        })
+    })
+
+    $('select[name="state"]').on('select2:close', function () {
+        $(this).next().find('.select2-selection__rendered').text($(this).val());
+    })
+
+    $('#bulk_label_table_body').on('click', '.edit_package', function () {
+        $('#package-error').html("")
+        $('#package_form')[0].reset();
+        $('input.error').removeClass("error");
+        $('label.error').remove();
+        row_index = $(this).attr('data-id');
+        var address_errors = errors[row_index];
+
+        if (address_errors) {
+            for (var i=0; i<address_errors.length; i++) {
+                $(`input[data-cell="${address_errors[i][0]}"]`).addClass('error').after(`<label class="ps-2 error">${address_errors[i][1]}</label>`)
+            }
+        }
+
+        $('#add-package-modal').modal('show');
+        $('input[name="row_index"]').val(row_index);
+        $('input[name="pounds"]').val(address_sheet[row_index][14]);
+        $('input[name="ounces"]').val(address_sheet[row_index][15]);
+        $('input[name="length"]').val(address_sheet[row_index][16]);
+        $('input[name="width"]').val(address_sheet[row_index][17]);
+        $('input[name="height"]').val(address_sheet[row_index][18]);
+        $('input[name="item_id"]').val(address_sheet[row_index][22]);
+
+    })
+
+
+    $('#bulk_label_table_body').on('click', '.edit_order_no', function () {
+        $('#order-error').html("")
+        $('input.error').removeClass("error");
+        $('label.error').remove();
+        row_index = $(this).attr('data-id');
+        var address_errors = errors[row_index];
+
+        if (address_errors) {
+            for (var i=0; i<address_errors.length; i++) {
+                $(`input[data-cell="${address_errors[i][0]}"]`).addClass('error').after(`<label class="ps-2 error">${address_errors[i][1]}</label>`)
+            }
+        }
+
+        $('#add-order-modal').modal('show');
+        $('input[name="row_index"]').val(row_index);
+        $('input[name="order_no"]').val(address_sheet[row_index][21]);
+
+    })
+
+    $('#save_order').on('click', function (e) {
+        e.preventDefault();
+        $('#order-error').html("")
+
+        address_sheet[row_index][21] = $('input[name="order_no"]').val()
+        localStorage.setItem("address_sheet", JSON.stringify(address_sheet));
+        $(`tr[data-row-index='${row_index}']`).find(".order_no").html(
+            `${truncateString(address_sheet[row_index][21])} <span style="float:right"> <a href="javascript:void(0)" class="edit_order_no" data-id="${row_index}" data-type="1">
+                                <i class="ki-duotone ki-notepad-edit fs-1 btn-active-light-primary">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
+                            </a>
+                        </span>`
+        )
+        isCellEmpty("order_no" + row_index, row_index, "edit_order_no");
+        $("#add-order-modal").modal("hide");
+    })
+
+    $('#save_package').on('click', function (e) {
+        e.preventDefault();
+        $('#package-error').html("")
+        var form = $("#package_form");
+
+        let weight = $('input[name="pounds"]').val();
+        let ounces = $('input[name="ounces"]').val();
+        let weight_validation = false
+        if (weight.trim() == "" && ounces.trim() == "") {
+            weight_validation = true;
+        } else {
+            if (ounces.trim() == "") {
+                $('input[name="ounces"]').val("0");
+            }
+            if (weight.trim() == "") {
+                $('input[name="pounds"]').val("0");
+            }
+        }
+
+        form.validate({
+          rules: {
+            item_id: {
+              maxlength: 22,
+            },
+            pounds: {
+              number:true,
+              max: 70,
+              min:0,
+            },
+            ounces: {
+              number:true,
+              max: 16,
+              min:0,
+            },
+            length: {
+              required: true,
+              number:true,
+              min:0.1
+            },
+            width: {
+              required: true,
+              number:true,
+              min:0.1
+            },
+            height: {
+              required: true,
+              number:true,
+              min:0.1
+            },
+
+          },
+          onfocusout: false,
+          invalidHandler: function(form, validator) {
+              var errors = validator.numberOfInvalids();
+              if (errors) {
+                  focusElement = validator.errorList[0].element;
+              }
+          }
+      });
+
+      if (!form.valid()) {
+        if (weight_validation) {
+          $('input[name="pounds"]').addClass('error');
+          $('input[name="pounds"]').after('<label class="error">lbs or Ounces needs to be filled.</label>');
+          e.preventDefault();
+        }
+        e.preventDefault();
+          return;
+      }
+
+      if (weight_validation) {
+        $('input[name="pounds"]').addClass('error');
+        $('input[name="pounds"]').after('<label class="error">lbs or Ounces needs to be filled.</label>');
+        e.preventDefault();
+        return;
+      }
+
+        let l = $('input[name="length"]').val();
+        let w = $('input[name="width"]').val();
+        let h = $('input[name="height"]').val();
+
+        if (l*w*h > volume_max) {
+            showErrorMsg($('#package-error'), 'danger', "We Don't offer labels with those Dimensions");
+            return
+        } else {
+            let btn = $(this)
+            btn_loader(btn, true);
+            $.ajax({
+                type: "POST",
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}"
+                },
+                url: `/bulk/validate-package/`,
+                data: $('#package_form').serialize(),
+                success: function (data) {
+                    btn_loader(btn, false);
+                    if (data.errors.length == 0) {
+                        address_sheet[row_index][14] = $('input[name="pounds"]').val()
+                        address_sheet[row_index][15] = $('input[name="ounces"]').val();
+                        address_sheet[row_index][16] = $('input[name="length"]').val();
+                        address_sheet[row_index][17] = $('input[name="width"]').val();
+                        address_sheet[row_index][18] = $('input[name="height"]').val();
+                        address_sheet[row_index][22] = $('input[name="item_id"]').val();
+                        $(`tr[data-row-index='${row_index}']`).find('.package_details').removeClass('bg-light-danger');
+                        clear_error(row_index, [14, 15, 16, 17, 18, 22])
+                        change_package(row_index);
+                        $("#add-package-modal").modal("hide");
+                    } else {
+                        for (var e=0; e<data.errors.length; e++){
+                            showErrorMsg($('#package-error'), 'danger', data.errors[e]);
+                        }
+                    }
+                }
+            })
+            
+        }
+    })
+
+    $("#submit_btn2[data-step='2']").on("click", function () {
+
+        if (Object.keys(errors).length != 0) {
+            Swal.fire({
+                icon: "error",
+                title: "Data Invalid!",
+                text: "Please resolve issues in your file.",
+                confirmButtonColor: '#1B84FF'
+            }).then(function () {
+                var errorElement = $(".status:contains('error')")[0];
+                errorElement.scrollIntoView({
+                    behavior: 'auto', // You can use 'auto' or 'smooth' for smooth scrolling
+                    block: 'start'       // You can use 'start', 'center', 'end', or 'nearest'
+                });
+            })
+            return;
+        }
+
+        var btn = $(this)
+        KTApp.showPageLoading();
+        $("#kt_ecommerce_products_table").DataTable().destroy();
+        $.ajax({
+            type: "POST",
+            url: "{% url 'bulk_label:upload_data' %}",
+            headers: {
+                "X-CSRFToken": "{{ csrf_token }}"
+            },
+            data: {
+                "address_sheet": JSON.stringify(address_sheet)
+            }, // serializes the form's elements.
+            success: function (data) {
+                
+                if (data.error) {
+                    show_step_2(data);
+                    return
+                }
+
+                for (var e=0; e<data.errors.length; e++){
+                    showErrorMsg($("#var1-errors"), "danger", data.errors[e]);
+                }
+
+                $("#var1-errors").html();
+                $(".status_head").hide();
+                address_sheet = JSON.parse(data.address_sheet);
+                sizes = data.sizes;
+                $("#services").show();
+                $("#bulk_label_table_body").html('')
+                for (var i=0; i< address_sheet.length; i++) {
+                    $("#bulk_label_table_body").append(`
+                    <tr data-row-index=${i} data-kt-ecommerce-product-filter="product_name">
+                        <td data-row-index="${i}" class="ps-5">
+                            <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                <input class="form-check-input" name="row_checks" type="checkbox" value="${i}" />
+                            </div>
+                        </td>
+                        <td class="pe-0 bg-secondary text-gray-500 text-center">
+                            <span class="fw-bold">
+                                ${truncateString(address_sheet[i][0])} ${truncateString(address_sheet[i][1])}
+                                <br> 
+                                ${truncateString(address_sheet[i][2])} ${truncateString(address_sheet[i][3])}
+                                <br> 
+                                ${truncateString(address_sheet[i][4])} ${truncateString(address_sheet[i][5])} ${truncateString(address_sheet[i][6])} <img src='/static/assets1/media/flags/united-states.png' width='18px'>
+                                <br>
+                                ${truncateString(address_sheet[i][19])}
+                            </span>
+                        </td>
+                        <td class="pe-0 bg-secondary text-gray-500 text-center" data-order="{{ item.1 }}">
+                            <span class="fw-bold ms-3">
+                                ${truncateString(address_sheet[i][7])} ${truncateString(address_sheet[i][8])}
+                                <br>
+                                ${truncateString(address_sheet[i][9])} ${truncateString(address_sheet[i][10])}
+                                <br>
+                                ${truncateString(address_sheet[i][11])} ${truncateString(address_sheet[i][12])} ${truncateString(address_sheet[i][13])} <img src='/static/assets1/media/flags/united-states.png' width='18px'>
+                                <br>
+                                ${truncateString(address_sheet[i][20])}
+                            </span>
+                        </td>
+                        <td class="pe-0 bg-secondary text-gray-500 text-center">
+                            ${truncateString(address_sheet[i][22])}
+                            <br>
+                            ${truncateString(address_sheet[i][16])}x${truncateString(address_sheet[i][17])}x${truncateString(address_sheet[i][18])}'' ${truncateString(address_sheet[i][14])}lb ${truncateString(address_sheet[i][15])}oz
+                        </td>
+                        <td class="pe-0 bg-secondary text-center order_no" id="order_no${i}" data-order="">
+                            ${truncateString(address_sheet[i][21])}
+                        </td>
+                        <td class="pe-0 bg-secondary text-center status" hidden>
+                            <span class="badge badge-light-success">success</span>
+                        </td>
+                        <td class="pe-0 text-center">
+                            <select data-row-index=${i} class="form-select form-select-solid text-dark services_option mt-5 service-${i}" name="" title="Select Package">
+                                <option
+                                    data-kt-rich-content-subcontent="${data.services[i][0].name} $${data.services[i][0].rate}" 
+                                    data-item-id="{{ package.6 }}" data-name="${data.services[i][0].name}" data-rate="${data.services[i][0].rate}"
+                                    value="0" selected
+                                ></option>
+                            </select>
+                        </td>
+                        <td class="pe-0 bg-secondary text-center" hidden></td>
+                        <td class="pe-0 text-center" data-order="Published">
+                            <a data-row-index="${i}" class="btn btn-sm btn-light-danger btn-flex btn-center btn-active-light-primary p-1" data-kt-ecommerce-product-filter="delete_row"><i class="ki-duotone ki-cross fs-1 p-0"><span class="path1"></span><span class="path2"></span></i> </a>
+                        </td>
+                    </tr>
+                    `)
+
+                    for (var j=1; j<data.services[i].length; j++) {
+                        $(`.service-${i}`).append(`
+                            <option
+                            data-kt-rich-content-subcontent="${data.services[i][j].name} $${data.services[i][j].rate}" 
+                            data-name="${data.services[i][j].name}"
+                            data-rate="${data.services[i][j].rate}"
+                            value="${j}"
+                            ></option>
+                        `)
+                    }
+                    services.push(data.services[i][0])
+                }
+
+                KTAppEcommerceProducts.init()
+                $('.services_option').select2({
+                    placeholder: "Select an option",
+                    minimumResultsForSearch: Infinity,
+                    templateSelection: optionFormat,
+                    templateResult: optionFormat
+                });
+
+                $(".services_option").on("change", function () {
+                    var row_index = $(this).attr('data-row-index');
+                    var name = $(this).find('option:selected').attr('data-name');
+                    var rate = $(this).find('option:selected').attr('data-rate');
+                    services[row_index] = {name: name, rate: rate}
+                    calculateTotalRateAndNames(services)
+                })
+
+                $("#submit_btn2").hide();
+                $("#submit_btn3").show();
+                $("#total_sum").show();
+                calculateTotalRateAndNames(services)
+
+                $(".setp-3-filters").removeClass("d-none");
+                $(".setp-2-filters").addClass("d-none");
+                $("#back").attr("data-step", "2");
+                $(".page-heading").html("Select Shipping Provider (Step 3 of 3)");
+                $('input:checkbox').prop('checked', false);
+
+
+                KTApp.hidePageLoading();
+                
+            },
+            error: function (data) {
+                KTApp.hidePageLoading();
+            }
+        })
+    })
+
+    function calculateTotalRateAndNames(input) {
+        // Initialize variables to store total rate and list of names
+        let totalRate = 0;
+        let namesList = [];
+    
+        // Iterate through the input array
+        input.forEach(item => {
+            // Add the rate to the total
+            if (item != 0){
+                totalRate += parseFloat(item.rate);
+                // Add the name to the list
+                namesList.push(item.name);
+            }
+        });
+        
+        $("#total_sum").html("Total: $" + totalRate)
+        // Return an object with the total rate and names list
+        return {
+            totalRate: totalRate,
+            services: namesList
+        };
+    }
+
+    $("#submit_btn3").on("click", function() {
+        const result = calculateTotalRateAndNames(services);
+        $("#total_price").html("$"+ result.totalRate);
+        $('.sizes').html('');
+        for (var i=0; i < sizes.length; i++){
+
+            var sizesdescription = '';
+            if (sizes[i] == "Letter A4") {
+                sizesdescription = "8.5x11 in PDF";
+            } else if (sizes[i] == "4x6in") {
+                sizesdescription = "For Thermal Printer";
+            }
+            
+            $('.sizes').append(`
+                <div class="col-6">
+                    <label class="w-100 btn btn-outline btn-outline-dashed btn-active-light-primary flex-stack text-start p-2 mb-5 sizes-tab" style="height:90%" data-size="${sizes[i]}">
+                        <!--end::Description-->
+                        <div class="align-items-center me-2">
+                            <!--begin::Radio-->
+                            <div class="form-check form-check-custom form-check-solid form-check-primary me-6">
+                            </div>
+                            <!--end::Radio-->
+
+                            <!--begin::Info-->
+                            <div class="flex-grow-1 text-center">
+                                <div class="text-center">
+                                    <i class="ki-duotone ki-design-frame fs-3x">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                    </i>
+                                </div>
+                                <h2>
+                                    ${sizes[i]}
+                                </h2>
+                                <div class="fw-semibold opacity-50">
+                                    ${sizesdescription}
+                                </div>
+                            </div>
+                            <!--end::Info-->
+                        </div>
+                        <!--end::Description-->
+                    </label>
+                </div>
+            `);
+        }
+
+        $(".sizes-tab").on("click", function () {
+            $(".sizes-tab").removeClass("active");
+            $(this).addClass("active");
+            let size = $(this).attr('data-size');
+            $('input[name="size"]').val(size);
+        })
+
+        $("#continueModal").modal('show');
+        $("#continue-form")[0].reset();
+        $("#continue-form").find(".required-message").remove()
+    });
+
+
+    $("#continue").on("click", function(e) {
+        const result = calculateTotalRateAndNames(services);
+        $("#total_price").html("$" + result.totalRate);
+
+        let size = $('input[name="size"]').val();
+        let terms = $('input[name="terms"]:checked').val();
+        //let confirmation = $('input[name="confirmation"]:checked').val();
+        $('.required-message').remove();
+        e.preventDefault();
+        error = false
+
+        if (!size) {
+            $('input[name="size"]').after('<span class="required-message" style="color:red">This is required field.</span>')
+            btn_loader("#continue", false);
+            error=true;
+        }
+
+        if (terms != '0') {
+            $('input[name="terms"]').after('<span class="required-message" style="color:red">This is required field.</span>')
+            btn_loader("#continue", false);
+            error=true;
+        }
+
+        //if (confirmation != '0') {
+        //    $('input[name="confirmation"]').after('<span class="required-message" style="color:red">This is required field.</span>')
+        //    btn_loader("#continue", false);
+        //    error=true;
+        //}
+
+        if (error) {
+            return
+        }
+        var form = $("#continue-form");
+
+        var formData = form.serializeArray();
+        formData.push({ name: "address_sheet", value:JSON.stringify(address_sheet) })
+        formData.push({ name: "services", value:JSON.stringify(result.services) })
+        formData.push({ name: "total_sum", value:result.totalRate })
+        var btn = $("#continue")
+        btn_loader(btn, true);
+        $.ajax({
+            type: "POST",
+            url: "{% url 'bulk_label:send_bulk_label_request' %}",
+            data: formData, // serializes the form's elements.
+            success: function (data) {
+                btn_loader(btn, false);
+                $("#continueModal").modal("hide");
+                var icon = "success"
+                if (data.status=="Oops!") {
+                    icon = "error";
+                    data.message= data.message + ' <a href="/add-credit" style="color: blue; text-decoration: underline;">Top-up now.</a>'
+                }
+                Swal.fire({
+                    icon: icon,
+                    title: data.status,
+                    html: data.message,
+                    confirmButtonColor: '#1B84FF'
+                }).then((result) => {
+                    if (icon=="success") {
+                        localStorage.setItem("address_sheet", JSON.stringify(null));
+                        window.location.href="/bulk/";
+                    }
+                })
+                btn_loader(btn, false);
+            },
+            error: function (data) {
+                btn_loader(btn, false);
+                $("#continueModal").modal("hide");
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops!",
+                    text: "Something we wrong, Please Try again later.",
+                    confirmButtonColor: '#1B84FF'
+                }).then((result) => {
+
+                })
+                btn_loader(btn, false);
+            }
+        })
+    })
+
+
+    function change_package(row_index) {
+        $(`tr[data-row-index='${row_index}']`).find(".package_details").html(`
+            ${truncateString(address_sheet[row_index][22])}
+            <br>
+            ${truncateString(address_sheet[row_index][16])}x${truncateString(address_sheet[row_index][17])}x${truncateString(address_sheet[row_index][18])}'' ${truncateString(address_sheet[row_index][14])}lb ${truncateString(address_sheet[row_index][15])}oz            <span style="float:right; margin-top:-8px"> 
+                <a href="javascript:void(0)" class="edit_package" data-id="${row_index}">
+                    <i class="ki-duotone ki-notepad-edit fs-1 btn-active-light-primary">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                    </i>
+                </a>
+            </span>
+        `)
+        localStorage.setItem("address_sheet", JSON.stringify(address_sheet));
+    }
+
+    function change_from_address(row_index) {
+        $(`tr[data-row-index='${row_index}']`).find(".from_address").html(`
+            <span class="fw-bold">
+                ${truncateString(address_sheet[row_index][0])} ${truncateString(address_sheet[row_index][1])}
+                <br> 
+                ${truncateString(address_sheet[row_index][2])} ${truncateString(address_sheet[row_index][3])}
+                <span style="float:right"> 
+                    <a href="javascript:void(0)" class="edit_address" data-id="${row_index}" data-type="1">
+                        <i class="ki-duotone ki-notepad-edit fs-1 btn-active-light-primary">
+                            <span class="path1"></span>
+                            <span class="path2"></span>
+                        </i>
+                    </a>
+                </span>
+                <br>
+                ${truncateString(address_sheet[row_index][4])} ${truncateString(address_sheet[row_index][5])} ${truncateString(address_sheet[row_index][6])} <img src='/static/assets1/media/flags/united-states.png' width='18px'>
+                <br>
+                ${truncateString(address_sheet[row_index][19])}
+            </span>
+        `)
+        localStorage.setItem("address_sheet", JSON.stringify(address_sheet));
+    }
+
+    function change_to_address(row_index) {
+        $(`tr[data-row-index='${row_index}']`).find(".to_address").html(`
+            <span class="fw-bold">
+                ${truncateString(address_sheet[row_index][7])} ${truncateString(address_sheet[row_index][8])}
+                <br> 
+                ${truncateString(address_sheet[row_index][9])} ${truncateString(address_sheet[row_index][10])}
+                <span style="float:right"> 
+                    <a href="javascript:void(0)" class="edit_address" data-id="${row_index}" data-type="2">
+                        <i class="ki-duotone ki-notepad-edit fs-1 btn-active-light-primary">
+                            <span class="path1"></span>
+                            <span class="path2"></span>
+                        </i>
+                    </a>
+                </span>
+                <br>
+                ${truncateString(address_sheet[row_index][11])} ${truncateString(address_sheet[row_index][12])} ${truncateString(address_sheet[row_index][13])} <img src='/static/assets1/media/flags/united-states.png' width='18px'>
+                <br>
+                ${truncateString(address_sheet[row_index][20])}
+            </span>
+        `)
+        localStorage.setItem("address_sheet", JSON.stringify(address_sheet));
+    }
+
+
+    $("#bulk_from_address").on("click", function () {
+        address = $('input[name="from_address"]:checked');
+
+        selected = $("input[name='row_checks']:checked")
+        
+        $("input[name='row_checks']:checked").each(function() {
+            var row_index = $(this).val()
+
+            address_sheet[row_index][0] = address.attr('data-firstname')
+            address_sheet[row_index][1] = address.attr('data-lastname')
+            address_sheet[row_index][2] = address.attr('data-address-one')
+            address_sheet[row_index][3] = address.attr('data-address-two')
+            address_sheet[row_index][4] = address.attr('data-city')
+            address_sheet[row_index][5] = address.attr('data-zip')
+            address_sheet[row_index][6] = address.attr('data-state')
+            address_sheet[row_index][19] = address.attr('data-phone')
+            change_from_address(row_index);
+            $(`tr[data-row-index='${row_index}']`).find('.from_address').removeClass('bg-light-danger');
+            clear_error(row_index, [0, 1, 2, 3, 4, 5, 6, 19]);
+        });
+
+    })
+
+
+    $("#bulk_packages").on("click", function () {
+        address = $('input[name="package_details"]:checked');
+
+        selected = $("input[name='row_checks']:checked")
+        
+        $("input[name='row_checks']:checked").each(function() {
+            var row_index = $(this).val()
+
+            address_sheet[row_index][14] = address.attr('data-pounds')
+            address_sheet[row_index][15] = address.attr('data-ounces')
+            address_sheet[row_index][16] = address.attr('data-length')
+            address_sheet[row_index][17] = address.attr('data-width')
+            address_sheet[row_index][18] = address.attr('data-height')
+            address_sheet[row_index][22] = address.attr('data-item-id')
+            change_package(row_index);
+            $(`tr[data-row-index='${row_index}']`).find('.package_details').removeClass('bg-light-danger');
+            clear_error(row_index, [14, 15, 16, 17, 18, 22])
+        });
+
+    })
+
+
+    $("#bulk_services").on("click", function () {
+
+        var service = $('input[name="service"]:checked').val();
+        var selected = $("input[name='row_checks']:checked")
+        selected.each(function() {
+
+            var row_index = $(this).val()
+            var option;
+            if (service == "0") {
+                option = $(`.service-${row_index}`).find('option[value="0"]');
+            } else {
+                option = $(`.service-${row_index}`).find('option[data-name="Priority Mail"]')
+            }
+
+            var name = option.attr("data-name");
+            var rate = option.attr('data-rate');
+            services[row_index] = {name: name, rate: rate}
+            $(`select[data-row-index="${row_index}"]`).val(option.val()).trigger('change')
+        });
+
+        calculateTotalRateAndNames(services)
+
+    })
+
+    $("#back").on("click", function () {
+        let step = $(this).attr("data-step");
+
+        if (step == "1") {
+
+            Swal.fire({
+                text: "Going back will result in the loss of current data!", icon: "warning", showCancelButton: !0, buttonsStyling: !1, confirmButtonText: "Yes, take me back!", cancelButtonText: "No, cancel", customClass: {
+                    confirmButton: "btn fw-bold btn-danger", cancelButton: "btn fw-bold btn-active-light-primary"
+                }
+            }).then((function (t) {
+                if (t.value) {
+                    localStorage.setItem("address_sheet", JSON.stringify(null));
+                    window.location.href="/bulk/"
+                } else {
+                    t.dismiss
+                }
+            }));
+            
+        } else if (step == "2") {
+            window.location.href="/bulk/"
+        }
+    })
+
+    var storedString = localStorage.getItem("address_sheet");
+    var var1_errors = localStorage.getItem("var1_error");
+
+    if (storedString === null || storedString ==="null") {
+        $(".step_1").show();
+    } else {
+        var1_errors = JSON.parse(var1_errors);
+        for (var e=0; e<var1_errors.length; e++){
+            showErrorMsg($("#var1-errors"), "danger", var1_errors[e]);
+        }
+        details_err = localStorage.getItem("details_err");
+        details_err = JSON.parse(details_err);
+        details_err = details_err.filter(item => item !== 0);
+        address_sheet = JSON.parse(storedString);
+        //address_sheet = address_sheet.filter(item => item !== 0);
+
+        $("#bulk_label_table_body").html('')
+        for (var i=0; i< address_sheet.length; i++) {
+            if (address_sheet[i] != 0) {
+                $("#bulk_label_table_body").append(`
+            <tr data-row-index="${i}">
+                <td class="ps-5" data-kt-ecommerce-product-filter="product_name">
+                    <div class="form-check form-check-sm form-check-custom form-check-solid">
+                        <input class="form-check-input" name="row_checks" type="checkbox" value="${i}" />
+                    </div>
+                </td>
+                <td class="pe-0 text-center from_address" id="from_address${i}">
+                    <span class="fw-bold">
+                        ${truncateString(address_sheet[i][0])} ${truncateString(address_sheet[i][1])}
+                        <br> 
+                        ${truncateString(address_sheet[i][2])} ${truncateString(address_sheet[i][3])}
+                        <span style="float:right"> 
+                            <a href="javascript:void(0)" class="edit_address" data-id="${i}" data-type="1">
+                                <i class="ki-duotone ki-notepad-edit fs-1 btn-active-light-primary">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
+                            </a>
+                        </span>
+                        <br> 
+                        ${truncateString(address_sheet[i][4])} ${truncateString(address_sheet[i][5])} ${truncateString(address_sheet[i][6])} <img src='/static/assets1/media/flags/united-states.png' width='18px'>
+                        <br>
+                        ${truncateString(address_sheet[i][19])}
+                    </span>
+                </td>
+                <td class="pe-0 text-center to_address" id="to_address${i}">
+                    <span class="fw-bold ms-3">
+                        ${truncateString(address_sheet[i][7])} ${truncateString(address_sheet[i][8])}
+                        <br>
+                        ${truncateString(address_sheet[i][9])} ${truncateString(address_sheet[i][10])}
+                        <span style="float:right"> 
+                            <a href="javascript:void(0)" class="edit_address" data-id="${i}" data-type="2">
+                                <i class="ki-duotone ki-notepad-edit fs-1 btn-active-light-primary">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
+                            </a>
+                        </span>
+                        <br>
+                        ${truncateString(address_sheet[i][11])} ${truncateString(address_sheet[i][12])} ${truncateString(address_sheet[i][13])} <img src='/static/assets1/media/flags/united-states.png' width='18px'>
+                        <br>
+                        ${truncateString(address_sheet[i][20])}
+                    </span>
+                </td>
+                <td class="pe-0 text-center package_details" id="package${i}">
+                    ${truncateString(address_sheet[i][22])}
+                    <br>
+                    ${truncateString(address_sheet[i][16])}x${truncateString(address_sheet[i][17])}x${truncateString(address_sheet[i][18])}'' ${truncateString(address_sheet[i][14])}lb ${truncateString(address_sheet[i][15])}oz
+                    <span style="float:right; margin-top:-8px"> 
+                        <a href="javascript:void(0)" class="edit_package" data-id="${i}">
+                            <i class="ki-duotone ki-notepad-edit fs-1 btn-active-light-primary">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                        </a>
+                    </span>
+                </td>
+                <td class="pe-0 text-center order_no" id="order_no${i}">
+                    ${truncateString(address_sheet[i][21])} 
+                    <span style="float:right"> 
+                        <a href="javascript:void(0)" class="edit_order_no" data-id="${i}">
+                            <i class="ki-duotone ki-notepad-edit fs-1 btn-active-light-primary">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                        </a>
+                    </span>
+                </td>
+                <td class="pe-0 text-center status">
+                    <span class="badge badge-light-success">success</span>
+                </td>
+                <td hidden></td>
+                <td hidden></td>
+                <td class="pe-0 text-center">
+                    <a data-row-index="${i}" class="btn btn-sm btn-light-danger btn-flex btn-center btn-active-light-primary p-1" data-kt-ecommerce-product-filter="delete_row"><i class="ki-duotone ki-cross fs-1 p-0"><span class="path1"></span><span class="path2"></span></i> </a>
+                </td>
+            </tr>
+            `)
+            }
+
+            isCellEmpty("from_address" + i, i, "edit_address");
+            isCellEmpty("to_address" + i, i, "edit_address");
+            isCellEmpty("package" + i, i, "edit_package");
+            isCellEmpty("order_no" + i, i, "edit_order_no");
+        }
+
+        for (var i=0; i<details_err.length; i++) {
+            let row = details_err[i][0][0]
+            let cell = details_err[i][0][1]
+            let err_message = details_err[i][1]
+
+            if (!errors.hasOwnProperty(row)) {
+                // If not, initialize it with an empty array
+                errors[row] = [];
+            }
+            
+            // Append the error message to the array
+            errors[row].push([cell, err_message]);
+            
+
+            if ([0, 1, 2, 3, 4, 5, 6].includes(cell)) {
+                $(`tr[data-row-index='${row}']`).find('.from_address').addClass("bg-light-danger");
+                $(`tr[data-row-index='${row}']`).find(`.status`).html('<span class="badge badge-light-danger">error</span>');
+
+            } else if ([7, 8, 9, 10, 11, 12, 13].includes(cell)) {
+                $(`tr[data-row-index='${row}']`).find(".to_address").addClass("bg-light-danger");
+                $(`tr[data-row-index='${row}']`).find(`.status`).html('<span class="badge badge-light-danger">error</span>');
+            } else if ([14, 15, 16, 17, 18].includes(cell)) {
+                $(`tr[data-row-index='${row}']`).find(".package_details").addClass("bg-light-danger");
+                $(`tr[data-row-index='${row}']`).find(`.status`).html('<span class="badge badge-light-danger">error</span>');
+            }
+            
+        }
+
+        $(".step_1").hide();
+        $(".step_2").show();
+        $("#submit_btn2").show();
+        $("#back").show();
+        $(".page-heading").html("Review and Edit File (Step 2 of 3)");
+        KTAppEcommerceProducts.init();
+
+        var errorElement = $(".status:contains('error')")[0];
+        errorElement.scrollIntoView({
+            behavior: 'auto', // You can use 'auto' or 'smooth' for smooth scrolling
+            block: 'start'       // You can use 'start', 'center', 'end', or 'nearest'
+        });
+    }
+
+    
+</script>
+
+{% endblock %}

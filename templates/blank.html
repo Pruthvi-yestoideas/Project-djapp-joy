@@ -1,0 +1,16 @@
+{% extends 'theme_base.html' %}
+
+{% block title %}Order History{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-12 mx-auto">
+            {% if message %}<h4>{{ message }}</h4>{% endif %}
+            <form action="." method="post">{% csrf_token %}
+                <div class="form-group">
+                    <button class="btn btn-primary">Post Timestamp</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

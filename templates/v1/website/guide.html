@@ -1,0 +1,576 @@
+{% extends "v1/base.html" %} {% load static %} {% block content %}
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap");
+
+@media (max-width: 791px) {
+  aside.diamond-left {
+    width: 200px !important;
+  }
+}
+
+@media (max-width: 556px) {
+  aside.diamond-left {
+    width: 90% !important;
+  }
+}
+
+aside:before, aside:after {
+  content: "";
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-style: solid;
+  border-width: 0;
+}
+
+aside.diamond-left.active:after {
+  border-width: 32px 0 33px 32px;
+  right: -31.9px;
+  border-color: transparent #338cec;
+}
+
+aside.diamond-left {
+  width: 285px;
+  background-color: #338cec;
+  position: absolute;
+  height: 44px;
+  text-align: center;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 800;
+  align-items: center;
+  display: flex;
+  padding-left: 10px;
+}
+
+aside.active{
+    height: 65px !important;
+}
+
+.arrow-active {
+    margin-bottom: 100px !important;
+}
+
+.arrow{
+    margin-bottom: 80px;
+}
+
+aside.diamond-left {
+  left: 0;
+}
+aside.diamond-left:after {
+  border-width: 22px 0 23px 22px;
+  right: -21.9px;
+  border-color: transparent #338cec;
+}
+
+</style>
+<!--begin::Content-->
+<div id="kt_app_content" class="app-content flex-column-fluid">
+  <!--begin::Content container-->
+  <div id="kt_app_content_container" class="app-container container-fluid">
+      <!--begin::FAQ card-->
+      <div class="card">
+        <!--begin::Body-->
+        <div class="card-body p-lg-15">
+          <!--begin::Layout-->
+          <div class="d-flex flex-column flex-lg-row">
+
+            <!--begin::Content-->
+            <div class="row flex-lg-row-fluid">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 accordians">
+                <div class="m-0 prepare-file">
+                    <!--begin::Heading-->
+                    <div
+                      class="d-flex align-items-center collapsible py-3 toggle mb-0 collapsed"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#kt_job_8_1"
+                      aria-expanded="false"
+                    >
+                      <!--begin::Icon-->
+                      <div
+                        class="btn btn-sm btn-icon mw-20px btn-active-color-primary me-5"
+                      >
+                        <i
+                          class="ki-outline ki-minus-square toggle-on text-primary fs-1"
+                        ></i>
+                        <i
+                          class="ki-outline ki-plus-square toggle-off fs-1"
+                        ></i>
+                      </div>
+                      <!--end::Icon-->
+
+                      <!--begin::Title-->
+                      <h4 class="text-gray-700 fw-bold cursor-pointer mb-0">
+                        <strong>How to Prepare your Spreadsheet?</strong>
+                      </h4>
+                      <!--end::Title-->
+                    </div>
+                    <!--end::Heading-->
+
+                    <!--begin::Body-->
+                    <div id="kt_job_8_1" class="fs-6 ms-1 collapse" style="">
+                      <!--begin::Text-->
+                      <div class="mb-4 text-gray-600 fw-semibold fs-6 ps-10">
+                          <div class="card-body">
+                              <div class="card-body" style="line-height: 1.6;">
+                                  <h4 style="font-size: 22;font-weight: bold;color: #007bff;margin-top: 30px;">Download the Template:</h4>
+                                  
+                                  <section class="wallet-requirements" style="color: rgb(13, 14, 17);">
+                                      <ul>
+                                          <li><p><a style="color:blue;" href="https://firebasestorage.googleapis.com/v0/b/maindatabase-6782e.appspot.com/o/Template.xlsx?alt=media&token=d6cecf9b-817c-40e8-a2a3-113360fce6ba" target="_blank">EXCEL Template</a> (Open it using Excel)</p></li>
+                                          <li><p><a style="color:blue;" href="https://firebasestorage.googleapis.com/v0/b/maindatabase-6782e.appspot.com/o/Template.csv?alt=media&token=650d47a9-f388-477b-b217-448c1fe7cc95" target="_blank">CSV Template</a> (We recommend using <a href="https://www.libreoffice.org/download/download-libreoffice" target="_blank">libreoffice</a> for CSV file)</p></li>
+                                      </ul>
+                                  </section>
+          
+                                  <h4 style="font-size: 22;font-weight: bold;color: #007bff;margin-top: 30px;">Data Entry:</h4>
+                                  
+                                  <section class="wallet-requirements" style="color: rgb(13, 14, 17);">
+                                      <ul>
+                                          <li><p>Populate the downloaded sheet with your data.</p></li>
+                                          <li><p>Ensure correct data placement in its designated column.</p></li>
+                                          <li><p>For optimal results, limit your entries to 100 labels per sheet.</p></li>
+                                      </ul>
+                                  </section>
+          
+                                  <h4 style="font-size: 22;font-weight: bold;color: #007bff;margin-top: 30px;">File Formatting:</h4>
+                                  
+                                  <section class="wallet-requirements" style="color: rgb(13, 14, 17);">
+                                      <ul>
+                                          <li><p>Ensure that the EXCEL/CSV format is UTF-8.</p></li>
+                                          <li><p>Ensure that the extension of your file is .csv for CSV file or .XLSX for Excel file.</p></li>
+                                          <li><p>Refrain from including any special characters in the file to avoid processing errors.</p></li>
+                                      </ul>
+                                  </section>
+          
+                                  <h4 style="font-size: 22;font-weight: bold;color: #007bff;margin-top: 30px;">Weight Columns Consideration:</h4>
+                                  
+                                  <section class="wallet-requirements" style="color: rgb(13, 14, 17);">
+                                      <ul>
+                                          <li><p>Values in the weight column will be rounded up, resulting in integer numbers.</p></li>
+                                      </ul>
+                                  </section>
+
+                                  <h4 style="font-size: 22;font-weight: bold;color: #007bff;margin-top: 30px;">Dimensions Columns Consideration:</h4>
+                                  
+                                  <section class="wallet-requirements" style="color: rgb(13, 14, 17);">
+                                      <ul>
+                                          <li><p>Maximum dimensions for all our labels are 13,000 cubic inches, (For example: Length: 36", Width: 24", Height: 14").</p></li>
+                                      </ul>
+                                  </section>
+
+                                  <h4 style="font-size: 22;font-weight: bold;color: #007bff;margin-top: 30px;">Flexible Spreadsheet Submission for Shipping Information:</h4>
+                                  
+                                  <section class="wallet-requirements" style="color: rgb(13, 14, 17);">
+                                      <ul>
+                                          <li><p>If you currently only possess the shipping information, 
+                                            it's completely acceptable to leave the 'From Address' and 'Package Details' sections blank in the 
+                                            spreadsheet. After uploading the file, you'll have the option to conveniently fill in these sections 
+                                            by selecting from your pre-saved addresses and package details. 
+                                            This flexibility allows you to manage and complete your shipping information efficiently at a later stage.</p></li>
+                                      </ul>
+                                  </section>
+
+                                  <h4 style="font-size: 18px; font-weight: bold;color: #007bff;margin-bottom: 20px;margin-top: 30px;">Spreadsheet Sample:</h4>
+              
+                                  <section class="go to add balance" style="color: rgb(13, 14, 17);">
+                                      <img src="/static/images/guide/spreadsheet_sample1.png" alt="Template Sample" style="max-width:100%; max-height:100%;" />
+                                  </section>
+                                  <br>
+                                  <section class="go to add balance" style="color: rgb(13, 14, 17);">
+                                      <img src="/static/images/guide/spreadsheet_sample2.png" alt="Template Sample" style="max-width:100%; max-height:100%;" />
+                                  </section>
+          
+                              </div>
+                          </div>
+                      </div>
+                      <!--end::Text-->
+                    </div>
+                    <!--end::Content-->
+
+                    <!--begin::Separator-->
+                    <div class="separator separator-dashed"></div>
+                    <!--end::Separator-->
+                </div>
+                <div class="m-0 prepare-file">
+                    <!--begin::Heading-->
+                    <div
+                      class="d-flex align-items-center collapsible py-3 toggle mb-0 collapsed"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#kt_job_8_2"
+                      aria-expanded="false"
+                    >
+                      <!--begin::Icon-->
+                      <div
+                        class="btn btn-sm btn-icon mw-20px btn-active-color-primary me-5"
+                      >
+                        <i
+                          class="ki-outline ki-minus-square toggle-on text-primary fs-1"
+                        ></i>
+                        <i
+                          class="ki-outline ki-plus-square toggle-off fs-1"
+                        ></i>
+                      </div>
+                      <!--end::Icon-->
+
+                      <!--begin::Title-->
+                      <h4 class="text-gray-700 fw-bold cursor-pointer mb-0">
+                        <strong>Uploading and Editing your Spreadsheet</strong>
+                      </h4>
+                      <!--end::Title-->
+                    </div>
+                    <!--end::Heading-->
+
+                    <!--begin::Body-->
+                    <div id="kt_job_8_2" class="fs-6 ms-1 collapse">
+                      <!--begin::Text-->
+                      <div class="mb-4 text-gray-600 fw-semibold fs-6 ps-10">
+                        <h4 class="mt-15" style="font-size: 22px; font-weight: bold;">Uploading Spreadsheet:</h4>
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <img class="mt-5" src="/static/images/guide/step1 upload.gif" alt="Template Sample" style="width:100%; max-height:100%;" />
+                          </div>
+                          <div class="col-lg-6">
+                              <div class="card-body text-dark pt-0">
+                                  <ul>
+                                      <li>
+                                        <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px; margin-top: 30px;">Access the Homepage:</h4>
+                                          <p>Begin by visiting our <a href="/bulk/" target="_blank">upload spreadsheet page</a>.</p>
+                                      </li>
+                                      <li>
+                                        <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px; margin-top: 30px;">File Upload:</h4>
+                                          <p>Please proceed to upload your populated CSV or EXCEL file. Note that only one file can be uploaded at a time.</p>
+                                      </li>
+                                      <li>
+                                        <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px; margin-top: 30px;">File Processing:</h4>
+                                          Once your file is uploaded, it will undergo a processing phase. 	This may take up to 2 minutes. We appreciate your patience during this period.
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                        </div>
+                        <h4 class="mt-15" style="font-size: 22px; font-weight: bold;">Post-Processing Steps:</h4>
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <img class="mt-5" src="/static/images/guide/Step2 Editing1.gif" alt="Template Sample" style="width:100%; max-height:100%;" />
+                            <img src="/static/images/guide/Step2 Editing2.gif" alt="Template Sample" class="mt-5" style="width:100%; max-height:100%;" />
+                          </div>
+                          <div class="col-lg-6">
+                              <div class="card-body text-dark pt-0">
+                                <ul>
+                                    <li>
+                                      <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px; margin-top: 30px;">Redirection to Step 2:</h4>
+                                        <p>After processing, you will be automatically redirected to the Step 2 page.</p>
+                                    </li>
+                                    <li>
+                                        <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px; margin-top: 30px;">Editing and Modification:</h4>
+                                        <p>Here, you have the option to edit, delete, or modify return addresses, package details, and sender information. You may also remove any unnecessary data.</p>
+                                    </li>
+                                    <li>
+                                      <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px; margin-top: 30px;">Verification:</h4>
+                                        <p>Ensure all your data is accurately checked and marked as "success."</p>
+                                    </li>
+                                </ul>
+                              </div>
+                          </div>
+                        </div>
+                        <h4 class="mt-15" style="font-size: 22px; font-weight: bold;">Finalizing Your Order:</h4>
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <img class="mt-5" src="/static/images/guide/Step 3 Making Purshase.gif" alt="Template Sample" style="width:100%; max-height:100%;" />
+                          </div>
+                          <div class="col-lg-6">
+                              <div class="card-body text-dark pt-0">
+                                  <ul>
+                                      <li>
+                                        <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px; margin-top: 30px;">Proceed to Step 3:</h4>
+                                          <p>Once you are satisfied with your edits and have verified all data, you can move on to Step 3.</p>
+                                      </li>
+                                      <li>
+                                        <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px; margin-top: 30px;">Carrier Service Selection:</h4>
+                                          <p>In this step, you can choose your preferred carrier service to finalize your order.</p>
+                                      </li>
+                                      <li>
+                                        <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px; margin-top: 30px;">Select Your Printing Preference:</h4>
+                                          <p>In this final step, you have the opportunity to select your preferred printing option for your labels. This choice is tailored to ensure compatibility with your printing setup and to facilitate a seamless label creation process.</p>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--end::Text-->
+                    </div>
+                    <!--end::Content-->
+
+                    <!--begin::Separator-->
+                    <div class="separator separator-dashed"></div>
+                    <!--end::Separator-->
+                </div>
+                <div class="m-0 prepare-file">
+                    <!--begin::Heading-->
+                    <div
+                      class="d-flex align-items-center collapsible py-3 toggle mb-0 collapsed"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#kt_job_8_3"
+                      aria-expanded="false"
+                    >
+                      <!--begin::Icon-->
+                      <div
+                        class="btn btn-sm btn-icon mw-20px btn-active-color-primary me-5"
+                      >
+                        <i
+                          class="ki-outline ki-minus-square toggle-on text-primary fs-1"
+                        ></i>
+                        <i
+                          class="ki-outline ki-plus-square toggle-off fs-1"
+                        ></i>
+                      </div>
+                      <!--end::Icon-->
+
+                      <!--begin::Title-->
+                      <h4 class="text-gray-700 fw-bold cursor-pointer mb-0">
+                        <strong>Confirmation and Delivery</strong>
+                      </h4>
+                      <!--end::Title-->
+                    </div>
+                    <!--end::Heading-->
+
+                    <!--begin::Body-->
+                    <div id="kt_job_8_3" class="fs-6 ms-1 collapse" style="">
+                      <!--begin::Text-->
+                      <div class="mb-4 text-gray-600 fw-semibold fs-6 ps-10">
+                          <div class="card-body">
+                            <ul>
+                                <li>
+                                    <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px; margin-top: 30px;">Await Email Confirmation:</h4>
+                                    <p class="text-dark">Once you have submitted your order, please await an email from us. This email will contain your shipping labels and the invoice for your transaction.</p>
+                                </li>
+                                <li>
+                                  <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px; margin-top: 30px;">Order History Review:</h4>
+                                    <p class="text-dark">Additionally, you may check the order history on our platform after some time has elapsed to review your recent transaction details.</p>
+                                </li>
+                            </ul>
+                          </div>
+                      </div>
+                      <!--end::Text-->
+                    </div>
+                    <!--end::Content-->
+
+                    <!--begin::Separator-->
+                    <div class="separator separator-dashed"></div>
+                    <!--end::Separator-->
+                </div>
+                <div class="m-0 prepare-file">
+                    <!--begin::Heading-->
+                    <div
+                      class="d-flex align-items-center collapsible py-3 toggle mb-0 collapsed"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#kt_job_8_4"
+                      aria-expanded="false"
+                    >
+                      <!--begin::Icon-->
+                      <div
+                        class="btn btn-sm btn-icon mw-20px btn-active-color-primary me-5"
+                      >
+                        <i
+                          class="ki-outline ki-minus-square toggle-on text-primary fs-1"
+                        ></i>
+                        <i
+                          class="ki-outline ki-plus-square toggle-off fs-1"
+                        ></i>
+                      </div>
+                      <!--end::Icon-->
+
+                      <!--begin::Title-->
+                      <h4 class="text-gray-700 fw-bold cursor-pointer mb-0">
+                        <strong>How to Get the 'Tracking No' Column in the Right Format?</strong>
+                      </h4>
+                      <!--end::Title-->
+                    </div>
+                    <!--end::Heading-->
+
+                    <!--begin::Body-->
+                    <div id="kt_job_8_4" class="fs-6 ms-1 collapse" style="">
+                      <!--begin::Text-->
+                      <div class="mb-4 text-gray-600 fw-semibold fs-6 ps-10">
+                          <div class="card-body">
+                            <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px; margin-top: 30px;">If Using Microsoft Excel:</h4>
+                            <section class="wallet-requirements" style="color: rgb(13, 14, 17);">
+                            <ul>
+                                <li>Launch Excel and open a blank workbook.</li>
+                                <li>Navigate to the 'Data' tab and select 'From Text/CSV'.</li>
+                                <li>Locate and open the CSV file.</li>
+                                <li>In the dialog that appears, find the "Tracking NO" column.</li>
+                                <li>Change its data type from 'General' or 'Number' to 'Text'.</li>
+                                <li>Click 'Load' to finish importing the data.</li>
+                            </ul>
+                            </section>
+                            <br>
+                            <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px; margin-top: 30px;">If Using LibreOffice Calc:</h4>
+                            <section class="wallet-requirements" style="color: rgb(13, 14, 17);">
+                            <ul>
+                                <li>Open LibreOffice Calc.</li>
+                                <li>Navigate to 'File' > 'Open' and select the CSV file.</li>
+                                <li>The Text Import dialog will appear.</li>
+                                <li>For the "Tracking NO" column, change its format to 'Text'.</li>
+                                <li>Click 'OK' to import the data.</li>
+                            </ul>
+                          </section>
+            
+                          </div>
+                      </div>
+                      <!--end::Text-->
+                    </div>
+                    <!--end::Content-->
+
+                    <!--begin::Separator-->
+                    <div class="separator separator-dashed"></div>
+                    <!--end::Separator-->
+                </div>
+                <div class="m-0 prepare-file">
+                    <!--begin::Heading-->
+                    <div
+                      class="d-flex align-items-center collapsible py-3 toggle mb-0 collapsed"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#kt_job_8_5"
+                      aria-expanded="false"
+                    >
+                      <!--begin::Icon-->
+                      <div
+                        class="btn btn-sm btn-icon mw-20px btn-active-color-primary me-5"
+                      >
+                        <i
+                          class="ki-outline ki-minus-square toggle-on text-primary fs-1"
+                        ></i>
+                        <i
+                          class="ki-outline ki-plus-square toggle-off fs-1"
+                        ></i>
+                      </div>
+                      <!--end::Icon-->
+
+                      <!--begin::Title-->
+                      <h4 class="text-gray-700 fw-bold cursor-pointer mb-0">
+                        <strong>How to Load your Balance with Crypto?</strong>
+                      </h4>
+                      <!--end::Title-->
+                    </div>
+                    <!--end::Heading-->
+
+                    <!--begin::Body-->
+                    <div id="kt_job_8_5" class="fs-6 ms-1 collapse" style="">
+                      <!--begin::Text-->
+                      <div class="mb-4 text-gray-600 fw-semibold fs-6 ps-10">
+                          <div class="card-body" style="line-height: 1.6;">
+                            <p class="instruction-paragraph text-dark">
+                                Sending Tether (USDT) is a straightforward process, but it's crucial to be careful at every step to ensure the transaction goes smoothly. Below are the steps to send USDT from a typical cryptocurrency wallet. Please note that the steps may vary slightly depending on the wallet you are using.
+                            </p>
+                            <h4 style="font-size: 22;font-weight: bold;color: #007bff;margin-top: 30px;">Pre-requisites</h4>
+                            
+                            <section class="wallet-requirements" style="color: rgb(13, 14, 17);">
+                                <ul>
+                                  <li>
+                                    <p style="margin-bottom: 3px;">Cryptocurrency Wallet: Ensure you have a cryptocurrency wallet that supports USDT. Examples include Trust Wallet, MetaMask, and MyEtherWallet.</p>
+                                  </li>
+                                  <li>
+                                    <p style="margin-bottom: 3px;">For wallet setup and USDT acquisition, please check <a href="https://www.coinbase.com/how-to-buy/tether" target="_blank">Coinbase guide</a>.</p>
+                                  </li>
+                                  <li>
+                                    <p style="margin-bottom: 3px;">USDT Balance: Make sure you have enough USDT in your wallet to send. Also, account for any transaction fees.</p>
+                                  </li>
+                                  <li>
+                                    <p style="margin-bottom: 3px;">Receiver's Address: Have the recipient's USDT address handy. It's essential to get the address correct to avoid losing funds.</p>
+                                  </li>
+                                </ul>
+                              </section>
+                            
+                            <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px;margin-top: 30px;">Steps to Send USDT featuring CoinBase</h4>
+        
+                            <section class="go to add balance" style="color: rgb(13, 14, 17);">
+                                <h4 style="font-size: 17px; font-weight: bold; margin-left: 10px; margin-top: 10px;color: #007bff;">Step 1: Get the Receiver Address</h4>
+                                <ul>
+                                  <li style="font-size: 14px; margin-bottom: 5px;">Navigate to "Add Balance" to get our Wallet Address</li>
+                                  <img src="/static/images/guide/Add_balance.png" alt="crypto-Guide" style="display: block; margin-left: 20px;width: 80%; max-width: 170px;">                        </ul>
+                              </section>
+        
+                            <section class="initiating-transaction" style="color: rgb(13, 14, 17);">
+                                <h5 style="font-size: 17px; font-weight: bold; margin-left: 10px; margin-top: 10px;color: #007bff;">Step 2: Initiating the Transaction</h5>
+                                <ul>
+                                  <li style="font-size: 14px; margin-bottom: 5px;">Open your wallet app on your computer or mobile device.</li>
+                                  <li style="font-size: 14px; margin-bottom: 5px;">Navigate to your USDT balance. This is usually listed under the 'Assets' or 'Wallet' section.</li>
+                                  <li style="font-size: 14px; margin-bottom: 5px;">Click "Send"</li>
+                                  <li style="font-size: 14px; margin-bottom: 5px;">Click on the "Send" button. This button is often represented with an upward-pointing arrow or the word "Send."</li>
+                                  <img src="/static/images/Send.png" alt="crypto-Guide" style="display: block; margin-left: 20px;width: 80%; max-width: 400px;">                        </ul>
+                              </section>
+                              
+                              <section class="currency-selection" style="color: rgb(13, 14, 17);">
+                                <h5 style="font-size: 17px; font-weight: bold; margin-left: 10px; margin-top: 10px;color: #007bff;">Step 3: Select "USDT (Tether)"</h5>
+                                <ul>
+                                  <li style="font-size: 14px; margin-bottom: 5px;">Choose the currency type you wish to send. If a list of cryptocurrencies appears, scroll until you find "USDT" or "Tether."</li>
+                                  <li style="font-size: 14px; margin-bottom: 5px;">Click on "USDT" to select it as the currency you wish to send.</li>
+                                  <img src="/static/images/TetherSelect.png" alt="crypto-Guide" style="display: block; margin-left: 20px;width: 80%; max-width: 400px;">                        </ul>
+                              </section>
+                              
+                              <section class="entering-receivers-info" style="color: rgb(13, 14, 17);">
+                                <h5 style="font-size: 17px; font-weight: bold; margin-left: 10px; margin-top: 10px;color: #007bff;">Step 4: Enter Receiver's Address or Scan QR Code</h5>
+                                <ul>
+                                  <li style="font-size: 14px; margin-bottom: 5px;">Enter the recipient's address manually in the designated field. Make sure to double-check for any errors. Sending funds to the wrong address usually means they are lost forever.
+                                    OR
+                                    Scan the recipient's QR code. If the receiver has provided a QR code, you can scan it using your device's camera to populate the address automatically. This method is less prone to human error.
+                                    </li>
+                                </ul>
+                              </section>
+        
+        
+                              <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px; margin-top: 30px;">Confirming the Transaction</h4>
+                              <p class="instruction-paragraph" style="margin-left:10px;">
+                                After sending, it usually takes up to 30 minutes for the transaction to be confirmed on the blockchain. You can check the status within your wallet or by searching for the transaction ID on a blockchain explorer that supports USDT.
+                              </p>
+        
+                              <h4 style="font-size: 22px; font-weight: bold;color: #007bff;margin-bottom: 20px; margin-top: 30px;">Important Tips</h4>
+        
+                              <section class="Notes" style="color: rgb(13, 14, 17);">
+                                <ul>
+                                  <li>
+                                    <p style="margin-bottom: 3px;">Double-Check Addresses: Always double-check the recipient's address. Sending USDT to a wrong address usually results in a loss of funds.</p>
+                                  </li>
+                                  <li>
+                                    <p style="margin-bottom: 3px;">Test with Small Amounts: If you are sending a large sum, consider doing a test transaction with a small amount first.</p>
+                                  </li>
+                                  <li>
+                                    <p style="margin-bottom: 3px;">Secure Connection: Make sure you are using a secure and reliable internet connection.</p>
+                                  </li>
+                                </ul>
+                                <br>
+                                <p>By following these steps carefully, you should be able to send USDT without any issues. Always remember to double-check every detail to avoid any mistakes.</p> 
+                            </section>
+                          </div>
+                      </div>
+                      <!--end::Text-->
+                    </div>
+                    <!--end::Content-->
+
+                    <!--begin::Separator-->
+                    <div class="separator separator-dashed"></div>
+                    <!--end::Separator-->
+                </div>
+              </div>
+              <!--end::Extended content-->
+            </div>
+            
+            <!--end::Content-->
+          </div>
+          <div style="text-align: center; font-size: 1.2em; color: #5C7D9A; padding: 20px; background-color: #F8F9FA; border: 1px solid #E8E9EB; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); border-radius: 8px; margin-top: 20px;">
+            Thank you for choosing our platform for your shipping needs. If you encounter any issues or have queries, don't hesitate to reach out.
+        </div>
+          <!--end::Layout-->
+        </div>
+        <!--end::Body-->
+      </div>
+      <!--end::FAQ card-->
+  </div>
+  <!--end::Content container-->
+</div>
+<!--end::Content-->
+{% endblock %}
+

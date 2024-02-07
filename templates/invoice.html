@@ -1,0 +1,209 @@
+{% extends 'theme_base.html' %}
+
+{% block title %}Invoice{% endblock %}
+
+{% block extra_style %}
+    <style>
+        .invoice-box {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+            font-size: 16px;
+            line-height: 24px;
+            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            color: #555;
+        }
+
+        .invoice-box table {
+            width: 100%;
+            line-height: inherit;
+            text-align: left;
+        }
+
+        .invoice-box table td {
+            padding: 5px;
+            vertical-align: top;
+        }
+
+        .invoice-box table tr td:nth-child(2) {
+            text-align: right;
+        }
+
+        .invoice-box table tr.top table td {
+            padding-bottom: 20px;
+        }
+
+        .invoice-box table tr.top table td.title {
+            font-size: 45px;
+            line-height: 45px;
+            color: #333;
+        }
+
+        .invoice-box table tr.information table td {
+            padding-bottom: 40px;
+        }
+
+        .invoice-box table tr.heading td {
+            background: #eee;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+        }
+
+        .invoice-box table tr.details td {
+            padding-bottom: 20px;
+        }
+
+        .invoice-box table tr.item td {
+            border-bottom: 1px solid #eee;
+        }
+
+        .invoice-box table tr.item.last td {
+            border-bottom: none;
+        }
+
+        .invoice-box table tr.total td:nth-child(2) {
+            border-top: 2px solid #eee;
+            font-weight: bold;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .invoice-box table tr.top table td {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+
+            .invoice-box table tr.information table td {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+        }
+
+        /** RTL **/
+        .rtl {
+            direction: rtl;
+            font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        }
+
+        .rtl table {
+            text-align: right;
+        }
+
+        .rtl table tr td:nth-child(2) {
+            text-align: left;
+        }
+
+        header {
+            position: relative;
+            line-height: 180px;
+            text-align: center;
+            background-color: #5a5c69;
+            height: 240px;
+            color: white;
+        }
+
+        .container-marg {
+            margin-top: 5em!important;
+        }
+
+    </style>
+{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="invoice-box">
+                <table cellpadding="0" cellspacing="0">
+                    <tr class="top">
+                        <td colspan="2">
+                            <table>
+                                <tr>
+                                    <td class="title">
+                                        <img src="{{logo_img_link}}"
+                                             style="width:100%; max-width:300px;">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <tr class="information">
+                        <td colspan="2">
+                            <table>
+                                <tr>
+
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <tr class="heading" style="text-align: left">
+                        <td>
+                            Quantity x Price
+                        </td>
+
+                        <td class="text-left">
+                            Services
+                        </td>
+
+                        <td class="text-left">
+                            Total
+                        </td>
+                    </tr>
+
+                    {% for item in details.0 %}
+
+                        <tr class="item">
+                            <td class="text-left">
+                                {{ item.0 }}
+                            </td>
+
+                            <td class="text-left">
+                                {{ item.1 }}
+                            </td>
+
+                            <td class="text-left">
+                                ${{ item.2 }}
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+
+                    <tr class="total">
+                        <td></td>
+                        <td></td>
+
+                        <td>
+                            <strong>Total Sum: ${{ details.1 }}</strong>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <form action="." method="post" id="form">{% csrf_token %}
+                <div class="text-center">
+                    <button type="submit" id="checkout" class="btn btn-primary mt-3 "><i
+                            class="fa fa-shopping-cart"></i>
+                        Buy Labels
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        $(document).ready(function () {
+            $("#checkout").on('click', function () {
+                $(this).attr('disabled', 'disabled');
+                $("#form").submit();
+            })
+        })
+    </script>
+{% endblock %}
